@@ -40,6 +40,8 @@
     <link rel="stylesheet" href="{{ asset('admin/css/demo.css') }}" />
 
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+
+    <link href="{{ asset('admin/assets/summernote/summernote.min.css') }}" rel="stylesheet">
     {{-- If using Laravel Vite (optional, remove if not needed) --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
@@ -93,6 +95,7 @@
     <!-- Main JS -->
     <script src="{{ asset('admin/js/kaiadmin.min.js') }}"></script>
 
+    <script src="{{ asset('admin/assets/summernote/summernote.min.js') }}"></script>
     <!-- Bootstrap Notify -->
     <script src="{{ asset('admin/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
     <!-- Feather Icons (for navbar icons) -->
@@ -106,6 +109,37 @@
             if (datatablesSimple) {
                 new simpleDatatables.DataTable(datatablesSimple);
             }
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            $('#summernote').summernote({
+                placeholder: 'Content',
+                tabsize: 2,
+                height: 500,
+                border: "1px solid #000"
+            });
+            // // Loop through all elements with the class 'tinymce-editor'
+            // document.querySelectorAll(".tinymce-editor").forEach(function(editor) {
+
+            //     // Initialize TinyMCE for each editor
+            //     tinymce.init({
+            //         target: editor, // Use 'target' to bind TinyMCE to the specific element
+            //         height: 500,
+            //         plugins: 'advlist autolink link image lists charmap preview code fullscreen',
+            //         toolbar: 'undo redo | blocks | bold italic underline strikethrough forecolor backcolor | alignleft aligncenter alignright | bullist numlist blockquote | link image | code fullscreen ',
+
+            //         // NEW: use "blocks" instead of "formatselect" in TinyMCE 6+
+            //         block_formats: 'Paragraph=p; Heading 1=h1; Heading 2=h2; Heading 3=h3; Heading 4=h4; Heading 5=h5; Heading 6=h6; Preformatted=pre; Blockquote=blockquote',
+
+            //         setup: function(editorInstance) {
+            //             // Sync content
+            //             editorInstance.on('change', function() {
+            //                 editor.value = editorInstance.getContent();
+            //             });
+            //         }
+            //     });
+            // });
         });
     </script>
     @if (session('success') || session('error'))
@@ -168,7 +202,7 @@
             });
         });
     </script>
-
+    @stack('scripts')
 </body>
 
 </html>

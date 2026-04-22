@@ -13,14 +13,27 @@ return new class extends Migration
     {
         Schema::create('cms_home_pages', function (Blueprint $table) {
             $table->id();
-            $table->string('page_title');
-            $table->text('page_desc')->nullable();
             $table->string('banner_title')->nullable();
             $table->string('banner_sub_title')->nullable();
             $table->text('banner_desc')->nullable();
             $table->string('banner_btn_text')->nullable();
             $table->string('banner_btn_link')->nullable();
+            $table->string('banner_logo_image')->nullable();
             $table->string('banner_image')->nullable();
+            $table->string('welcome_title')->nullable();
+            $table->text('welcome_sub_title')->nullable();
+            $table->string('f_icon_one')->nullable();
+            $table->string('f_title_one')->nullable();
+            $table->string('f_subtitle_one')->nullable();
+            $table->string('f_icon_two')->nullable();
+            $table->string('f_title_two')->nullable();
+            $table->string('f_subtitle_two')->nullable();
+            $table->string('f_icon_three')->nullable();
+            $table->string('f_title_three')->nullable();
+            $table->string('f_subtitle_three')->nullable();
+            $table->string('f_icon_four')->nullable();
+            $table->string('f_title_four')->nullable();
+            $table->string('f_subtitle_four')->nullable();
             $table->string('meta_title')->nullable();
             $table->text('meta_desc')->nullable();
             $table->text('meta_keywords')->nullable();

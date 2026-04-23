@@ -4,14 +4,19 @@ use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\CmsHomePageController;
 use App\Http\Controllers\Admin\PrivacyPolicyController;
 use App\Http\Controllers\Admin\ServiceCategoryController;
+use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\TermsAndConditionController;
 use App\Http\Controllers\Admin\WebsiteSettingController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Frontend Routes
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -30,8 +35,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('/privacy-policy', PrivacyPolicyController::class)->names('privacy-policy');
         Route::resource('/terms-and-condition', TermsAndConditionController::class)->names('terms-and-condition');
         Route::resource('/service-categories', ServiceCategoryController::class)->names('service-categories');
+        Route::resource('/services', ServiceController::class)->names('services');
     });
 });
+
+
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');

@@ -62,10 +62,16 @@
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item {{ request()->routeIs(['admin.service-categories.index']) ? 'active' : '' }} ">
+                <li class="nav-item {{ request()->routeIs(['admin.service-categories.*']) ? 'active' : '' }} ">
                     <a href="{{ route('admin.service-categories.index') }}">
                         <i class="fa fa-book"></i>
                         <p>Service Category</p>
+                    </a>
+                </li>
+                <li class="nav-item {{ request()->routeIs(['admin.services.*']) ? 'active' : '' }} ">
+                    <a href="{{ route('admin.services.index') }}">
+                        <i class="fas fa-book-open"></i>
+                        <p>Services</p>
                     </a>
                 </li>
                 <li class="nav-item {{ request()->routeIs(['admin.website-setting.index']) ? 'active' : '' }} ">

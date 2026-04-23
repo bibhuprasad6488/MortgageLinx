@@ -29,7 +29,7 @@
                             <label class="form-label fw-semibold">
                                 Contnt
                             </label>
-                            <textarea name="content" rows="4" class="form-control border-secondary" id="summernote" placeholder="Content">{{ $privacy->content ?? old('content') }}</textarea>
+                            <textarea name="content" rows="4" class="form-control " id="summernote" placeholder="Content">{{ $privacy->content ?? old('content') }}</textarea>
                         </div>
 
                     </div>

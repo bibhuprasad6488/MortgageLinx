@@ -1,25 +1,41 @@
 @extends('admin.layouts.app')
-@section('title', 'Edit Category')
+@section('title', 'Edit Service')
 @section('content')
 
     <div class="row">
         <div class="col-md-6 mx-auto">
-            <form action="{{ route('admin.service-categories.update', $category->id) }}" method="POST"
-                enctype="multipart/form-data" id="catUploadForm">
+            <form action="{{ route('admin.services.update', $service->id) }}" method="POST" enctype="multipart/form-data"
+                id="catUploadForm">
                 @csrf
                 @method('PUT')
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Edit Category</h4>
+                        <h4 class="card-title">Edit Service</h4>
                     </div>
                     <div class="card-body">
+                        <div class="form-group row  mb-2">
+                            <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">
+                                Category <span>*</span>
+                            </label>
+                            <div class="col-md-8 col-sm-6 col-xs-12">
+                                <select name="category_id" id="category_id" class="form-control " required>
+                                    <option value="" selected disabled>Select Category</option>
+                                    @foreach ($serviceCats as $sc)
+                                        <option
+                                            value="{{ $sc->id }}" {{ $service->category_id == $sc->id ? 'selected' : '' }}>
+                                            {{ $sc->title }}</option>
+                                    @endforeach
+                                </select>
+
+                            </div>
+                        </div>
                         <div class="form-group row  mb-2">
                             <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">
                                 Title <span>*</span>
                             </label>
                             <div class="col-md-8 col-sm-6 col-xs-12">
                                 <input type="text" name="title" id="title" class="form-control "
-                                    value="{{ $category->title }}" required>
+                                    value="{{ $service->title }}" required>
                             </div>
                         </div>
                         <div class="form-group row  mb-2">
@@ -27,7 +43,7 @@
                                 Description
                             </label>
                             <div class="col-md-8 col-sm-6 col-xs-12">
-                                <textarea name="short_desc" id="short_desc" class="form-control " rows="3">{{ $category->short_desc }}</textarea>
+                                <textarea name="short_desc" id="short_desc" class="form-control " rows="3">{{ $service->short_desc }}</textarea>
                             </div>
                         </div>
 
@@ -36,37 +52,33 @@
                                 Image (Drag & Drop)</label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
 
-                                <div class="drop-area" data-input="cat_image" data-preview="catImgPreview"
-                                    data-default="{{ $category->cat_image ?? asset('admin/img/no-img.png') }}">
+                                <div class="drop-area" data-input="service_image" data-preview="serviceImgPreview"
+                                    data-default="{{ $service->service_image ?? asset('admin/img/no-img.png') }}">
                                     <p>Drag & Drop Image Here or Click to Select</p>
-                                    <input type="file" id="cat_image" name="cat_image" hidden
+                                    <input type="file" id="service_image" name="service_image" hidden
                                         accept=".jpg,.jpeg,.png,.webp">
 
                                 </div>
                             </div>
                             <div class="col-md-3 col-sm-6 col-xs-12">
-                                <img src="" id="catImgPreview" width="150">
+                                <img src="" id="serviceImgPreview" width="150">
                             </div>
                         </div>
                         <div class="form-group row  mb-2">
                             <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">
-                                Show On Home Page
+                                Page Content
                             </label>
                             <div class="col-md-8 col-sm-6 col-xs-12">
-                                <input type="checkbox" name="show_on_home" id="show_on_home"
-                                    @if ($category->show_on_home) checked @endif class=""
-                                    value="1">
+                                <textarea name="content" id="summernote" class="form-control " rows="3">{{ $service->content }}</textarea>
                             </div>
                         </div>
-
                         <div class="row">
                             <label class=" col-form-label"></label>
                             <div class="d-flex justify-content-center">
                                 <div class="d-md-flex d-grid align-items-center gap-3">
                                     <button type="submit" id="uploadBtn" class="btn btn-primary px-4"
                                         name="submit2">Update</button>
-                                    <a href="{{ route('admin.service-categories.index') }}"
-                                        class="btn btn-secondary px-4">Back</a>
+                                    <a href="{{ route('admin.services.index') }}" class="btn btn-secondary px-4">Back</a>
                                 </div>
                             </div>
                         </div>

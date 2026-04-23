@@ -11,15 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('service_categories', function (Blueprint $table) {
+        Schema::create('services', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('category_id');
             $table->string('title');
             $table->string('slug');
             $table->text('short_desc')->nullable();
             $table->longText('content')->nullable();
-            $table->string('cat_image')->nullable();
+            $table->string('service_image')->nullable();
             $table->boolean('show_on_home')->default(false);
-            $table->boolean('show_on_footer')->default(true);
+            $table->boolean('show_on_footer')->default(false);
             $table->string('meta_title')->nullable();
             $table->text('meta_desc')->nullable();
             $table->text('meta_keywords')->nullable();
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('service_categories');
+        Schema::dropIfExists('services');
     }
 };

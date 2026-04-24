@@ -2,7 +2,7 @@
     <div class="main-header-logo">
         <!-- Logo Header -->
         <div class="logo-header" data-background-color="dark">
-            <a href="index.html" class="logo">
+            <a href="{{ route('admin.dashboard') }}" class="logo">
                 <img src="{{ asset('admin/img/kaiadmin/logo_light.svg') }}" alt="navbar brand" class="navbar-brand"
                     height="20" />
             </a>
@@ -27,7 +27,7 @@
 
             <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
                 <li class="nav-item topbar-user dropdown hidden-caret">
-                    <a class="dropdown-toggle profile-pic" data-bs-toggle="dropdown" href="#"
+                    <a class="dropdown-toggle profile-pic" data-bs-toggle="dropdown" href="javascript:;"
                         aria-expanded="false">
                         <div class="avatar-sm">
                             <img src="{{ asset('admin/img/favicon.png') }}" alt="..." class="avatar-img rounded-circle" />

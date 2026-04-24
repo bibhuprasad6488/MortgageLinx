@@ -41,12 +41,17 @@
                         <p>Cms Pages</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse {{ request()->routeIs(['admin.homepage.index', 'admin.privacy-policy.index', 'admin.terms-and-condition.index']) ? 'show' : '' }}"
+                    <div class="collapse {{ request()->routeIs(['admin.homepage.*', 'admin.privacy-policy.*', 'admin.terms-and-condition.*', 'admin.become-introducer.*']) ? 'show' : '' }}"
                         id="base">
                         <ul class="nav nav-collapse">
                             <li class="{{ request()->routeIs(['admin.homepage.index']) ? 'active' : '' }}">
                                 <a href="{{ route('admin.homepage.index') }}">
                                     <span class="sub-item">Home Page</span>
+                                </a>
+                            </li>
+                            <li class="{{ request()->routeIs(['admin.become-introducer.index']) ? 'active' : '' }}">
+                                <a href="{{ route('admin.become-introducer.index') }}">
+                                    <span class="sub-item">Introducer</span>
                                 </a>
                             </li>
                             <li class="{{ request()->routeIs(['admin.privacy-policy.index']) ? 'active' : '' }}">
@@ -72,6 +77,12 @@
                     <a href="{{ route('admin.services.index') }}">
                         <i class="fas fa-book-open"></i>
                         <p>Services</p>
+                    </a>
+                </li>
+                <li class="nav-item {{ request()->routeIs(['admin.partners.*']) ? 'active' : '' }} ">
+                    <a href="{{ route('admin.partners.index') }}">
+                        <i class="fas fa-handshake"></i>
+                        <p>Partners</p>
                     </a>
                 </li>
                 <li class="nav-item {{ request()->routeIs(['admin.website-setting.index']) ? 'active' : '' }} ">

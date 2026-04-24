@@ -46,7 +46,7 @@ class ServiceCategoryController extends Controller
             $category->title = trim($request->title);
             $category->slug = Str::slug(trim($request->title));
             $category->short_desc = $request->short_desc;
-            $category->show_on_home = $request->show_on_home;
+            $category->show_on_home = $request->show_on_home ? 1 : 0;
 
             // /** Upload Path */
             $destinationPath = public_path('storage/images/service_category/');
@@ -107,7 +107,7 @@ class ServiceCategoryController extends Controller
             $category->title = trim($request->title);
             $category->slug = Str::slug(trim($request->title));
             $category->short_desc = $request->short_desc;
-            $category->show_on_home = $request->show_on_home;
+            $category->show_on_home = $request->show_on_home ? 1 : 0;
 
             // /** Upload Path */
             $destinationPath = public_path('storage/images/service_category/');

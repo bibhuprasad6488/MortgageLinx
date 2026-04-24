@@ -2,6 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 @php
     $setting = \App\Models\SiteSetting::find(1);
+    $serviceCats = \App\Models\ServiceCategory::with('services')->orderBy('id')->get();
 @endphp
 
 <head>
@@ -21,22 +22,24 @@
         href="@if ($setting) {{ asset('storage/images/settings/' . $setting->favicon) }} @else {{ asset('admin/img/favicon.png') }} @endif"
         type="image/x-icon" />
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body>
-    <div class="min-h-screen bg-gray-100">
+    @include('layouts.navigation')
+    @include('layouts.mob_nav')
 
-        <!-- Page Content -->
-        <main>
-            @yield('content')
-        </main>
-    </div>
+    <!-- Page Content -->
+    <main>
+        @yield('content')
+    </main>
+
+    @include('layouts.footer')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
     @stack('scripts')
 </body>
 

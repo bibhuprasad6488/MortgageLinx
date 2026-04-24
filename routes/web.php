@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\CmsHomePageController;
+use App\Http\Controllers\Admin\IntroducerController;
+use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\PrivacyPolicyController;
 use App\Http\Controllers\Admin\ServiceCategoryController;
 use App\Http\Controllers\Admin\ServiceController;
@@ -17,6 +19,10 @@ use Illuminate\Support\Facades\Route;
 
 // Frontend Routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/contact', [HomeController::class, 'contactPage'])->name('contact');
+Route::get('/introducer', [HomeController::class, 'introducerPage'])->name('introducer');
+Route::get('/privacy-policy', [HomeController::class, 'privacyPage'])->name('privacy-policy');
+Route::get('/terms-of-business', [HomeController::class, 'termsPage'])->name('terms-of-business');
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -36,6 +42,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('/terms-and-condition', TermsAndConditionController::class)->names('terms-and-condition');
         Route::resource('/service-categories', ServiceCategoryController::class)->names('service-categories');
         Route::resource('/services', ServiceController::class)->names('services');
+        Route::resource('/partners', PartnerController::class)->names('partners');
+        Route::resource('/become-introducer', IntroducerController::class)->names('become-introducer');
+        Route::any('/store-int-type', [IntroducerController::class, 'storeIntTypes'])->name('store-int-type');
     });
 });
 

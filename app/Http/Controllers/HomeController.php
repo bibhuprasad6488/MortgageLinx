@@ -3,8 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\CmsHomePage;
+use App\Models\Introducer;
+use App\Models\IntroducerType;
+use App\Models\Partner;
+use App\Models\PrivacyPolicy;
 use App\Models\ServiceCategory;
 use App\Models\SiteSetting;
+use App\Models\TermsCondition;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -42,58 +47,77 @@ class HomeController extends Controller
                 : '';
         }
         $setting = SiteSetting::find(1);
-        $serviceCats = ServiceCategory::orderBy('id')->get()->map(function ($c) {
+        $serviceCats = ServiceCategory::with('services')->orderBy('id')->where('show_on_home', 1)->get()->map(function ($c) {
             $c->cat_image = $c->cat_image ? asset('storage/images/service_category/' . $c->cat_image) : '';
             return $c;
         });
-        return view('home', compact('homePage', 'setting', 'serviceCats'));
+        $partners = Partner::orderBy('id')->where('status', 1)->get()->map(function ($p) {
+            $p->partner_image = $p->partner_image ? asset('storage/images/partners/' . $p->partner_image) : '';
+            return $p;
+        });
+        // dd($serviceCats);
+        return view('home', compact('homePage', 'setting', 'serviceCats', 'partners'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function contactPage()
     {
-        //
+        return view('contact');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function introducerPage()
     {
-        //
+        $partners = Partner::orderBy('id')->where('status', 1)->get()->map(function ($p) {
+            $p->partner_image = $p->partner_image ? asset('storage/images/partners/' . $p->partner_image) : '';
+            return $p;
+        });
+        $introducer = Introducer::find(1);
+
+        if ($introducer) {
+            $introducer->banner_image = $introducer->banner_image
+                ? asset('storage/images/cmspage/' . $introducer->banner_image)
+                : '';
+
+            $introducer->wpwu_image = $introducer->wpwu_image
+                ? asset('storage/images/cmspage/' . $introducer->wpwu_image)
+                : '';
+
+            $introducer->hw_icon_one = $introducer->hw_icon_one
+                ? asset('storage/images/cmspage/' . $introducer->hw_icon_one)
+                : '';
+
+            $introducer->hw_icon_two = $introducer->hw_icon_two
+                ? asset('storage/images/cmspage/' . $introducer->hw_icon_two)
+                : '';
+
+            $introducer->hw_icon_three = $introducer->hw_icon_three
+                ? asset('storage/images/cmspage/' . $introducer->hw_icon_three)
+                : '';
+
+            $introducer->hw_icon_four = $introducer->hw_icon_four
+                ? asset('storage/images/cmspage/' . $introducer->hw_icon_four)
+                : '';
+        }
+
+        $intTypes = IntroducerType::orderBy('id')->get()->map(function ($int) {
+            $int->icon = $int->icon ? asset('storage/images/cmspage/' . $int->icon) : '';
+            return $int;
+        });
+        return view('introducer', compact('partners', 'introducer', 'intTypes'));
     }
+
+    public function privacyPage()
+    {
+        $privacy = PrivacyPolicy::find(1);
+        return view('privacy', compact('privacy'));
+    }
+
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function termsPage(string $id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $terms = TermsCondition::find(1);
+        return view('terms', compact('terms'));
     }
 }

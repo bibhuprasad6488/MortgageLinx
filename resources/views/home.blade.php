@@ -137,16 +137,22 @@
                     <div class="row">
                         @foreach ($serviceCats as $cat)
                             <div class="col-md-6 ">
-                                <div class="text-center service"><img src="{{ $cat->cat_image }}" class="w-100">
+                                <div class="text-center service">
+                                    <a href="{{ route('service', $cat->slug) }}" class="text-dark text-decoration-none">
+                                        <img src="{{ $cat->cat_image }}" class="w-100">
+                                    </a>
                                     <div class="service-text">
-                                        <h4>{{ $cat->title }}</h4>
+                                        <a href="{{ route('service', $cat->slug) }}" class="text-dark text-decoration-none">
+                                            <h4>{{ $cat->title }}</h4>
+                                        </a>
                                         <p>{{ $cat->short_desc }}</p>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
                         <div class="col-md-12">
-                            <p class="tac py-4"><a href="#" class="site_branding fs-4">View All Services ></a></p>
+                            <p class="tac py-4"><a href="{{ route('all-services') }}" class="site_branding fs-4">View All
+                                    Services ></a></p>
                         </div>
                     </div>
                 </div>

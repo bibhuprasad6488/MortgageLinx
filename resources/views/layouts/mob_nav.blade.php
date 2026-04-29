@@ -1,8 +1,9 @@
 <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
 
     <div class="offcanvas-header">
-        <a class="navbar-brand" href="#">
-            <img src="images/logo.png" alt="Mortgage Lynx">
+        <a class="navbar-brand" href="{{ route('home') }}">
+            <img src="{{ $setting->site_logo ? asset('storage/images/settings/' . $setting->site_logo) : '' }}"
+                alt="{{ $setting->site_title }}">
         </a>
 
         <button type="button" class="btn-close btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>

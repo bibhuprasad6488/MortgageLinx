@@ -5,7 +5,8 @@
 @section('meta_keywords', $introducer->meta_keywords)
 @section('content')
 
-    <div id="introducer" class="carousel slide" data-bs-ride="carousel" style="background-image: url('{{ $introducer->banner_image }}');">
+    <div id="introducer" class="carousel slide" data-bs-ride="carousel"
+        style="background-image: url('{{ $introducer->banner_image }}');">
 
         <!-- CONTENT OVERLAY (same as your current content) -->
         <div class="mask">
@@ -213,96 +214,30 @@
         <div class="container">
             <div class="row">
                 <h3 class="text-center heading2">Become an Introducer</h3>
+                @foreach ($intTypes as $int)
+                    <div class="col-md-2 mb-3">
+                        <div class="introducer">
+                            <img src="{{ $int->icon }}">
+                            <p>{{ $int->title }}</p>
+                        </div>
+                    </div>
+                @endforeach
                 <div class="col-md-6">
                     <div class="row">
-                        @foreach ($intTypes as $int)
-                            <div class="col-md-4 mb-3">
-                                <div class="introducer">
-                                    <img src="{{ $int->icon }}">
-                                    <p>{{ $int->title }}</p>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="introducer_form">
-                        <form id="introducer_form">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="single_column">
-                                        <p>A. Business Details</p>
-                                        <label>Business Name</label>
-                                        <input type="text">
-                                        <label>Trading Name (if different)</label>
-                                        <input type="text">
-                                        <label>Your Role</label>
-                                        <select>
-                                            <option>Accountant</option>
-                                            <option>Estate Agents</option>
-                                            <option>Solicitors</option>
-                                            <option>Financial Advisers</option>
-                                            <option>Other Professional Introducers</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="single_column">
-                                        <p>B. Contact Details</p>
-                                        <label>Primary Contact Name</label>
-                                        <input type="text">
-                                        <label>Email Address</label>
-                                        <input type="text">
-                                        <label>Phone Number</label>
-                                        <input type="text">
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="single_column">
-                                        <p>C. Referral Information</p>
-                                        <label>Estimated Referrals Per Month</label>
-                                        <label>
-                                            <input type="checkbox" name="range[]" value="1-6">
-                                            0 - 1
-                                        </label>
-
-                                        <label>
-                                            <input type="checkbox" name="range[]" value="2-5">
-                                            2 - 5
-                                        </label>
-
-                                        <label>
-                                            <input type="checkbox" name="range[]" value="51">
-                                            5+
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="single_column">
-                                        <p>D. Preferred Contact Method</p>
-                                        <label>
-                                            <input type="radio" name="contact_method" value="phone">
-                                            Phone
-                                        </label>
-
-                                        <label>
-                                            <input type="radio" name="contact_method" value="Email">
-                                            Email
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 text-center">
-                                    <a href="#" class="btn cta px-4 py-2">
-                                        Submit Application
-                                    </a>
-                                </div>
-                            </div>
-                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <section class="section lets_get_started">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <a href="#"><button class="btn bannerbtn1 custom-btn">
+                            Become an Introducer</button></a>
+                </div>
+            </div>
+        </div>
+    </section>
 @endsection

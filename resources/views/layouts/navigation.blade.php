@@ -2,7 +2,8 @@
     <nav class="navbar navbar-expand-lg navbar-dark tbb2">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ route('home') }}">
-                <img src="images/logo.png" alt="g">
+                <img src="{{ $setting->site_logo ? asset('storage/images/settings/' . $setting->site_logo) : '' }}"
+                    alt="{{ route('home') }}">
             </a>
 
             <!-- Mobile toggler -->
@@ -16,7 +17,8 @@
                 <ul class="navbar-nav ms-auto align-items-lg-center my_menu">
 
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{ route('home') }}">Home</a>
+                        <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}"
+                            href="{{ route('home') }}">Home</a>
                     </li>
 
                     <li class="nav-item dropdown">

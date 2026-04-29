@@ -3,7 +3,9 @@
            <div class="row align-items-start text-center text-md-start">
 
                <div class="col-md-2 col-xs-12 mb-4 mb-md-0">
-                   <p class="tac"><img src="images/logo2.png" class="w-100"></p>
+                   <p class="tac"><img
+                           src="{{ $setting->footer_logo ? asset('storage/images/settings/' . $setting->footer_logo) : '' }}"
+                           class="w-100"></p>
                    <p class="tac">{{ $setting->contact_phone }}</p>
                    <div class="footer-socials">
                        <div class="social-box">
@@ -38,7 +40,8 @@
            <div class="col-xs-12">
                <div class="text-center small">
                    <p class="">{{ $setting->copyright }}</p>
-                   <p><a href="{{ route('introducer') }}">Introducers</a> <a href="{{ route('contact') }}">. Contact Us
+                   <p><a href="{{ route('introducer') }}">Introducers</a> <a href="{{ route('contact') }}">. Contact
+                           Us
                        </a> <a href="{{ route('privacy-policy') }}">. Privacy
                            Policy </a> <a href="{{ route('terms-of-business') }}">. Terms of Business</a>
                    </p>

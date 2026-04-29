@@ -7,6 +7,7 @@ use App\Models\Introducer;
 use App\Models\IntroducerType;
 use App\Models\Partner;
 use App\Models\PrivacyPolicy;
+use App\Models\Service;
 use App\Models\ServiceCategory;
 use App\Models\SiteSetting;
 use App\Models\TermsCondition;
@@ -48,11 +49,11 @@ class HomeController extends Controller
         }
         $setting = SiteSetting::find(1);
         $serviceCats = ServiceCategory::with('services')->orderBy('id')->where('show_on_home', 1)->get()->map(function ($c) {
-            $c->cat_image = $c->cat_image ? asset('storage/images/service_category/' . $c->cat_image) : '';
+            $c->cat_image = $c->cat_image ? asset('storage/images/service_category/' . $c->cat_image) : asset('admin/img/no-img.png');
             return $c;
         });
         $partners = Partner::orderBy('id')->where('status', 1)->get()->map(function ($p) {
-            $p->partner_image = $p->partner_image ? asset('storage/images/partners/' . $p->partner_image) : '';
+            $p->partner_image = $p->partner_image ? asset('storage/images/partners/' . $p->partner_image) : asset('admin/img/no-img.png');
             return $p;
         });
         // dd($serviceCats);
@@ -103,6 +104,44 @@ class HomeController extends Controller
             return $int;
         });
         return view('introducer', compact('partners', 'introducer', 'intTypes'));
+    }
+
+    public function protectionPage()
+    {
+        $partners = Partner::orderBy('id')->where('status', 1)->get()->map(function ($p) {
+            $p->partner_image = $p->partner_image ? asset('storage/images/partners/' . $p->partner_image) : asset('admin/img/no-img.png');
+            return $p;
+        });
+        return view('protection', compact('partners'));
+    }
+
+    public function allServices()
+    {
+        $serviceCats = ServiceCategory::with('services')->orderBy('id')->get()->map(function ($c) {
+            $c->cat_image = $c->cat_image ? asset('storage/images/service_category/' . $c->cat_image) : asset('admin/img/no-img.png');
+            return $c;
+        });
+        return view('all_categories', compact('serviceCats'));
+    }
+
+    public function serviceSinglePage($slug)
+    {
+        $serviceCat = ServiceCategory::where('slug', $slug)->first();
+        $serviceCat->cat_image = $serviceCat->cat_image ? asset('storage/images/service_category/' . $serviceCat->cat_image) : '';
+        $services = Service::where('category_id', $serviceCat->id)->get()->map(function ($s) {
+            $s->service_image = $s->service_image ? asset('storage/images/services/' . $s->service_image) : asset('admin/img/no-img.png');
+            return $s;
+        });
+
+        return view('single_category', compact('serviceCat', 'services'));
+    }
+
+    public function serviceDetails($slug)
+    {
+        $service = Service::where('slug', $slug)->first();
+        $service->service_image = $service->service_image ? asset('storage/images/services/' . $service->service_image) : '';
+
+        return view('service_details', compact('service'));
     }
 
     public function privacyPage()

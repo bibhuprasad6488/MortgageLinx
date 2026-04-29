@@ -5,6 +5,7 @@
     <title>Admin Login</title>
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('admin/img/favicon.png') }}" type="image/x-icon" />
+    <link rel="stylesheet" href="{{ asset('admin/css/bootstrap.min.css') }}" />
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
@@ -28,13 +29,13 @@
 
         <!-- Remember Me -->
         <label class="flex items-center mb-4 text-sm text-gray-600">
-            <input type="checkbox" name="remember" class="mr-2">
+            <input type="checkbox" name="remember" class="mx-2">
             Remember Me
         </label>
 
         <!-- Submit Button -->
         <button type="submit"
-            class="w-full bg-blue-600 text-white p-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-200">
+            class=" bg-blue-600 text-white p-2 rounded font-semibold hover:bg-blue-700 transition duration-200 btn-sm btn btn-primary">
             Login
         </button>
     </form>

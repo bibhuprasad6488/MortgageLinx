@@ -25,7 +25,9 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @if (config('database.connections.mysql.username') === 'root')
+        @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @endif
 </head>
 
 <body>

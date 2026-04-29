@@ -48,7 +48,9 @@
 
     <link href="{{ asset('admin/assets/summernote/summernote.min.css') }}" rel="stylesheet">
     {{-- If using Laravel Vite (optional, remove if not needed) --}}
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @if (config('database.connections.mysql.username') === 'root')
+        @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @endif
     <style>
         .fade-notify {
             opacity: 1;
@@ -235,7 +237,7 @@
         document.addEventListener('DOMContentLoaded', function() {
 
             const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/webp'];
-            const maxSize = 3 * 1024 * 1024; // 2MB
+            const maxSize = 3 * 1024 * 1024; // 3MB
 
             document.querySelectorAll('.drop-area').forEach(zone => {
 

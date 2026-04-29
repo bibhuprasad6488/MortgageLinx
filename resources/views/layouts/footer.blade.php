@@ -40,10 +40,14 @@
            <div class="col-xs-12">
                <div class="text-center small">
                    <p class="">{{ $setting->copyright }}</p>
-                   <p><a href="{{ route('introducer') }}">Introducers</a> <a href="{{ route('contact') }}">. Contact
+                   <p>
+                    <a href="{{ route('introducer') }}">Introducers</a>
+                    <a href="{{ route('protection') }}">. Protection</a>
+                       <a href="{{ route('contact') }}">. Contact
                            Us
                        </a> <a href="{{ route('privacy-policy') }}">. Privacy
-                           Policy </a> <a href="{{ route('terms-of-business') }}">. Terms of Business</a>
+                           Policy </a>
+                       <a href="{{ route('terms-of-business') }}">. Terms of Business</a>
                    </p>
                </div>
            </div>

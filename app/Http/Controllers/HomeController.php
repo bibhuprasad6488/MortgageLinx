@@ -7,6 +7,7 @@ use App\Models\Introducer;
 use App\Models\IntroducerType;
 use App\Models\Partner;
 use App\Models\PrivacyPolicy;
+use App\Models\Protection;
 use App\Models\Service;
 use App\Models\ServiceCategory;
 use App\Models\SiteSetting;
@@ -108,11 +109,55 @@ class HomeController extends Controller
 
     public function protectionPage()
     {
+        $protection = Protection::find(1);
+
+        if ($protection) {
+            $protection->banner_image = $protection->banner_image
+                ? asset('storage/images/cmspage/' . $protection->banner_image)
+                : '';
+
+            $protection->wgpw_image = $protection->wgpw_image
+                ? asset('storage/images/cmspage/' . $protection->wgpw_image)
+                : '';
+
+            $protection->bnr_icon_one = $protection->bnr_icon_one
+                ? asset('storage/images/cmspage/' . $protection->bnr_icon_one)
+                : '';
+
+            $protection->bnr_icon_two = $protection->bnr_icon_two
+                ? asset('storage/images/cmspage/' . $protection->bnr_icon_two)
+                : '';
+
+            $protection->bnr_icon_three = $protection->bnr_icon_three
+                ? asset('storage/images/cmspage/' . $protection->bnr_icon_three)
+                : '';
+
+            $protection->bnr_icon_four = $protection->bnr_icon_four
+                ? asset('storage/images/cmspage/' . $protection->bnr_icon_four)
+                : '';
+
+            $protection->sp_icon_one = $protection->sp_icon_one
+                ? asset('storage/images/cmspage/' . $protection->sp_icon_one)
+                : '';
+
+            $protection->sp_icon_two = $protection->sp_icon_two
+                ? asset('storage/images/cmspage/' . $protection->sp_icon_two)
+                : '';
+
+            $protection->sp_icon_three = $protection->sp_icon_three
+                ? asset('storage/images/cmspage/' . $protection->sp_icon_three)
+                : '';
+
+            $protection->sp_icon_four = $protection->sp_icon_four
+                ? asset('storage/images/cmspage/' . $protection->sp_icon_four)
+                : '';
+        }
+
         $partners = Partner::orderBy('id')->where('status', 1)->get()->map(function ($p) {
             $p->partner_image = $p->partner_image ? asset('storage/images/partners/' . $p->partner_image) : asset('admin/img/no-img.png');
             return $p;
         });
-        return view('protection', compact('partners'));
+        return view('protection', compact('partners', 'protection'));
     }
 
     public function allServices()

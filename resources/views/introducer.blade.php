@@ -29,18 +29,7 @@
 
     </div>
 
-
-    <div class="container-fluid partner">
-        <div class="partner-marquee">
-            <div class="partner-track">
-                @foreach ($partners as $p)
-                    <span class="partner-card"><img src="{{ $p->partner_image }}"
-                            alt="Partner {{ $loop->iteration }}"></span>
-                @endforeach
-            </div>
-        </div>
-    </div>
-
+    @include('partner')
 
     <section class="section why_partner_with_us">
         <div class="container">

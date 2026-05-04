@@ -104,6 +104,10 @@ h6 {
     text-decoration: none;
 }
 
+.site_branding:hover {
+    color: #C59108;
+}
+
 .tac {
     text-align: center;
     ;
@@ -461,6 +465,18 @@ h6 {
     padding: 80px 0;
 }
 
+#all_services {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    /* background: url("../images/protection.jpg"); */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 80px 0;
+}
+
 .bg_grey {
     background: #eee;
 }
@@ -616,7 +632,7 @@ h6 {
 }
 
 .cta:hover {
-    color: #fff;
+    color: #fff !important;
     background-color: #C59108;
     /* or #0f172a for legal blue-black */
 }
@@ -739,6 +755,13 @@ marquee .partner-card img {
     margin-bottom: 6px;
 }
 
+.footer-links li:hover {
+    opacity: 1;
+    color: #9A5C19;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .copyright {
     padding: 15px 0;
     background: #0F0F0F;
@@ -749,6 +772,10 @@ marquee .partner-card img {
 .copyright a {
     color: #fff;
     text-decoration: none;
+}
+
+.copyright a:hover {
+    color: #9A5C19;
 }
 
 .copyright p {

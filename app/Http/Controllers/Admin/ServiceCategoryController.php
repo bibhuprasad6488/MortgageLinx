@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Service;
 use App\Models\ServiceCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -148,6 +149,20 @@ class ServiceCategoryController extends Controller
     {
         try {
             $category = ServiceCategory::find($id);
+            $services = Service::where('category_id', $category->id)->get();
+            foreach ($services as  $service) {
+
+                $destinationPath = public_path('storage/images/services/');
+
+                if (!empty($service->cat_image)) {
+                    $oldFilePath = $destinationPath . $service->cat_image;
+                    if (file_exists($oldFilePath)) {
+                        unlink($oldFilePath);
+                    }
+                }
+                $service->delete();
+            }
+
             $destinationPath = public_path('storage/images/service_category/');
 
             if (!empty($category->cat_image)) {

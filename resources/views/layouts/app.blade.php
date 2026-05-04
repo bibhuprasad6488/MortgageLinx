@@ -42,6 +42,18 @@
     @include('layouts.footer')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const track = document.querySelector(".carousel-track");
+            const logos = Array.from(track.children);
+
+            logos.forEach(logo => {
+                const clone = logo.cloneNode(true);
+                track.appendChild(clone);
+            });
+        });
+    </script>
     @stack('scripts')
 </body>
 

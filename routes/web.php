@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CmsHomePageController;
 use App\Http\Controllers\Admin\IntroducerController;
 use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\PrivacyPolicyController;
+use App\Http\Controllers\Admin\ProtectionPageController;
 use App\Http\Controllers\Admin\ServiceCategoryController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\TermsAndConditionController;
@@ -54,6 +55,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('/services', ServiceController::class)->names('services');
         Route::resource('/partners', PartnerController::class)->names('partners');
         Route::resource('/become-introducer', IntroducerController::class)->names('become-introducer');
+        Route::resource('/protection-page', ProtectionPageController::class)->names('protection-page');
         Route::any('/store-int-type', [IntroducerController::class, 'storeIntTypes'])->name('store-int-type');
     });
 });

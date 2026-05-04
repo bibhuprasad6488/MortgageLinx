@@ -41,7 +41,7 @@
                         <p>Cms Pages</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse {{ request()->routeIs(['admin.homepage.*', 'admin.privacy-policy.*', 'admin.terms-and-condition.*', 'admin.become-introducer.*']) ? 'show' : '' }}"
+                    <div class="collapse {{ request()->routeIs(['admin.homepage.*', 'admin.privacy-policy.*', 'admin.terms-and-condition.*', 'admin.become-introducer.*', 'admin.protection-page.*']) ? 'show' : '' }}"
                         id="base">
                         <ul class="nav nav-collapse">
                             <li class="{{ request()->routeIs(['admin.homepage.index']) ? 'active' : '' }}">
@@ -52,6 +52,11 @@
                             <li class="{{ request()->routeIs(['admin.become-introducer.index']) ? 'active' : '' }}">
                                 <a href="{{ route('admin.become-introducer.index') }}">
                                     <span class="sub-item">Introducer</span>
+                                </a>
+                            </li>
+                            <li class="{{ request()->routeIs(['admin.protection-page.index']) ? 'active' : '' }}">
+                                <a href="{{ route('admin.protection-page.index') }}">
+                                    <span class="sub-item">Protection</span>
                                 </a>
                             </li>
                             <li class="{{ request()->routeIs(['admin.privacy-policy.index']) ? 'active' : '' }}">
@@ -70,7 +75,7 @@
                 <li class="nav-item {{ request()->routeIs(['admin.service-categories.*']) ? 'active' : '' }} ">
                     <a href="{{ route('admin.service-categories.index') }}">
                         <i class="fa fa-book"></i>
-                        <p>Service Category</p>
+                        <p>Category</p>
                     </a>
                 </li>
                 <li class="nav-item {{ request()->routeIs(['admin.services.*']) ? 'active' : '' }} ">

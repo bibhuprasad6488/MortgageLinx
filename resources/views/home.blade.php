@@ -42,16 +42,7 @@
 
     </div>
 
-    <div class="container-fluid partner">
-        <div class="partner-marquee">
-            <div class="partner-track">
-                @foreach ($partners as $p)
-                    <span class="partner-card"><img src="{{ $p->partner_image }}"
-                            alt="Partner {{ $loop->iteration }}"></span>
-                @endforeach
-            </div>
-        </div>
-    </div>
+    @include('partner')
 
     <section class="section about_us">
         <div class="container">
@@ -142,7 +133,8 @@
                                         <img src="{{ $cat->cat_image }}" class="w-100">
                                     </a>
                                     <div class="service-text">
-                                        <a href="{{ route('service', $cat->slug) }}" class="text-dark text-decoration-none">
+                                        <a href="{{ route('service', $cat->slug) }}"
+                                            class="text-dark text-decoration-none">
                                             <h4>{{ $cat->title }}</h4>
                                         </a>
                                         <p>{{ $cat->short_desc }}</p>

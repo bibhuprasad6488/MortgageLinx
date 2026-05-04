@@ -1,8 +1,8 @@
 @extends('layouts.app')
-@section('title', 'Protction')
+@section('title', 'Protection')
 @section('content')
     <div id="protection" class="carousel slide" data-bs-ride="carousel"
-        style="background-image: url('{{ asset('images/protection.jpg') }}')">
+        style="background-image: url('{{ $protection->banner_image }}')">
         <!-- CONTENT OVERLAY (same as your current content) -->
         <div class="mask">
             <div class="container h-100">
@@ -10,8 +10,7 @@
 
                     <!-- LEFT -->
                     <div class="col-lg-6 text-white">
-                        <h4 class="mb-3 page-banner-title">Protection For What</h4>
-                        <h5 class="page-banner-subtitle">Matters Most</h5>
+                        {!! $protection->banner_title !!}
                         <p class="page_banner-text">Life is unpredictable. The right protection gives you and your
                             family peace of mind, no matter what the future holds.</p>
 
@@ -22,31 +21,31 @@
                             <ul>
                                 <li></li>
                                 <li>
-                                    <img src="images/icon21.png">
+                                    <img src="{{ $protection->bnr_icon_one }}">
                                     <div>
-                                        <p>Protect Your Family</p>
-                                        <p>Ensure your loved ones are financially secure.</p>
+                                        <p>{{ $protection->bnr_title_one }}</p>
+                                        <p>{{ $protection->bnr_subtitle_one }}</p>
                                     </div>
                                 </li>
                                 <li>
-                                    <img src="images/icon22.png">
+                                    <img src="{{ $protection->bnr_icon_two }}">
                                     <div>
-                                        <p>Protect Your Home</p>
-                                        <p>Keep a roof over your head, whatever happens.</p>
+                                        <p>{{ $protection->bnr_title_two }}</p>
+                                        <p>{{ $protection->bnr_subtitle_two }}</p>
                                     </div>
                                 </li>
                                 <li>
-                                    <img src="images/icon23.png">
+                                    <img src="{{ $protection->bnr_icon_three }}">
                                     <div>
-                                        <p>Protect Your Income</p>
-                                        <p>Stay on top of bills and commitments.</p>
+                                        <p>{{ $protection->bnr_title_three }}</p>
+                                        <p>{{ $protection->bnr_subtitle_three }}</p>
                                     </div>
                                 </li>
                                 <li>
-                                    <img src="images/icon24.png">
+                                    <img src="{{ $protection->bnr_icon_four }}">
                                     <div>
-                                        <p>Protect Your Futur</p>
-                                        <p>Plan today for a more confident tomorrow.</p>
+                                        <p>{{ $protection->bnr_title_four }}</p>
+                                        <p>{{ $protection->bnr_subtitle_four }}</p>
                                     </div>
                                 </li>
                             </ul>
@@ -57,16 +56,7 @@
         </div>
     </div>
 
-    <div class="container-fluid partner">
-        <div class="partner-marquee">
-            <div class="partner-track">
-                @foreach ($partners as $p)
-                    <span class="partner-card"><img src="{{ $p->partner_image }}"
-                            alt="Partner {{ $loop->iteration }}"></span>
-                @endforeach
-            </div>
-        </div>
-    </div>
+    @include('partner')
 
     <section class="section">
         <div class="container">
@@ -125,38 +115,10 @@
             <div class="row">
                 <div class="row row-cols-1 row-cols-sm-2">
                     <div class="col">
-                        <img src="{{ asset('images/coverage.png') }}" class="w-100 coverage">
+                        <img src="{{ $protection->wgpw_image }}" class="w-100 coverage">
                     </div>
                     <div class="col">
-                        <div class="page-ulli-container">
-                            <h3>Why Get Protection With Mortage Lynx?</h3>
-                            <ul>
-                                <li><img src="{{ asset('images/tickfill.png') }}">
-                                    <div>
-                                        <p>Protect Your Family</p>
-                                        <p>Ensure your loved ones are financially secure.</p>
-                                    </div>
-                                </li>
-                                <li><img src="{{ asset('images/tickfill.png') }}">
-                                    <div>
-                                        <p>Protect Your Home</p>
-                                        <p>Keep a roof over your head, whatever happens.</p>
-                                    </div>
-                                </li>
-                                <li><img src="{{ asset('images/tickfill.png') }}">
-                                    <div>
-                                        <p>Protect Your Income</p>
-                                        <p>Stay on top of bills and commitments.</p>
-                                    </div>
-                                </li>
-                                <li><img src="{{ asset('images/tickfill.png') }}">
-                                    <div>
-                                        <p>Protect Your Futur</p>
-                                        <p>Plan today for a more confident tomorrow.</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                        {!! $protection->wgpw_content !!}
                     </div>
                 </div>
             </div>
@@ -172,34 +134,34 @@
 
                     <div class="col-md-3">
                         <div class="step_counter">
-                            <p class="img_container"><img src="{{ asset('images/chat.png') }}"></p>
-                            <p class="step_heading">Understand Your Needs</p>
+                            <p class="img_container"><img src="{{ $protection->sp_icon_one }}"></p>
+                            <p class="step_heading">{{ $protection->sp_title_one }}</p>
                             <span>1</span>
-                            <p>We’ll chat about your situation and what you want to protect.</p>
+                            <p>{{ $protection->sp_subtitle_one }}</p>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="step_counter">
-                            <p class="img_container"><img src="{{ asset('images/search.png') }}"></p>
-                            <p class="step_heading">Find The Right Cover</p>
+                            <p class="img_container"><img src="{{ $protection->sp_icon_two }}"></p>
+                            <p class="step_heading">{{ $protection->sp_title_two }}</p>
                             <span>2</span>
-                            <p>We compare the market to find cover that fits your needs and budget.</p>
+                            <p>{{ $protection->sp_subtitle_two }}</p>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="step_counter">
-                            <p class="img_container"><img src="{{ asset('images/notepad.png') }}"></p>
-                            <p class="step_heading">Apply with Confidende</p>
+                            <p class="img_container"><img src="{{ $protection->sp_icon_three }}"></p>
+                            <p class="step_heading">{{ $protection->sp_title_three }}</p>
                             <span>3</span>
-                            <p>We guide you through the application process from start to finish.</p>
+                            <p>{{ $protection->sp_subtitle_three }}</p>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="step_counter bn">
-                            <p class="img_container"><img src="{{ asset('images/security.png') }}"></p>
-                            <p class="step_heading">Protected For The Future</p>
+                            <p class="img_container"><img src="{{ $protection->sp_icon_four }}"></p>
+                            <p class="step_heading">{{ $protection->sp_title_four }}</p>
                             <span>4</span>
-                            <p>You get the peace of mind knowing you and your loved ones are protected.</p>
+                            <p>{{ $protection->sp_subtitle_four }}</p>
                         </div>
                     </div>
                 </div>

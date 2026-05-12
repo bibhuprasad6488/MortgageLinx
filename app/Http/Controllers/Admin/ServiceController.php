@@ -18,6 +18,7 @@ class ServiceController extends Controller
     {
         $services = Service::with('category')->orderByDesc('id')->get()->map(function ($s) {
             $s->service_image = $s->service_image ? asset('storage/images/services/' . $s->service_image) : '';
+            $s->thumb_image = $s->thumb_image ? asset('storage/images/services/' . $s->thumb_image) : '';
             return $s;
         });
         return view('admin.services.list', compact('services'));
@@ -51,6 +52,11 @@ class ServiceController extends Controller
             $service->category_id = $request->category_id;
             $service->short_desc = $request->short_desc;
             $service->content = $request->content ? preg_replace('/[^\x20-\x7E]/u', '', $request->content) : '';
+            $service->thumb_title = $request->thumb_title;
+            $service->thumb_short_desc = $request->thumb_short_desc;
+            $service->meta_title = $request->meta_title;
+            $service->meta_desc = $request->meta_desc;
+            $service->meta_keywords = $request->meta_keywords;
 
             // /** Upload Path */
             $destinationPath = public_path('storage/images/services/');
@@ -58,13 +64,22 @@ class ServiceController extends Controller
                 mkdir($destinationPath, 0777, true);
             }
 
-            // Banner Logo
+            // Banner
             if ($request->hasFile('service_image')) {
                 $file = $request->file('service_image');
                 $sImage = 'banner_' . time() . '_' . $file->getClientOriginalName();
 
                 $file->move($destinationPath, $sImage);
                 $service->service_image = $sImage;
+            }
+
+            // Icon
+            if ($request->hasFile('thumb_image')) {
+                $file = $request->file('thumb_image');
+                $sImage = 'thumbIcon_' . time() . '_' . $file->getClientOriginalName();
+
+                $file->move($destinationPath, $sImage);
+                $service->thumb_image = $sImage;
             }
 
             $service->save();
@@ -93,6 +108,7 @@ class ServiceController extends Controller
         $serviceCats = ServiceCategory::orderByDesc('id')->get();
         $service = Service::find($id);
         $service->service_image = $service->service_image ? asset('storage/images/services/' . $service->service_image) : '';
+        $service->thumb_image = $service->thumb_image ? asset('storage/images/services/' . $service->thumb_image) : '';
         return view('admin.services.edit', compact('service', 'serviceCats'));
     }
 
@@ -115,6 +131,11 @@ class ServiceController extends Controller
             $service->category_id = $request->category_id;
             $service->short_desc = $request->short_desc;
             $service->content = $request->content ? preg_replace('/[^\x20-\x7E]/u', '', $request->content) : '';
+            $service->thumb_title = $request->thumb_title;
+            $service->thumb_short_desc = $request->thumb_short_desc;
+            $service->meta_title = $request->meta_title;
+            $service->meta_desc = $request->meta_desc;
+            $service->meta_keywords = $request->meta_keywords;
 
             // /** Upload Path */
             $destinationPath = public_path('storage/images/services/');
@@ -138,6 +159,23 @@ class ServiceController extends Controller
                 $service->service_image = $sImage;
             }
 
+
+            // Icon
+            if ($request->hasFile('thumb_image')) {
+                $file = $request->file('thumb_image');
+                $sImage = 'thumbIcon_' . time() . '_' . $file->getClientOriginalName();
+
+                if (!empty($service->thumb_image)) {
+                    $oldFilePath = $destinationPath . $service->thumb_image;
+                    if (file_exists($oldFilePath)) {
+                        unlink($oldFilePath);
+                    }
+                }
+
+                $file->move($destinationPath, $sImage);
+                $service->thumb_image = $sImage;
+            }
+
             $service->save();
             DB::commit();
 
@@ -159,6 +197,13 @@ class ServiceController extends Controller
 
             if (!empty($service->cat_image)) {
                 $oldFilePath = $destinationPath . $service->cat_image;
+                if (file_exists($oldFilePath)) {
+                    unlink($oldFilePath);
+                }
+            }
+
+            if (!empty($service->thumb_image)) {
+                $oldFilePath = $destinationPath . $service->thumb_image;
                 if (file_exists($oldFilePath)) {
                     unlink($oldFilePath);
                 }

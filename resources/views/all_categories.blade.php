@@ -22,20 +22,24 @@
         </div>
     </div>
 
-    <section class="section brand_coloring pb-5">
+    @include('partner')
+
+    <section class="section">
         <div class="container">
-            <div class="row ">
-                @foreach ($serviceCats as $cat)
-                    <div class="col-md-3">
-                        <div class="text-center service card">
-                            <a href="{{ route('service', $cat->slug) }}" class="text-dark text-decoration-none">
-                                <img src="{{ $cat->cat_image }}" class="w-100">
-                            </a>
-                            <div class="service-text">
-                                <a href="{{ route('service', $cat->slug) }}" class="text-dark text-decoration-none">
-                                    <h4>{{ $cat->title }}</h4>
-                                </a>
-                            </div>
+            <h3 class="text-center">Solutions Tailored To You</h3>
+            <hr class="hr1">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3  g-4">
+                @foreach ($serviceCats as $s)
+                    <div class="col">
+                        <div class="single_col">
+                            <p class="icon"><img src="{{ $s->cat_image }}" class="w-100" height="250"></p>
+                            <h5 class="title">{{ $s->title }}</h5>
+                            <p class="description">{{ Str::limit($s->short_desc, 100, '...') }}</p>
+                            <p><a
+                                    href="@if ($s->slug == 'protection') {{ route('protection') }}
+                                @else
+                                {{ route('service', $s->slug) }} @endif">Learn
+                                    More &gt;</a></p>
                         </div>
                     </div>
                 @endforeach
@@ -43,4 +47,5 @@
         </div>
     </section>
 
+    @include('footer_upsection')
 @endsection

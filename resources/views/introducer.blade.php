@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', $introducer->meta_title)
+@section('title', $introducer->meta_title ?? 'Introducer')
 @section('meta_title', $introducer->meta_title)
 @section('meta_description', $introducer->meta_desc)
 @section('meta_keywords', $introducer->meta_keywords)
@@ -223,7 +223,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 text-center">
-                    <a href="#"><button class="btn bannerbtn1 custom-btn">
+                    <a href="{{ route('become-an-introducer') }}"><button class="btn bannerbtn1 custom-btn">
                             Become an Introducer</button></a>
                 </div>
             </div>

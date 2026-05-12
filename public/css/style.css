@@ -20,7 +20,7 @@ background: light key: F2F2F2 , •	Hex: #777777
 
 body {
     color: #1a1a1a;
-    background: #fcf7fc;
+    background: #fcf7fc !important;
 }
 
 html,
@@ -99,6 +99,18 @@ h6 {
     padding-bottom: 40px;
 }
 
+.ptb30 {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.ptb20 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+
 .site_branding {
     color: #9A5D1A;
     text-decoration: none;
@@ -162,6 +174,32 @@ h6 {
     padding-left: 32px;
 }
 
+.page-ulli-container2 {
+    padding: 15px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.page-ulli-container2 h3 {
+    padding-bottom: 20px;
+}
+
+.page-ulli-container2 ul {
+    padding: 0;
+}
+
+.page-ulli-container2 ul li {
+    list-style: none;
+}
+
+.page-ulli-container2 img {
+    float: left;
+}
+
+.page-ulli-container2 div {
+    padding-left: 32px;
+}
+
 .step_heading {
     margin-bottom: 0;
     font-size: 18px;
@@ -169,15 +207,52 @@ h6 {
     padding: 10px 0 0 0;
 }
 
+.process_heading {
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 0 0 0;
+}
+
 .step_process span {
+
     height: auto;
-    height: 30px;
+    height: 28px;
     width: 30px;
-    background: #9C5C13;
+    background: #F2B711;
     color: #fff;
     display: inline-block;
     font-weight: bold;
     border-radius: 50%;
+}
+
+.clearboth {
+    clear: both;
+    display: block;
+}
+
+.mortgage_process {
+    position: relative;
+}
+
+.process_row {
+    position: relative;
+}
+
+/* connecting line */
+.mortgage_process::before {
+    content: "";
+    position: absolute;
+    top: 35px;
+    left: -50%;
+    width: 100%;
+    height: 1px;
+    z-index: 1;
+    border-top: 1px dashed #D4A110;
+}
+
+.mortgage_process:first-child::before {
+    display: none;
 }
 
 .step_counter {
@@ -185,7 +260,12 @@ h6 {
     border-right: 1px solid #ccc;
 }
 
+.mortgage_process {
+    padding: 0 20px;
+}
+
 .page-ulli-container div p:first-child {
+
     margin-bottom: 0;
     font-weight: 500;
     font-size: 17px;
@@ -208,6 +288,11 @@ h6 {
 }
 
 .single_col a {
+    text-decoration: none;
+    color: #C59108;
+}
+
+.mortgage_col a {
     text-decoration: none;
     color: #C59108;
 }
@@ -243,6 +328,40 @@ h6 {
     border-top: 3px solid #C59108;
     color: #F1B91B;
     opacity: 1;
+    margin-top: 0;
+}
+
+.hr2 {
+    width: 70px;
+    margin-left: 0;
+    margin-right: auto;
+    border-top: 3px solid #C59108;
+    color: #F1B91B;
+    opacity: 1;
+    margin-top: 0;
+}
+
+.why_partner {
+
+    padding: 15px 0;
+}
+
+.why_partner .why_partner_partner_icon {
+    float: left;
+    border: 1px solid #d6a207;
+    padding: 15px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.introducer_form {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.introducer_form div {
+    padding: 0 20px;
 }
 
 .coverage {
@@ -264,6 +383,17 @@ h6 {
     border-radius: 50%;
 }
 
+.no_container {
+    display: inline-block;
+    border: 1px solid #D4A110;
+    border-radius: 50%;
+    padding: 15px 30px;
+    background: #F5EFF5;
+    position: relative;
+    z-index: 10;
+    font-size: 30px;
+    color: #D4A110;
+}
 
 
 .mb15 {
@@ -434,7 +564,7 @@ h6 {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding: 50px 0;
+    padding: 80px 0;
 }
 
 .square {
@@ -471,6 +601,18 @@ h6 {
     display: flex;
     flex-direction: column;
     /* background: url("../images/protection.jpg"); */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 80px 0;
+}
+
+#mortgage {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    /* background: url("../images/mortgate_banner.jpg"); */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -627,7 +769,7 @@ h6 {
 }
 
 .cta {
-    background-color: #D4A017 !important;
+    background-color: #F2B711 !important;
     /* or #0f172a for legal blue-black */
 }
 
@@ -1081,6 +1223,33 @@ select {
 .hiw_step .step_heading span {
     color: #9A5C19;
 }
+
+.our_introducer {
+    text-align: center;
+}
+
+.our_introducer p {
+    font-size: 17px;
+    font-weight: 600;
+    padding: 20px 0 0 0;
+    margin-bottom: 0;
+}
+
+.introducer_process .col div {
+    background: #d6a207;
+    display: inline-block;
+    padding: 3px 11px;
+    border-radius: 50%;
+    color: #fff;
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+.introducer_process .col .img_container {
+    margin: 0;
+    margin-bottom: -20px;
+}
+
 
 /* Smooth infinite animation */
 @keyframes marquee-scroll {

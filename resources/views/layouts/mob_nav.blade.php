@@ -13,38 +13,29 @@
 
         <ul class="navbar-nav text-center fs-4 my_menu">
             <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
-            <li class="nav-item">
-                <a class="nav-link align-items-center" data-bs-toggle="collapse" href="#aboutSubMenu" role="button"
-                    aria-expanded="false" aria-controls="aboutSubMenu">
-                    Residential
-                    <span class="ms-2">+</span>
-                </a>
 
-                <div class="collapse" id="aboutSubMenu">
-                    <ul class="navbar-nav ps-3 mt-2">
-                        <li class="nav-item">
-                            <a class="nav-link fs-5" href="#">First time Buyers</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link fs-5" href="#">Home Movers</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link fs-5" href="#">Remortgages</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link fs-5" href="#">Adverse Credit</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link fs-5" href="#">Self-Employed</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link fs-5" href="#">Home Movers</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+            @foreach ($serviceCats as $sc)
+                <li class="nav-item">
+                    <a class="nav-link align-items-center" data-bs-toggle="collapse" href="#aboutSubMenu{{ $loop->iteration }}" role="button"
+                        aria-expanded="false" aria-controls="aboutSubMenu{{ $loop->iteration }}">
+                        {{ $sc->title }}
+                        <span class="ms-2">+</span>
+                    </a>
 
-            <li class="nav-item">
+                    <div class="collapse" id="aboutSubMenu{{ $loop->iteration }}">
+                        <ul class="navbar-nav ps-3 mt-2">
+                            @foreach ($sc->services as $service)
+                                <li class="nav-item">
+                                    <a class="nav-link fs-5"
+                                        href="{{ route('service-details', $service->slug) }}">{{ $service->title }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </li>
+            @endforeach
+
+            {{-- <li class="nav-item">
                 <a class="nav-link align-items-center" data-bs-toggle="collapse" href="#btlSubMenu" role="button"
                     aria-expanded="false" aria-controls="aboutSubMenu">
                     Buyt-to-let
@@ -121,10 +112,10 @@
                         <li>
                     </ul>
                 </div>
-            </li>
+            </li> --}}
         </ul>
         <div class="ms-lg-3 text-center">
-            <a href="#" class="btn cta px-4 py-2">
+            <a href="{{ route('contact') }}" class="btn cta px-4 py-2">
                 Speak to a Specialist
             </a>
         </div>

@@ -1,5 +1,8 @@
 @extends('layouts.app')
-@section('title', 'Protection')
+@section('title', $protection->meta_title ?? $protection->title)
+@section('meta_title', $protection->meta_title ?? '')
+@section('meta_description', $protection->meta_desc ?? '')
+@section('meta_keywords', $protection->meta_keywords ?? '')
 @section('content')
     <div id="protection" class="carousel slide" data-bs-ride="carousel"
         style="background-image: url('{{ $protection->banner_image }}')">
@@ -14,7 +17,8 @@
                         <p class="page_banner-text">Life is unpredictable. The right protection gives you and your
                             family peace of mind, no matter what the future holds.</p>
 
-                        <a href="#"><button class="btn bannerbtn1 custom-btn">Get a Free Consultation</button></a>
+                        <a href="{{ route('contact') }}"><button class="btn bannerbtn1 custom-btn">Get a Free
+                                Consultation</button></a>
                     </div>
                     <div class="col-lg-6 text-white">
                         <div class="banner-txt-container">
@@ -62,50 +66,26 @@
         <div class="container">
             <h3 class="text-center">Protection Solutions Tailored To You</h3>
             <hr class="hr1">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4">
-                <div class="col">
-                    <div class="single_col">
-                        <p class="icon"><img src="{{ asset('images/icon_1.png') }}"></p>
-                        <p class="title">Life Insurance</p>
-                        <p class="description">Provide a financial safety net for your family if the unthinkable
-                            happens.</p>
-                        <p><a href="#">Learn More &gt;</a></p>
+            @php
+                if (count($protectionServices) > 0) {
+                    if (count($protectionServices) > 6) {
+                        $count = 5;
+                    } else {
+                        $count = count($protectionServices);
+                    }
+                }
+            @endphp
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-{{ $count }} g-4">
+                @foreach ($protectionServices as $s)
+                    <div class="col">
+                        <div class="single_col">
+                            <p class="icon"><img src="{{ $s->thumb_image }}"></p>
+                            <p class="title">{{ $s->thumb_title }}</p>
+                            <p class="description">{{ $s->thumb_short_desc }}</p>
+                            <p><a href="{{ route('service-details', $s->slug) }}">Learn More &gt;</a></p>
+                        </div>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="single_col">
-                        <p class="icon"><img src="{{ asset('images/icon_1.png') }}"></p>
-                        <p class="title">Critical Illness Cover</p>
-                        <p class="description">Get a lump sum payment if you're diagnosed with a serious illness.</p>
-                        <p><a href="#">Learn More &gt;</a></p>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="single_col">
-                        <p class="icon"><img src="{{ asset('images/icon_1.png') }}"></p>
-                        <p class="title">Income Protection</p>
-                        <p class="description">Replace part of your income if you're unable to work due to illness or
-                            injury.</p>
-                        <p><a href="#">Learn More &gt;</a></p>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="single_col">
-                        <p class="icon"><img src="{{ asset('images/icon_1.png') }}"></p>
-                        <p class="title">Buildings &amp; Contents Insurance</p>
-                        <p class="description">Protect your home and belongings from unexpected events.</p>
-                        <p><a href="#">Learn More &gt;</a></p>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="single_col">
-                        <p class="icon"><img src="{{ asset('images/icon_1.png') }}"></p>
-                        <p class="title">Family Income Benefit</p>
-                        <p class="description">Ensure your family’s lifestyle is maintained if you pass away or are unable
-                            to work.</p>
-                        <p><a href="#">Learn More &gt;</a></p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

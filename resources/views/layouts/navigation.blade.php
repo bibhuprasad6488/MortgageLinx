@@ -21,22 +21,27 @@
                             href="{{ route('home') }}">Home</a>
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Residential
-                        </a>
-                        <ul class="dropdown-menu rounded-0">
-                            <li><a class="dropdown-item" href="#">First time Buyers</a></li>
-                            <li><a class="dropdown-item" href="#">Home Movers</a></li>
-                            <li><a class="dropdown-item" href="#">Remortgages</a></li>
-                            <li><a class="dropdown-item" href="#">Adverse Credit</a></li>
-                            <li><a class="dropdown-item" href="#">Self-Employed</a></li>
-                            <li><a class="dropdown-item" href="#">Expat / Non-UK</a></li>
-                        </ul>
-                    </li>
+                    @foreach ($serviceCats as $sc)
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle"
+                                href="@if ($sc->slug == 'protection') {{ route('protection') }}@else{{ route('service', $sc->slug) }} @endif"
+                                role="button" aria-expanded="false">
+                                {{ $sc->title }}
+                            </a>
+                            <ul class="dropdown-menu rounded-0">
+                                @foreach ($sc->services as $service)
+                                    <li>
+                                        <a class="dropdown-item {{ request()->routeIs('service-details') && request()->route('slug') == $service->slug ? 'active' : '' }}"
+                                            href="{{ route('service-details', $service->slug) }}">
+                                            {{ $service->title }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </li>
+                    @endforeach
 
-                    <li class="nav-item dropdown">
+                    {{-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             Buy-to-let
@@ -74,11 +79,11 @@
                             <li><a class="dropdown-item" href="#">Development Finance</a></li>
                             <li><a class="dropdown-item" href="#">Asset Finance</a></li>
                         </ul>
-                    </li>
+                    </li> --}}
 
                 </ul>
                 <div class="ms-lg-3">
-                    <a href="#" class="btn cta px-4 py-2">
+                    <a href="{{ route('contact') }}" class="btn cta px-4 py-2">
                         Speak to a Specialist
                     </a>
                 </div>

@@ -26,6 +26,7 @@ Route::get('/login', function () {
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/contact', [HomeController::class, 'contactPage'])->name('contact');
 Route::get('/introducer', [HomeController::class, 'introducerPage'])->name('introducer');
+Route::get('/become-an-introducer', [HomeController::class, 'becomeAnIntroducer'])->name('become-an-introducer');
 Route::get('/protection', [HomeController::class, 'protectionPage'])->name('protection');
 Route::get('/services', [HomeController::class, 'allServices'])->name('all-services');
 Route::get('/service/{slug}', [HomeController::class, 'serviceSinglePage'])->name('service');
@@ -57,6 +58,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('/become-introducer', IntroducerController::class)->names('become-introducer');
         Route::resource('/protection-page', ProtectionPageController::class)->names('protection-page');
         Route::any('/store-int-type', [IntroducerController::class, 'storeIntTypes'])->name('store-int-type');
+        Route::get('/introducer-details-page', [IntroducerController::class, 'introducerDetails'])->name('introducer-details-page');
+        Route::post('/introducer-details-store', [IntroducerController::class, 'introducerDetailsStore'])->name('introducer-details-store');
     });
 });
 

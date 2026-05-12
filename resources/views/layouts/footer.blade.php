@@ -28,7 +28,9 @@
                        <p class="footer-title fs-6">{{ $sc->title }}</p>
                        <ul class="footer-links">
                            @foreach ($sc->services as $service)
-                               <li>{{ $service->title }}</li>
+                               <a href="{{ route('service-details', $service->slug) }}">
+                                   <li>{{ $service->title }}</li>
+                               </a>
                            @endforeach
                        </ul>
                    </div>
@@ -41,8 +43,8 @@
                <div class="text-center small">
                    <p class="">{{ $setting->copyright }}</p>
                    <p>
-                    <a href="{{ route('introducer') }}">Introducers</a>
-                    <a href="{{ route('protection') }}">. Protection</a>
+                       <a href="{{ route('introducer') }}">Introducers</a>
+                       <a href="{{ route('protection') }}">. Protection</a>
                        <a href="{{ route('contact') }}">. Contact
                            Us
                        </a> <a href="{{ route('privacy-policy') }}">. Privacy

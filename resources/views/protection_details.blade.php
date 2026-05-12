@@ -31,7 +31,7 @@
     <section class="section features">
         <div class="container">
             <div class="ptb30">
-                <h3 class="text-center">We’ll Help You To Find the Right Mortgage</h3>
+                <h3 class="text-center">We’ll Help You To Find the Right Protection</h3>
                 <p class="text-center">Our experienced advisers take the time to understand your goals and provide tailored
                     solutions from across the whole market.</p>
             </div>

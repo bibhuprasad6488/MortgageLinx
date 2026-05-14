@@ -68,6 +68,103 @@
                         <h4 class="ptb20">Become an Introducer Partner</h4>
                         <p>Complete the form below and a member of our team will be in touch</p>
                     </div>
+                    @if (session('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert" id="s-alert">
+                            {{ session('success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+                    @if (session('error'))
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert" id="s-alert">
+                            {{ session('error') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+                    <form id="introducer_form" action="{{ route('become-an-introducer-store') }}" method="POST"
+                        enctype="multipart/form-data">
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="single_column">
+
+                                    <p>A. Business Details</p>
+                                    <label>Business Name</label>
+                                    <input type="text" name="business_name"
+                                        class="mb-1 form-control border-secondary rounded-0" required>
+                                    <label>Trading Name (if different)</label>
+                                    <input type="text" name="trading_name"
+                                        class="mb-1 form-control border-secondary rounded-0">
+                                    <label>Your Role</label>
+                                    <select class="mb-1 form-control border-secondary rounded-0" name="role" required>
+                                        <option value="" selected disabled>Select Your Role</option>
+                                        @foreach ($intTypes as $int)
+                                            <option>{{ $int->title }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="single_column">
+                                    <p>B. Contact Details</p>
+                                    <label>Primary Contact Name</label>
+                                    <input type="text" name="contact_name"
+                                        class="mb-1 form-control border-secondary rounded-0" required>
+                                    <label>Email Address</label>
+                                    <input type="text" name="contact_email"
+                                        class="mb-1 form-control border-secondary rounded-0" required>
+                                    <label>Phone Number</label>
+                                    <input type="text" name="contact_phone"
+                                        class="mb-1 form-control border-secondary rounded-0" maxlength="15" required
+                                        oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="single_column">
+                                    <p>C. Referral Information</p>
+                                    <label>Estimated Referrals Per Month</label>
+                                    <label>
+                                        <input type="checkbox" name="range[]" value="1-6">
+                                        0 - 1
+                                    </label>
+
+                                    <label>
+                                        <input type="checkbox" name="range[]" value="2-5">
+                                        2 - 5
+                                    </label>
+
+                                    <label>
+                                        <input type="checkbox" name="range[]" value="5+">
+                                        5+
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="single_column">
+                                    <p>D. Preferred Contact Method</p>
+                                    <label>
+                                        <input type="radio" name="contact_method" value="phone">
+                                        Phone
+                                    </label>
+
+                                    <label>
+                                        <input type="radio" name="contact_method" value="Email">
+                                        Email
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-12 text-center">
+                                <button class="btn cta px-4 py-2">
+                                    Submit Application
+                                </button>
+                            </div>
+                            <div class="col-md-12 mt-3">
+                                <p class="text-dark"> <img src="{{ asset('images/lock.png') }}" alt="Secure"
+                                        width="18"> Your information is secure and will never be shared.
+                                </p>
+                            </div>
+                        </div>
+                    </form>
                 </div>
                 <div class="col-md-6">
                     <h4 class="ptb20">Why Partner With Mortgage Lynx</h4>
@@ -163,3 +260,71 @@
     </section>
 
 @endsection
+@push('scripts')
+    <script>
+        document.getElementById('introducer_form').addEventListener('submit', function(e) {
+
+            // Email Validation
+            const emailField = document.querySelector('input[name="contact_email"]');
+            const email = emailField.value.trim();
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address.');
+                emailField.focus();
+                emailField.classList.add('border-danger');
+                e.preventDefault();
+                return;
+            }
+
+            // Phone Validation
+            const phoneField = document.querySelector('input[name="contact_phone"]');
+            const phone = phoneField.value.trim();
+
+            // Allows only numbers and minimum 10 digits
+            const phonePattern = /^[0-9]{10,15}$/;
+
+            if (!phonePattern.test(phone)) {
+                alert('Please enter a valid phone number.');
+                phoneField.focus();
+                phoneField.classList.add('border-danger');
+                e.preventDefault();
+                return;
+            }
+
+            // Checkbox Validation
+            const checkboxes = document.querySelectorAll('input[name="range[]"]');
+            let checkboxChecked = false;
+
+            checkboxes.forEach(function(checkbox) {
+                if (checkbox.checked) {
+                    checkboxChecked = true;
+                }
+            });
+
+            if (!checkboxChecked) {
+                alert('Please select at least one referral range.');
+                e.preventDefault();
+                return;
+            }
+
+            // Radio Validation
+            const radios = document.querySelectorAll('input[name="contact_method"]');
+            let radioChecked = false;
+
+            radios.forEach(function(radio) {
+                if (radio.checked) {
+                    radioChecked = true;
+                }
+            });
+
+            if (!radioChecked) {
+                alert('Please select a preferred contact method.');
+                e.preventDefault();
+                return;
+            }
+
+        });
+    </script>
+@endpush

@@ -24,9 +24,11 @@ Route::get('/login', function () {
 
 // Frontend Routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/contact', [HomeController::class, 'contactPage'])->name('contact');
+Route::get('/contact-us', [HomeController::class, 'contactPage'])->name('contact');
+Route::post('/contact-us-store', [HomeController::class, 'contactFormStore'])->name('contact.store');
 Route::get('/introducer', [HomeController::class, 'introducerPage'])->name('introducer');
 Route::get('/become-an-introducer', [HomeController::class, 'becomeAnIntroducer'])->name('become-an-introducer');
+Route::post('/become-an-introducer-store', [HomeController::class, 'becomeAnIntroducerStore'])->name('become-an-introducer-store');
 Route::get('/protection', [HomeController::class, 'protectionPage'])->name('protection');
 Route::get('/services', [HomeController::class, 'allServices'])->name('all-services');
 Route::get('/service/{slug}', [HomeController::class, 'serviceSinglePage'])->name('service');
@@ -60,6 +62,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::any('/store-int-type', [IntroducerController::class, 'storeIntTypes'])->name('store-int-type');
         Route::get('/introducer-details-page', [IntroducerController::class, 'introducerDetails'])->name('introducer-details-page');
         Route::post('/introducer-details-store', [IntroducerController::class, 'introducerDetailsStore'])->name('introducer-details-store');
+        Route::get('/introducers', [IntroducerController::class, 'introducersList'])->name('introducers-list');
     });
 });
 

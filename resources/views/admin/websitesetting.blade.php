@@ -10,7 +10,7 @@
             </ol>
         </div>
         <div class="row">
-            <div class="col-lg-8 mx-auto">
+            <div class="col-lg-10 mx-auto">
                 <div class="card ">
                     <div class="card-header">
                         <h3 class="fs-4">Website Setting</h3>
@@ -212,12 +212,12 @@
                                 </div>
                             </div>
 
-                            <div class="form-group d-none row  mb-2">
+                            <div class="form-group  row  mb-2">
                                 <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">
-                                    Google Map Setting
+                                    Location
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <textarea name="site_map_key" id="site_map_key" class="form-control " rows="3"
+                                    <textarea name="site_map_key" id="site_map_key" class="form-control " rows="7"
                                         placeholder="Iframe link">{{ optional($setting)->site_map_key }}</textarea>
                                 </div>
                             </div>

@@ -98,7 +98,35 @@
                         <img src="{{ $protection->wgpw_image }}" class="w-100 coverage">
                     </div>
                     <div class="col">
-                        {!! $protection->wgpw_content !!}
+                        <div class="page-ulli-container">
+                            <h3>Why Get Protection With Mortage Lynx?</h3>
+                            <ul>
+                                <li><img src="{{ asset('images/tickfill.png') }}">
+                                    <div>
+                                        <p>Protect Your Family</p>
+                                        <p>Ensure your loved ones are financially secure.</p>
+                                    </div>
+                                </li>
+                                <li><img src="{{ asset('images/tickfill.png') }}">
+                                    <div>
+                                        <p>Protect Your Home</p>
+                                        <p>Keep a roof over your head, whatever happens.</p>
+                                    </div>
+                                </li>
+                                <li><img src="{{ asset('images/tickfill.png') }}">
+                                    <div>
+                                        <p>Protect Your Income</p>
+                                        <p>Stay on top of bills and commitments.</p>
+                                    </div>
+                                </li>
+                                <li><img src="{{ asset('images/tickfill.png') }}">
+                                    <div>
+                                        <p>Protect Your Futur</p>
+                                        <p>Plan today for a more confident tomorrow.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -149,17 +177,6 @@
         </div>
     </section>
 
-    <section class="section lets_get_started">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 text-center">
-                    <a href="#">
-                        <button class="btn bannerbtn1 custom-btn">
-                            Become an Introducer</button>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+    @include('footer_upsection')
 
 @endsection

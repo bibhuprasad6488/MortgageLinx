@@ -358,10 +358,24 @@ h6 {
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 10px;
+    padding-bottom: 20px;
+    height: max-content;
 }
 
-.introducer_form div {
+/* .introducer_form div {
     padding: 0 20px;
+} */
+.contact_form a {
+    text-decoration: none;
+    color: #C59108;
+}
+
+.contact_form label {
+    font-size: 18px;
+}
+
+.map_view {
+    border-top: 1px solid #ccc
 }
 
 .coverage {

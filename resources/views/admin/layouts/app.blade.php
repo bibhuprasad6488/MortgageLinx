@@ -118,7 +118,6 @@
     <script src="{{ asset('admin/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
     <script src="{{ asset('admin/js/plugin/chart.js/chart.min.js') }}"></script>
     {{-- <script src="{{ asset('admin/js/plugin/datatables/datatables.min.js') }}"></script> --}}
-    <script src="{{ asset('admin/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
     <script src="{{ asset('admin/js/plugin/sweetalert/sweetalert.min.js') }}"></script>
 
     <!-- Datatables -->

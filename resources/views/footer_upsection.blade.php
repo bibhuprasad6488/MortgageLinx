@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 text-center">
-                    <a href="#">
+                    <a href="{{ route('become-an-introducer') }}">
                         <button class="btn bannerbtn1 custom-btn">
                             Become an Introducer</button>
                     </a>

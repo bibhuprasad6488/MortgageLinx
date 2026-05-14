@@ -54,6 +54,19 @@
             });
         });
     </script>
+
+    <script>
+        window.onload = function() {
+            let alert = document.getElementById('s-alert');
+            if (alert) {
+                setTimeout(function() {
+                    alert.style.transition = 'opacity 0.5s ease';
+                    alert.style.opacity = '0';
+                    setTimeout(() => alert.remove(), 500);
+                }, 3000);
+            }
+        };
+    </script>
     @stack('scripts')
 </body>
 

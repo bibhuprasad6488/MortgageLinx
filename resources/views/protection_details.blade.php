@@ -43,45 +43,44 @@
         </div>
     </section>
 
+
     <section class="step_section_container">
         <div class="container">
             <div class="step_process">
-                <h3 class="text-center ptb30">The Mortgage Process – Simple &amp; Straightforward</h3>
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4">
+                <h3 class="text-center">Our Simple 4-Step Process</h3>
+                <hr class="hr1">
+                <div class="row g-4 text-center ">
 
-                    <div class="col text-center mortgage_process">
-                        <div class="">
-                            <p class="no_container">1</p>
-                            <p class="process_heading">Initial Consultation</p>
-                            <p>We discuss your needs and circumstances.</p>
+                    <div class="col-md-3">
+                        <div class="step_counter">
+                            <p class="img_container"><img src="{{ $protection->sp_icon_one }}"></p>
+                            <p class="step_heading">{{ $protection->sp_title_one }}</p>
+                            <span>1</span>
+                            <p>{{ $protection->sp_subtitle_one }}</p>
                         </div>
                     </div>
-                    <div class="col text-center mortgage_process">
-                        <div class="">
-                            <p class="no_container">2</p>
-                            <p class="process_heading">Mortgage Research</p>
-                            <p>We search the market to find the right options.</p>
+                    <div class="col-md-3">
+                        <div class="step_counter">
+                            <p class="img_container"><img src="{{ $protection->sp_icon_two }}"></p>
+                            <p class="step_heading">{{ $protection->sp_title_two }}</p>
+                            <span>2</span>
+                            <p>{{ $protection->sp_subtitle_two }}</p>
                         </div>
                     </div>
-                    <div class="col text-center mortgage_process">
-                        <div class="">
-                            <p class="no_container">3</p>
-                            <p class="process_heading">Agreement in Principle</p>
-                            <p>Get an agreement in principle to strengthen your position.</p>
+                    <div class="col-md-3">
+                        <div class="step_counter">
+                            <p class="img_container"><img src="{{ $protection->sp_icon_three }}"></p>
+                            <p class="step_heading">{{ $protection->sp_title_three }}</p>
+                            <span>3</span>
+                            <p>{{ $protection->sp_subtitle_three }}</p>
                         </div>
                     </div>
-                    <div class="col text-center mortgage_process">
-                        <div class="">
-                            <p class="no_container">4</p>
-                            <p class="process_heading">Application</p>
-                            <p>We manage your application from start to finish.</p>
-                        </div>
-                    </div>
-                    <div class="col text-center mortgage_process bn">
-                        <div class="">
-                            <p class="no_container">5</p>
-                            <p class="process_heading">Offer &amp; Completion</p>
-                            <p>Receive your mortgage offer and move into your new home.</p>
+                    <div class="col-md-3">
+                        <div class="step_counter bn">
+                            <p class="img_container"><img src="{{ $protection->sp_icon_four }}"></p>
+                            <p class="step_heading">{{ $protection->sp_title_four }}</p>
+                            <span>4</span>
+                            <p>{{ $protection->sp_subtitle_four }}</p>
                         </div>
                     </div>
                 </div>

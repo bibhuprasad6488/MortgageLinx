@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\BecomeAnIntroducer;
+use App\Models\BecomeAnIntroducerForm;
 use App\Models\CmsHomePage;
+use App\Models\ContactForm;
 use App\Models\Introducer;
 use App\Models\IntroducerType;
 use App\Models\Partner;
@@ -14,6 +16,7 @@ use App\Models\ServiceCategory;
 use App\Models\SiteSetting;
 use App\Models\TermsCondition;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -64,7 +67,30 @@ class HomeController extends Controller
 
     public function contactPage()
     {
-        return view('contact');
+        $setting = SiteSetting::find(1);
+        return view('contact', compact('setting'));
+    }
+
+    public function contactFormStore(Request $request)
+    {
+        DB::beginTransaction();
+        try {
+            $cForm = new ContactForm();
+            $cForm->full_name = $request->full_name;
+            $cForm->email_address = $request->email_address;
+            $cForm->phone_number = $request->phone_number;
+            $cForm->enquiry_type = $request->enquiry_type;
+            $cForm->your_subject = $request->your_subject;
+            $cForm->your_messsage = $request->your_messsage;
+            $cForm->terms_conditions = $request->terms_conditions;
+            $cForm->save();
+            DB::commit();
+
+            return redirect()->back()->with('success', 'Your message has been submitted successfully');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return redirect()->back()->with('error', 'Error: ' . $th->getMessage());
+        }
     }
 
     public function introducerPage()
@@ -173,6 +199,28 @@ class HomeController extends Controller
         return view('introducer_details', compact('partners', 'intDetails', 'intTypes', 'setting'));
     }
 
+    public function becomeAnIntroducerStore(Request $request)
+    {
+        DB::beginTransaction();
+        try {
+            $bcai = new BecomeAnIntroducerForm();
+            $bcai->business_name = $request->business_name;
+            $bcai->trading_name = $request->trading_name;
+            $bcai->role = $request->role;
+            $bcai->range = $request->range ? implode(', ', $request->range) : '';
+            $bcai->contact_name = $request->contact_name;
+            $bcai->contact_email = $request->contact_email;
+            $bcai->contact_phone = $request->contact_phone;
+            $bcai->contact_method = $request->contact_method;
+
+            $bcai->save();
+            DB::commit();
+            return redirect()->route('become-an-introducer')->with('success', 'Your form has been submitted successfully');
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return redirect()->route('become-an-introducer')->with('error', 'Error: ' . $th->getMessage());
+        }
+    }
 
     public function protectionPage()
     {
@@ -274,8 +322,51 @@ class HomeController extends Controller
             return $p;
         });
 
+        $protection = Protection::find(1);
+
+        if ($protection) {
+            $protection->banner_image = $protection->banner_image
+                ? asset('storage/images/cmspage/' . $protection->banner_image)
+                : '';
+
+            $protection->wgpw_image = $protection->wgpw_image
+                ? asset('storage/images/cmspage/' . $protection->wgpw_image)
+                : '';
+
+            $protection->bnr_icon_one = $protection->bnr_icon_one
+                ? asset('storage/images/cmspage/' . $protection->bnr_icon_one)
+                : '';
+
+            $protection->bnr_icon_two = $protection->bnr_icon_two
+                ? asset('storage/images/cmspage/' . $protection->bnr_icon_two)
+                : '';
+
+            $protection->bnr_icon_three = $protection->bnr_icon_three
+                ? asset('storage/images/cmspage/' . $protection->bnr_icon_three)
+                : '';
+
+            $protection->bnr_icon_four = $protection->bnr_icon_four
+                ? asset('storage/images/cmspage/' . $protection->bnr_icon_four)
+                : '';
+
+            $protection->sp_icon_one = $protection->sp_icon_one
+                ? asset('storage/images/cmspage/' . $protection->sp_icon_one)
+                : '';
+
+            $protection->sp_icon_two = $protection->sp_icon_two
+                ? asset('storage/images/cmspage/' . $protection->sp_icon_two)
+                : '';
+
+            $protection->sp_icon_three = $protection->sp_icon_three
+                ? asset('storage/images/cmspage/' . $protection->sp_icon_three)
+                : '';
+
+            $protection->sp_icon_four = $protection->sp_icon_four
+                ? asset('storage/images/cmspage/' . $protection->sp_icon_four)
+                : '';
+        }
         if ($serviceCat->slug == 'protection') {
-            return view('protection_details', compact('service', 'partners'));
+            return view('protection_details', compact('service', 'partners', 'protection'));
         } else {
             return view('service_details', compact('service', 'partners'));
         }

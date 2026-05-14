@@ -95,6 +95,12 @@
                         <p>Partners</p>
                     </a>
                 </li>
+                <li class="nav-item {{ request()->routeIs(['admin.introducers-list']) ? 'active' : '' }} ">
+                    <a href="{{ route('admin.introducers-list') }}">
+                        <i class="fas fa-user-friends"></i>
+                        <p>Introducers</p>
+                    </a>
+                </li>
                 <li class="nav-item {{ request()->routeIs(['admin.website-setting.index']) ? 'active' : '' }} ">
                     <a href="{{ route('admin.website-setting.index') }}">
                         <i class="fas fa-cogs"></i>

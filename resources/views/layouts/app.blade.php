@@ -22,8 +22,8 @@
         href="@if ($setting) {{ asset('storage/images/settings/' . $setting->favicon) }} @else {{ asset('admin/img/favicon.png') }} @endif"
         type="image/x-icon" />
 
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
-    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
     <!-- Scripts -->
     @if (config('database.connections.mysql.username') === 'root')
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])

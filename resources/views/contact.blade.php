@@ -241,6 +241,7 @@
         </div>
     </section>
 
+    @include('footer_upsection')
 @endsection
 @push('scripts')
     <script>

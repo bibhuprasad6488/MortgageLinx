@@ -39,8 +39,7 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|unique:service_categories,title',
-            'short_desc' => 'required',
+            'title' => 'required|unique:services,title',
             'category_id' => 'required'
         ]);
 
@@ -118,8 +117,7 @@ class ServiceController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'title' => 'required|unique:service_categories,title,' . $id,
-            'short_desc' => 'required',
+            'title' => 'required|unique:services,title,' . $id,
             'category_id' => 'required'
         ]);
 
@@ -195,8 +193,8 @@ class ServiceController extends Controller
             $service = Service::find($id);
             $destinationPath = public_path('storage/images/services/');
 
-            if (!empty($service->cat_image)) {
-                $oldFilePath = $destinationPath . $service->cat_image;
+            if (!empty($service->service_image)) {
+                $oldFilePath = $destinationPath . $service->service_image;
                 if (file_exists($oldFilePath)) {
                     unlink($oldFilePath);
                 }

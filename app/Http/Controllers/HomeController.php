@@ -366,9 +366,9 @@ class HomeController extends Controller
                 : '';
         }
         if ($serviceCat->slug == 'protection') {
-            return view('protection_details', compact('service', 'partners', 'protection'));
+            return view('protection_details', compact('service', 'partners', 'protection', 'serviceCat'));
         } else {
-            return view('service_details', compact('service', 'partners'));
+            return view('service_details', compact('service', 'partners', 'serviceCat'));
         }
     }
 

@@ -22,10 +22,34 @@
                        </div>
                    </div>
                </div>
-               @foreach ($serviceCats as $sc)
-                   <!-- Column {{ $loop->iteration }}:  -->
+               <div class="col-md-8 col-xs-12 mb-4 mb-md-0">
+                   {!! $setting->footer_text_one !!}
+               </div>
+               <div class="col-md-2 col-xs-12 mb-4 mb-md-0">
+
+                   @foreach ($serviceCats as $sc)
+                       <ul class="footer-links">
+                           <a
+                               href="@if ($sc->slug == 'protection') {{ route('protection') }}@else{{ route('service', $sc->slug) }} @endif">
+                               <li class="fs-6">{{ $sc->title }}</li>
+                           </a>
+                       </ul>
+                   @endforeach
+
+                   <ul class="footer-links">
+                       <a href="{{ route('contact') }}">
+                           <li class="fs-6">Contact</li>
+                       </a>
+                       <a href="{{ route('become-an-introducer') }}">
+                           <li class="fs-6">Become an Introducer</li>
+                       </a>
+                       <li class="mt-3"><img
+                               src="{{ $setting->footer_logo_one ? asset('storage/images/settings/' . $setting->footer_logo_one) : '' }}"
+                               alt="Certified Logo" width="80"></li>
+                   </ul>
+               </div>
+               {{-- @foreach ($serviceCats as $sc)
                    <div class="col-md-2 col-xs-12 mb-4 mb-md-0">
-                       <p class="footer-title fs-6">{{ $sc->title }}</p>
                        <ul class="footer-links">
                            @foreach ($sc->services as $service)
                                <a href="{{ route('service-details', $service->slug) }}">
@@ -34,15 +58,15 @@
                            @endforeach
                        </ul>
                    </div>
-               @endforeach
+               @endforeach --}}
            </div>
            <!-- <hr class="footer-divider"> -->
        </div>
        <div class="container-fluid copyright">
            <div class="col-xs-12">
                <div class="text-center small">
-                   <p class="">{{ $setting->copyright }}</p>
-                   <p>
+                   <p class="">&copy; {{ date('Y') }} {{ $setting->copyright }}</p>
+                   {{-- <p>
                        <a href="{{ route('introducer') }}">Introducers</a>
                        <a href="{{ route('protection') }}">. Protection</a>
                        <a href="{{ route('contact') }}">. Contact
@@ -50,7 +74,7 @@
                        </a> <a href="{{ route('privacy-policy') }}">. Privacy
                            Policy </a>
                        <a href="{{ route('terms-of-business') }}">. Terms of Business</a>
-                   </p>
+                   </p> --}}
                </div>
            </div>
        </div>

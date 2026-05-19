@@ -451,7 +451,7 @@ h6 {
 }
 
 .tbb2 .nav-item {
-    padding: 0px 12PX;
+    padding: 0px 8PX;
 }
 
 .navbar-brand img {
@@ -460,15 +460,22 @@ h6 {
 }
 
 
-.my_menu .nav-item a {
+/* .my_menu .nav-item a {
     color: #000 !important;
-}
+} */
 
 .my_menu .nav-item a:hover,
-.my_menu .nav-item a.active {
+.my_menu .nav-item a.nav-link.active {
     border-bottom: 1px solid #C59108;
     color: #C59108 !important;
     ;
+}
+
+
+.dropdown-item.active,
+.dropdown-item:active {
+    background: #C59108;
+    color: #fff !important;
 }
 
 
@@ -1180,7 +1187,6 @@ select {
 .single_column label {
     display: block;
 }
-
 
 .maastrix::after,
 .maastrix::before {

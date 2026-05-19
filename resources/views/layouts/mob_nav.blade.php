@@ -34,6 +34,7 @@
                     </div>
                 </li>
             @endforeach
+            <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact Us</a></li>
 
             {{-- <li class="nav-item">
                 <a class="nav-link align-items-center" data-bs-toggle="collapse" href="#btlSubMenu" role="button"

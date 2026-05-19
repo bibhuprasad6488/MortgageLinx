@@ -32,8 +32,7 @@
                                             Title <span>*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="site_title" id="site_title"
-                                                class="form-control "
+                                            <input type="text" name="site_title" id="site_title" class="form-control "
                                                 value="{{ optional($setting)->site_title }}" required>
                                         </div>
                                     </div>
@@ -44,8 +43,7 @@
                                             Meta
                                             Description</label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <textarea name="site_meta_desc" id="site_meta_desc" class="form-control " placeholder="Meta descripton"
-                                                rows="3">{{ optional($setting)->site_meta_desc }}</textarea>
+                                            <textarea name="site_meta_desc" id="site_meta_desc" class="form-control " placeholder="Meta descripton" rows="3">{{ optional($setting)->site_meta_desc }}</textarea>
                                         </div>
                                     </div>
 
@@ -55,8 +53,7 @@
                                             Meta
                                             Keywords</label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <textarea name="site_meta_key" id="site_meta_key" class="form-control " placeholder="Meta keywords"
-                                                rows="3">{{ optional($setting)->site_meta_key }}</textarea>
+                                            <textarea name="site_meta_key" id="site_meta_key" class="form-control " placeholder="Meta keywords" rows="3">{{ optional($setting)->site_meta_key }}</textarea>
                                         </div>
                                     </div>
 
@@ -75,8 +72,7 @@
                                     No
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="contact_phone" id="contact_phone"
-                                        class="form-control "
+                                    <input type="text" name="contact_phone" id="contact_phone" class="form-control "
                                         value="{{ optional($setting)->contact_phone }}" required>
                                 </div>
                             </div>
@@ -84,8 +80,7 @@
                                 <label for="firstname" class="d-flex justify-content-end col-md-3 col-sm-3 col-xs-12">
                                     Email ID </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="email" name="contact_email" id="contact_email"
-                                        class="form-control "
+                                    <input type="email" name="contact_email" id="contact_email" class="form-control "
                                         value="{{ optional($setting)->contact_email }}">
                                 </div>
                             </div>
@@ -94,8 +89,8 @@
                                     Contact No
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="alt_phone" id="alt_phone"
-                                        class="form-control " value="{{ optional($setting)->alt_phone }}">
+                                    <input type="text" name="alt_phone" id="alt_phone" class="form-control "
+                                        value="{{ optional($setting)->alt_phone }}">
                                 </div>
                             </div>
                             <div class="form-group row d-none  mb-2">
@@ -103,8 +98,7 @@
                                     class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Call/Whatsapp No
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="call_wp_number" id="call_wp_number"
-                                        class="form-control "
+                                    <input type="text" name="call_wp_number" id="call_wp_number" class="form-control "
                                         value="{{ optional($setting)->call_wp_number }}">
                                 </div>
                             </div>
@@ -120,8 +114,7 @@
                                 <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Alt.
                                     Email</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="email" name="alt_email" id="alt_email"
-                                        class="form-control "
+                                    <input type="email" name="alt_email" id="alt_email" class="form-control "
                                         value="{{ optional($setting)->alt_email }}">
                                 </div>
                             </div>
@@ -160,16 +153,22 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row d-none  mb-2">
-                                <label for=""
-                                    class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Footer
-                                    Logo One</label>
+                            <div class="form-group row   mb-2">
+                                <label for="Img" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">
+                                    Footer Logo One (Drag & Drop)</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="file" name="footer_logo_one" id="footer_logo_one"
-                                        class="form-control ">
-                                    <img @if ($setting && $setting->footer_logo_one) src="{{ $setting->footer_logo_one }}"
-                                    @else style="display: none;" @endif
-                                        alt="Site Logo" width="100">
+
+                                    <div class="drop-area" data-input="footer_logo_one"
+                                        data-preview="footerLogoOnePreview"
+                                        data-default="{{ $setting->footer_logo_one ?? asset('admin/img/no-img.png') }}">
+                                        <p>Drag & Drop Image Here or Click to Select</p>
+                                        <input type="file" id="footer_logo_one" name="footer_logo_one" hidden
+                                            accept=".jpg,.jpeg,.png,.webp">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6 col-xs-12">
+                                    <img src="" id="footerLogoOnePreview" width="100">
                                 </div>
                             </div>
                             <div class="form-group row d-none  mb-2">
@@ -217,31 +216,28 @@
                                     Location
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <textarea name="site_map_key" id="site_map_key" class="form-control " rows="7"
-                                        placeholder="Iframe link">{{ optional($setting)->site_map_key }}</textarea>
+                                    <textarea name="site_map_key" id="site_map_key" class="form-control " rows="7" placeholder="Iframe link">{{ optional($setting)->site_map_key }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group row mb-2">
                                 <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">
                                     CTA Title </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="cta_title" id="cta_title"
-                                        class="form-control " value="{{ optional($setting)->cta_title }}"
-                                        placeholder="CTA Title">
+                                    <input type="text" name="cta_title" id="cta_title" class="form-control "
+                                        value="{{ optional($setting)->cta_title }}" placeholder="CTA Title">
                                 </div>
                             </div>
                             <div class="form-group row mb-2">
                                 <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">
                                     CTA Sub Title</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="cta_sub_title" id="cta_sub_title"
-                                        class="form-control "
+                                    <input type="text" name="cta_sub_title" id="cta_sub_title" class="form-control "
                                         value="{{ optional($setting)->cta_sub_title }}" placeholder="CTA Sub Title">
                                 </div>
                             </div>
-                            <div class="form-group row d-none mb-2">
+                            <div class="form-group row  mb-2">
                                 <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Site
-                                    Footer Text One</label>
+                                    Footer Text</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <textarea name="footer_text_one" id="footer_text_one" class="form-control " rows="3">{{ optional($setting)->footer_text_one }}</textarea>
                                 </div>
@@ -260,9 +256,8 @@
                                     class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Copyrights
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="copyright" id="copyright"
-                                        class="form-control " value="{{ optional($setting)->copyright }}"
-                                        required>
+                                    <input type="text" name="copyright" id="copyright" class="form-control "
+                                        value="{{ optional($setting)->copyright }}" required>
                                 </div>
                             </div>
                             <div class="form-group d-none row  mb-2">
@@ -270,8 +265,7 @@
                                     Host
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="smtp_host" id="smtp_host"
-                                        class="form-control "
+                                    <input type="text" name="smtp_host" id="smtp_host" class="form-control "
                                         value="{{ optional($setting)->smtp_host }}">
                                 </div>
                             </div>
@@ -280,8 +274,7 @@
                                     Port
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="smtp_port" id="smtp_port"
-                                        class="form-control "
+                                    <input type="text" name="smtp_port" id="smtp_port" class="form-control "
                                         value="{{ optional($setting)->smtp_port }}">
                                 </div>
                             </div>
@@ -290,8 +283,7 @@
                                     Username
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="smtp_username" id="smtp_username"
-                                        class="form-control "
+                                    <input type="text" name="smtp_username" id="smtp_username" class="form-control "
                                         value="{{ optional($setting)->smtp_username }}">
                                 </div>
                             </div>
@@ -300,8 +292,7 @@
                                     Password
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="smtp_password" id="smtp_password"
-                                        class="form-control "
+                                    <input type="text" name="smtp_password" id="smtp_password" class="form-control "
                                         value="{{ optional($setting)->smt_password }}">
                                 </div>
                             </div>
@@ -312,8 +303,7 @@
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" name="smtp_from_name" id="smtp_from_name"
-                                        class="form-control "
-                                        value="{{ optional($setting)->smtp_from_name }}">
+                                        class="form-control " value="{{ optional($setting)->smtp_from_name }}">
                                 </div>
                             </div>
                             <div class="form-group d-none row  mb-2">
@@ -323,8 +313,7 @@
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" name="smtp_from_email" id="smtp_from_email"
-                                        class="form-control "
-                                        value="{{ optional($setting)->smtp_from_email }}">
+                                        class="form-control " value="{{ optional($setting)->smtp_from_email }}">
                                 </div>
                             </div>
 

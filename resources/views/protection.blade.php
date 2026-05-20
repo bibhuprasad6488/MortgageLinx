@@ -12,7 +12,7 @@
                 <div class="row h-100">
 
                     <!-- LEFT -->
-                    <div class="col-lg-6 text-white">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-white">
                         {!! $protection->banner_title !!}
                         <p class="page_banner-text">Life is unpredictable. The right protection gives you and your
                             family peace of mind, no matter what the future holds.</p>
@@ -20,7 +20,7 @@
                         <a href="{{ route('contact') }}"><button class="btn bannerbtn1 custom-btn">Get a Free
                                 Consultation</button></a>
                     </div>
-                    <div class="col-lg-6 text-white">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-white">
                         <div class="banner-txt-container">
                             <ul>
                                 <li></li>

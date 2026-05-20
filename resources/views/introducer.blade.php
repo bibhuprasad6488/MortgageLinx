@@ -19,7 +19,7 @@
                         <p class="page_banner-text">{{ $introducer->banner_desc }}
                         </p>
 
-                        <a href="#"><button class="btn bannerbtn1 custom-btn">
+                        <a href="{{ route('become-an-introducer') }}"><button class="btn bannerbtn1 custom-btn">
                                 {{ $introducer->banner_btn_text }}</button></a>
                         <p class="callback"><a href="#"><img src="images/callback.png"> Request a call back</a></p>
                     </div>
@@ -218,6 +218,6 @@
             </div>
         </div>
     </section>
-    
+
     @include('footer_upsection')
 @endsection

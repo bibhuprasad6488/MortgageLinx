@@ -580,7 +580,7 @@ h6 {
 }
 
 .about_us .feature-box p {
-    text-align: left;
+    text-align: center;
 }
 
 #intro-example {
@@ -1305,30 +1305,319 @@ select {
 }
 
 
-@media (max-width: 991px) {
-    .offcanvas {
-        width: 100vw !important;
+@media (min-width: 350px) and (max-width: 449px) {
+    .navbar-brand img {
+        max-width: 250px;
+    }
+
+    .mortgage_process::before {
+        border-top: none;
+    }
+
+    .site-footer img {
+        width: 180px !important;
+    }
+
+    .site-footer .certified-img {
+        width: 100px !important;
+    }
+
+    .mask p img {
+        width: 340px;
+    }
+
+    .callback a img {
+        width: 30px;
+    }
+
+    .banner-title {
+        font-size: 37px;
+    }
+
+    .banner-subtitle {
+        font-size: 30px;
+    }
+
+    .mask p {
+        text-align: left;
+    }
+
+    .mask a.m-2 {
+        margin: 5px 0px !important;
+    }
+
+
+    .banner-txt-container {
+        float: none;
+        margin-top: 10px;
+        max-width: 100%;
+    }
+
+    .page-banner-title {
+        font-size: 38px;
+    }
+
+    #introducer .page-banner-title {
+        font-size: 33px;
+    }
+
+    .page-banner-subtitle {
+        font-size: 36px;
+    }
+
+    .page-ulli-container h3 {
+        font-size: 18px;
+    }
+
+    .page-ulli-container2 ul li {
+        font-size: 13px;
+    }
+
+    .footer_top .left_container h4 {
+        font-size: 19px;
+    }
+
+    .footer_top .left_container p {
+        font-size: 15px;
+    }
+
+    .footer_top .right_container .btn1 {
+        font-size: 15px;
+    }
+
+    #contact_form p.text-muted {
+        font-size: 15px;
+    }
+
+    .step_counter {
+        border-right: none;
+    }
+
+    .why_partner_with_us .tac img {
+        width: 100%;
+    }
+
+    .why_partner.p-4 {
+        padding: 8px !important;
+    }
+
+    .intp .why_partner_partner_icon {
+        padding: 13px;
+        margin-right: 4px;
+    }
+
+    .intp p {
+        font-size: 13px;
     }
 }
 
-@media (max-width: 767.98px) {
+@media (min-width: 450px) and (max-width: 549px) {
+    .navbar-brand img {
+        max-width: 335px;
+    }
+
+    .mortgage_process::before {
+        border-top: none;
+    }
+
+    .site-footer img {
+        width: 190px !important;
+    }
+
+    .site-footer .certified-img {
+        width: 100px !important;
+    }
+
     .banner-title {
-        font-size: 30px;
+        font-size: 46px;
+    }
+
+    .banner-subtitle {
+        font-size: 40px;
+    }
+
+    .mask p {
+        text-align: left;
+    }
+
+    .mask a.m-2 {
+        margin: 5px 0px !important;
+    }
+
+
+    .banner-txt-container {
+        float: none;
+        margin-top: 10px;
+        max-width: 100%;
+    }
+
+    .page-ulli-container h3 {
+        font-size: 22px;
+    }
+
+    .hr1 {
+        margin-bottom: 10px;
+    }
+
+    .why_partner_with_us .tac img {
+        width: 100%;
+    }
+}
+
+@media (min-width: 550px) and (max-width: 649px) {
+    .navbar-brand img {
+        max-width: 335px;
+    }
+
+    .mortgage_process::before {
+        border-top: none;
+    }
+
+    .site-footer img {
+        width: 190px !important;
+    }
+
+    .site-footer .certified-img {
+        width: 90px !important;
+    }
+
+    .banner-txt-container {
+        float: none;
+        margin-top: 10px;
+        max-width: 100%;
+    }
+
+}
+
+@media (min-width: 650px) and (max-width: 767px) {
+    .navbar-brand img {
+        max-width: 335px;
+    }
+
+    .mortgage_process::before {
+        border-top: none;
+    }
+
+    .site-footer img {
+        width: 190px !important;
+    }
+
+    .site-footer .certified-img {
+        width: 85px !important;
+    }
+
+    .page-banner-title {
+        font-size: 36px;
+    }
+
+    .page-banner-subtitle {
+        font-size: 33px;
+    }
+
+    .mask p {
+        text-align: left;
+    }
+
+    .mask a.m-2 {
+        margin: 5px 0px !important;
+    }
+
+
+}
+
+@media (min-width: 768px) and (max-width: 990px) {
+    .banner-title {
+        font-size: 35px;
+    }
+
+    .banner-subtitle {
+        font-size: 28px;
     }
 
     .footer-links {
         list-style: none;
     }
 
-    .banner-subtitle {
-        font-size: 25px;
-        ;
+
+    .mortgage_process::before {
+        border-top: none;
+    }
+
+}
+
+@media (min-width: 991px) and (max-width: 1023px) {
+
+    .tbb2 .nav-item {
+        padding: 0px 0px;
+    }
+
+    .navbar-brand img {
+        max-width: 230px;
+    }
+
+    .my_menu .nav-item a {
+        padding: 10px 5px !important;
+    }
+
+    .my_menu li {
+        font-size: 13px;
+    }
+
+    .menu .py-2 {
+        padding: 5px !important;
+        font-size: 14px;
     }
 }
 
-@media (min-width: 992px) {
-    .navbar .dropdown:hover>.dropdown-menu {
+@media (min-width: 1024px) and (max-width: 1349px) {
+    .tbb2 .nav-item {
+        padding: 0px 1PX;
+    }
+
+    .my_menu .nav-item a {
+        padding: 10px 2px !important;
+    }
+
+    .navbar-brand img {
+        max-width: 230px;
+    }
+
+    .my_menu li {
+        font-size: 14px;
+    }
+
+    .menu .py-2 {
+        padding: 5px !important;
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .navbar .dropdown:hover .dropdown-menu {
         display: block;
         margin-top: 0;
+    }
+}
+
+@media (min-width: 1350px) and (max-width: 1515px) {
+    .tbb2 .nav-item {
+        padding: 0px 5PX;
+    }
+
+    .my_menu .nav-item a {
+        padding: 10px 6px !important;
+    }
+
+    .navbar-brand img {
+        max-width: 230px;
+    }
+
+    .my_menu li {
+        font-size: 15px;
+    }
+
+    .menu .py-2 {
+        padding: 5px !important;
+        font-size: 15px;
     }
 }

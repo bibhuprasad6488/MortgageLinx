@@ -45,7 +45,7 @@
                        </a>
                        <li class="mt-3"><img
                                src="{{ $setting->footer_logo_one ? asset('storage/images/settings/' . $setting->footer_logo_one) : '' }}"
-                               alt="Certified Logo" width="80"></li>
+                               alt="Certified Logo" width="80" class="certified-img"></li>
                    </ul>
                </div>
                {{-- @foreach ($serviceCats as $sc)

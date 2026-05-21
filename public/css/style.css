@@ -374,6 +374,11 @@ h6 {
     color: #C59108;
 }
 
+.intp a {
+    text-decoration: none;
+    color: #C59108;
+}
+
 .contact_form label {
     font-size: 18px;
 }
@@ -1487,6 +1492,18 @@ select {
         max-width: 100%;
     }
 
+    .page-ulli-container {
+        padding: 0;
+    }
+
+    .page-ulli-container h3 {
+        font-size: 17px;
+    }
+
+    .page-ulli-container div p:last-child {
+        font-size: 12px;
+    }
+
 }
 
 @media (min-width: 650px) and (max-width: 767px) {
@@ -1522,6 +1539,17 @@ select {
         margin: 5px 0px !important;
     }
 
+    .page-ulli-container {
+        padding: 0;
+    }
+
+    .page-ulli-container h3 {
+        font-size: 20px;
+    }
+
+    .page-ulli-container div p:last-child {
+        font-size: 15px;
+    }
 
 }
 
@@ -1543,6 +1571,63 @@ select {
         border-top: none;
     }
 
+    .mask p {
+        text-align: left;
+    }
+
+    .mask a.m-2 {
+        margin: 5px 0px !important;
+    }
+
+    .intp .why_partner_partner_icon {
+        padding: 13px;
+        margin-right: 4px;
+    }
+
+    .intp p {
+        font-size: 13px;
+        margin-bottom: 2px;
+    }
+
+    #contact_form p.text-muted {
+        font-size: 14px;
+    }
+
+    #contact_form .single_column label {
+        font-size: 13px;
+    }
+
+    .contact_form p {
+        font-size: 13px;
+    }
+
+    .intp {
+        padding: 12px !important;
+    }
+
+    .page-ulli-container {
+        padding: 0;
+    }
+
+    .page-ulli-container h3 {
+        font-size: 20px;
+    }
+
+    .page-ulli-container div p:last-child {
+        font-size: 15px;
+    }
+
+    .step_counter {
+        padding: 0 4px;
+    }
+
+    .footer_top .left_container h4 {
+        font-size: 19px;
+    }
+
+    .footer_top .left_container p {
+        font-size: 14px;
+    }
 }
 
 @media (min-width: 991px) and (max-width: 1023px) {
@@ -1567,6 +1652,14 @@ select {
         padding: 5px !important;
         font-size: 14px;
     }
+
+    .mask p {
+        text-align: left;
+    }
+
+    .mask a.m-2 {
+        margin: 5px 0px !important;
+    }
 }
 
 @media (min-width: 1024px) and (max-width: 1349px) {
@@ -1589,6 +1682,14 @@ select {
     .menu .py-2 {
         padding: 5px !important;
         font-size: 14px;
+    }
+
+    .mask p {
+        text-align: left;
+    }
+
+    .mask a.m-2 {
+        margin: 5px 0px !important;
     }
 }
 

@@ -174,7 +174,7 @@
                                 <h5>Live Chat</h5>
                                 <p>Chat with a member of our team <br> during business hours.</p>
                             </div>
-                            <div class="why_partner bg-dark p-4 text-white rounded contact_form intp">
+                            <div class="why_partner bg-dark p-4 text-white rounded intp">
                                 <p class="why_partner_partner_icon">
                                     <img src="{{ asset('images/icon28.png') }}">
                                 </p>

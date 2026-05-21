@@ -9,15 +9,17 @@
         <button type="button" class="btn-close btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
 
-    <div class="offcanvas-body d-flex flex-column justify-content-center">
+    {{-- justify-content-center --}}
+    <div class="offcanvas-body d-flex flex-column ">
 
         <ul class="navbar-nav text-center fs-4 my_menu">
             <li class="nav-item"><a class="nav-link" href="{{ route('home') }}">Home</a></li>
 
             @foreach ($serviceCats as $sc)
                 <li class="nav-item">
-                    <a class="nav-link align-items-center" data-bs-toggle="collapse" href="#aboutSubMenu{{ $loop->iteration }}" role="button"
-                        aria-expanded="false" aria-controls="aboutSubMenu{{ $loop->iteration }}">
+                    <a class="nav-link align-items-center" data-bs-toggle="collapse"
+                        href="#aboutSubMenu{{ $loop->iteration }}" role="button" aria-expanded="false"
+                        aria-controls="aboutSubMenu{{ $loop->iteration }}">
                         {{ $sc->title }}
                         <span class="ms-2">+</span>
                     </a>

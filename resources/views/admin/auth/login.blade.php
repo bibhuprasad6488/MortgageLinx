@@ -6,7 +6,7 @@
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('admin/img/favicon.png') }}" type="image/x-icon" />
     {{-- <link rel="stylesheet" href="{{ asset('admin/css/bootstrap.min.css') }}" /> --}}
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
     <style>
         :root {
             --primary-color: #2563eb;
@@ -248,6 +248,16 @@
 <body class="flex items-center justify-center min-h-screen bg-[#d8d2d2]">
 
     <main class="login-container">
+        @if (session('success'))
+            <div class="alert alert-success mx-4 mt-3 rounded-3 shadow-sm" id="success-alert">
+                {{ session('success') }}
+            </div>
+        @endif
+        @if (session('error'))
+            <div class="alert alert-danger mx-4 mt-3 rounded-3 shadow-sm" id="success-alert">
+                {{ session('error') }}
+            </div>
+        @endif
         <header>
             <h1>Welcome Back</h1>
             <p>Please enter your details to sign in.</p>
@@ -277,6 +287,14 @@
                 <div id="passwordError" class="error-message">Password must be at least 6 characters.</div>
             </div>
 
+
+            <div class="mb-1 input-group">
+                <div class="g-recaptcha" data-sitekey="{{ config('app.recaptcha_site_key') }}"></div>
+            </div>
+            <small id="captcha-error" class="error-message">
+                Please verify that you are not a robot.
+            </small>
+
             <!-- Options -->
             <div class="form-options">
                 <label class="remember-me">
@@ -295,6 +313,8 @@
             </div> --}}
         </form>
     </main>
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const loginForm = document.getElementById('loginForm');
@@ -361,6 +381,23 @@
                 if (passwordInput.value.length < 6) {
                     showError(passwordInput, 'passwordError', true);
                     isValid = false;
+                }
+
+                // Captcha validation
+                const captchaBox = document.querySelector('.g-recaptcha');
+                const captchaError = document.getElementById('captcha-error');
+
+                if (captchaBox) {
+
+                    const captchaResponse = grecaptcha.getResponse();
+
+                    if (captchaResponse.length === 0) {
+                        captchaError.style.display = 'block';
+                        isValid = false;
+                    } else {
+                        captchaError.style.display = 'none';
+                    }
+
                 }
 
                 if (isValid) {

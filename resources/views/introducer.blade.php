@@ -21,7 +21,8 @@
 
                         <a href="{{ route('become-an-introducer') }}"><button class="btn bannerbtn1 custom-btn">
                                 {{ $introducer->banner_btn_text }}</button></a>
-                        <p class="callback"><a href="#"><img src="images/callback.png"> Request a call back</a></p>
+                        <p class="callback"><a href="#"><img src="images/callback.png" alt="Call"> Request a call
+                                back</a></p>
                     </div>
                 </div>
             </div>
@@ -38,7 +39,7 @@
                     {!! $introducer->wpwu_content !!}
                 </div>
                 <div class="col-sm-12 col-md-6 tac">
-                    <img src="{{ $introducer->wpwu_image }}">
+                    <img src="{{ $introducer->wpwu_image }}" alt="Img">
                 </div>
             </div>
         </div>
@@ -50,28 +51,28 @@
                 <h4>How it Works</h4>
                 <div class="col-md-3">
                     <div class="hiw_step">
-                        <img src="{{ $introducer->hw_icon_one }}">
+                        <img src="{{ $introducer->hw_icon_one }}" alt="{{ $introducer->hwtitlen_one }}">
                         <p class="step_heading"><span>1. </span>{{ $introducer->hw_title_one }}</p>
                         <p>{{ $introducer->hw_subtitle_one }}</p>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="hiw_step">
-                        <img src="{{ $introducer->hw_icon_two }}">
+                        <img src="{{ $introducer->hw_icon_two }}" alt="{{ $introducer->hwtitlen_two }}">
                         <p class="step_heading"><span>2. </span>{{ $introducer->hw_title_two }}</p>
                         <p>{{ $introducer->hw_subtitle_two }}</p>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="hiw_step">
-                        <img src="{{ $introducer->hw_icon_three }}">
+                        <img src="{{ $introducer->hw_icon_three }}" alt="{{ $introducer->hw_ititlethree }}">
                         <p class="step_heading"><span>3. </span>{{ $introducer->hw_title_three }}</p>
                         <p>{{ $introducer->hw_subtitle_three }}</p>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="hiw_step">
-                        <img src="{{ $introducer->hw_icon_four }}">
+                        <img src="{{ $introducer->hw_icon_four }}" alt="{{ $introducer->hw_title_four }}">
                         <p class="step_heading"><span>4. </span>{{ $introducer->hw_title_four }}</p>
                         <p>{{ $introducer->hw_subtitle_four }}</p>
                     </div>
@@ -206,7 +207,7 @@
                 @foreach ($intTypes as $int)
                     <div class="col-md-2 mb-3">
                         <div class="introducer">
-                            <img src="{{ $int->icon }}">
+                            <img src="{{ $int->icon }}" alt="{{ $int->title }}">
                             <p>{{ $int->title }}</p>
                         </div>
                     </div>

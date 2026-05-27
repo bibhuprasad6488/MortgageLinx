@@ -61,11 +61,11 @@
             <div class="carousel-track">
                 <!-- Original logos -->
                 @foreach ($partners as $p)
-                    <div class="logo"><img src="{{ $p->partner_image }}" /></div>
+                    <div class="logo"><img src="{{ $p->partner_image }}" alt="Partner{{ $loop->iteration }}" /></div>
                 @endforeach
                 <!-- Duplicate for seamless loop -->
                 @foreach ($partners as $p)
-                    <div class="logo"><img src="{{ $p->partner_image }}" /></div>
+                    <div class="logo"><img src="{{ $p->partner_image }}" alt="Partner{{ $loop->iteration }}" /></div>
                 @endforeach
             </div>
         </div>

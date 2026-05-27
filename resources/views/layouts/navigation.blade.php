@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ route('home') }}">
                 <img src="{{ $setting->site_logo ? asset('storage/images/settings/' . $setting->site_logo) : '' }}"
-                    alt="{{ route('home') }}">
+                    alt="{{ $setting->site_title }}">
             </a>
 
             <!-- Mobile toggler -->
@@ -23,9 +23,8 @@
 
                     @foreach ($serviceCats as $sc)
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle"
-                                href="javascript:;"
-                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="javascript:;" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
                                 {{ $sc->title }}
                             </a>
                             <ul class="dropdown-menu rounded-0">

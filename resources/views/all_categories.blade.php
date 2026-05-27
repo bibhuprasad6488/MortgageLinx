@@ -32,7 +32,8 @@
                 @foreach ($serviceCats as $s)
                     <div class="col">
                         <div class="single_col">
-                            <p class="icon"><img src="{{ $s->cat_image }}" class="w-100" height="250"></p>
+                            <p class="icon"><img src="{{ $s->cat_image }}" class="w-100" height="250"
+                                    alt="{{ $s->title }}"></p>
                             <h5 class="title">{{ $s->title }}</h5>
                             <p class="description">{{ Str::limit($s->short_desc, 100, '...') }}</p>
                             <p><a

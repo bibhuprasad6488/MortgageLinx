@@ -49,6 +49,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
             return view('admin.dashboard');
         })->name('dashboard');
 
+        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::post('/change-password/{id}', [ProfileController::class, 'chnagePassword'])->name('chnage.password');
         // CMS Pages
         Route::resource('/homepage', CmsHomePageController::class)->names('homepage');
         Route::resource('/website-setting', WebsiteSettingController::class)->names('website-setting');

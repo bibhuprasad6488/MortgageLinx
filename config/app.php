@@ -54,6 +54,9 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
+
+    'recaptcha_site_key' => env('RECAPTCHA_SITE_KEY'),
+    'recaptcha_secret' => env('RECAPTCHA_SECRET_KEY'),
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

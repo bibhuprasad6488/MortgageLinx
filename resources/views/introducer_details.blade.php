@@ -153,6 +153,19 @@
                                     </label>
                                 </div>
                             </div>
+                            <div class="col-md-12">
+                                <div class="single_column mb-3">
+
+                                    <div class="mb-1 input-group">
+                                        <div class="g-recaptcha" data-sitekey="{{ config('app.recaptcha_site_key') }}">
+                                        </div>
+                                    </div>
+                                    <small id="captcha-error" class="error-message">
+                                        Please verify that you are not a robot.
+                                    </small>
+
+                                </div>
+                            </div>
                             <div class="col-md-12 text-center">
                                 <button class="btn cta px-4 py-2">
                                     Submit Application
@@ -261,8 +274,21 @@
 
 @endsection
 @push('scripts')
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script>
         document.getElementById('introducer_form').addEventListener('submit', function(e) {
+
+            // Remove previous error styles
+            document.querySelectorAll('.border-danger').forEach(el => {
+                el.classList.remove('border-danger');
+            });
+
+            // Hide captcha error initially
+            const captchaError = document.getElementById('captcha-error');
+
+            if (captchaError) {
+                captchaError.style.display = 'none';
+            }
 
             // Email Validation
             const emailField = document.querySelector('input[name="contact_email"]');
@@ -282,7 +308,6 @@
             const phoneField = document.querySelector('input[name="contact_phone"]');
             const phone = phoneField.value.trim();
 
-            // Allows only numbers and minimum 10 digits
             const phonePattern = /^[0-9]{10,15}$/;
 
             if (!phonePattern.test(phone)) {
@@ -293,8 +318,9 @@
                 return;
             }
 
-            // Checkbox Validation
+            // Referral Range Validation
             const checkboxes = document.querySelectorAll('input[name="range[]"]');
+
             let checkboxChecked = false;
 
             checkboxes.forEach(function(checkbox) {
@@ -309,8 +335,9 @@
                 return;
             }
 
-            // Radio Validation
+            // Preferred Contact Method Validation
             const radios = document.querySelectorAll('input[name="contact_method"]');
+
             let radioChecked = false;
 
             radios.forEach(function(radio) {
@@ -323,6 +350,24 @@
                 alert('Please select a preferred contact method.');
                 e.preventDefault();
                 return;
+            }
+
+            // Captcha Validation
+            const captchaBox = document.querySelector('.g-recaptcha');
+
+            if (captchaBox && typeof grecaptcha !== 'undefined') {
+
+                const captchaResponse = grecaptcha.getResponse();
+
+                if (captchaResponse.length === 0) {
+
+                    if (captchaError) {
+                        captchaError.style.display = 'block';
+                    }
+
+                    e.preventDefault();
+                    return;
+                }
             }
 
         });

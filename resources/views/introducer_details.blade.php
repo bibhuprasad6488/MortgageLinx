@@ -23,7 +23,8 @@
                                 {{ $intDetails->banner_btn_text }}</button>
                         </a>
                         <p class="callback">
-                            <a href="tel:{{ $setting->contact_phone }}"><img src="{{ asset('images/callback.png') }}">
+                            <a href="tel:{{ $setting->contact_phone }}"><img src="{{ asset('images/callback.png') }}"
+                                    alt="Call">
                                 Request a call
                                 back</a>
                         </p>
@@ -50,7 +51,7 @@
                 @foreach ($intTypes as $int)
                     <div class="col-md-2 br1">
                         <div class="our_introducer">
-                            <img src="{{ $int->icon }}">
+                            <img src="{{ $int->icon }}" alt="{{ $int->title }}">
                             <p>{{ $int->title }}</p>
                         </div>
                     </div>
@@ -183,35 +184,35 @@
                     <h4 class="ptb20">Why Partner With Mortgage Lynx</h4>
                     <div class="why_partner">
                         <p class="why_partner_partner_icon">
-                            <img src="{{ $intDetails->wpwm_icon_one }}">
+                            <img src="{{ $intDetails->wpwm_icon_one }}" alt="{{ $intDetails->wpwm_title_one }}">
                         </p>
                         <h5>{{ $intDetails->wpwm_title_one }}</h5>
                         <p>{{ $intDetails->wpwm_subtitle_one }}</p>
                     </div>
                     <div class="why_partner">
                         <p class="why_partner_partner_icon">
-                            <img src="{{ $intDetails->wpwm_icon_two }}">
+                            <img src="{{ $intDetails->wpwm_icon_two }}" alt="{{ $intDetails->wpwm_title_two }}">
                         </p>
                         <h5>{{ $intDetails->wpwm_title_two }}</h5>
                         <p>{{ $intDetails->wpwm_subtitle_two }}</p>
                     </div>
                     <div class="why_partner">
                         <p class="why_partner_partner_icon">
-                            <img src="{{ $intDetails->wpwm_icon_three }}">
+                            <img src="{{ $intDetails->wpwm_icon_three }}" alt="{{ $intDetails->wpwm_title_three }}">
                         </p>
                         <h5>{{ $intDetails->wpwm_title_three }}</h5>
                         <p>{{ $intDetails->wpwm_subtitle_three }}</p>
                     </div>
                     <div class="why_partner">
                         <p class="why_partner_partner_icon">
-                            <img src="{{ $intDetails->wpwm_icon_four }}">
+                            <img src="{{ $intDetails->wpwm_icon_four }}" alt="{{ $intDetails->wpwm_title_four }}">
                         </p>
                         <h5>{{ $intDetails->wpwm_title_four }}</h5>
                         <p>{{ $intDetails->wpwm_subtitle_four }}</p>
                     </div>
                     <div class="why_partner">
                         <p class="why_partner_partner_icon">
-                            <img src="{{ $intDetails->wpwm_icon_five }}">
+                            <img src="{{ $intDetails->wpwm_icon_five }}" alt="{{ $intDetails->wpwm_title_five }}">
                         </p>
                         <h5>{{ $intDetails->wpwm_title_five }}</h5>
                         <p>{{ $intDetails->wpwm_subtitle_five }}</p>
@@ -229,7 +230,8 @@
             <div class="row row-cols-1 row-cols-md-5 g-4 introducer_process">
 
                 <div class="col">
-                    <p class="img_container"><img src="{{ $intDetails->sp_icon_one }}"></p>
+                    <p class="img_container"><img src="{{ $intDetails->sp_icon_one }}"
+                            alt="{{ $intDetails->sptitlen_one }}"></p>
                     <span class="clearboth"></span>
                     <div>1</div>
                     <h5>{{ $intDetails->sp_title_one }}</h5>
@@ -237,7 +239,8 @@
                 </div>
 
                 <div class="col">
-                    <p class="img_container"><img src="{{ $intDetails->sp_icon_two }}"></p>
+                    <p class="img_container"><img src="{{ $intDetails->sp_icon_two }}"
+                            alt="{{ $intDetails->sptitlen_two }}"></p>
                     <span class="clearboth"></span>
                     <div>2</div>
                     <h5>{{ $intDetails->sp_title_two }}</h5>
@@ -245,7 +248,8 @@
                 </div>
 
                 <div class="col">
-                    <p class="img_container"><img src="{{ $intDetails->sp_icon_three }}"></p>
+                    <p class="img_container"><img src="{{ $intDetails->sp_icon_three }}"
+                            alt="{{ $intDetails->sp_ititlethree }}"></p>
                     <span class="clearboth"></span>
                     <div>3</div>
                     <h5>{{ $intDetails->sp_title_three }}</h5>
@@ -253,7 +257,8 @@
                 </div>
 
                 <div class="col">
-                    <p class="img_container"><img src="{{ $intDetails->sp_icon_four }}"></p>
+                    <p class="img_container"><img src="{{ $intDetails->sp_icon_four }}"
+                            alt="{{ $intDetails->sp_title_four }}"></p>
                     <span class="clearboth"></span>
                     <div>4</div>
                     <h5>{{ $intDetails->sp_title_four }}</h5>
@@ -261,7 +266,8 @@
                 </div>
 
                 <div class="col">
-                    <p class="img_container"><img src="{{ $intDetails->sp_icon_five }}"></p>
+                    <p class="img_container"><img src="{{ $intDetails->sp_icon_five }}"
+                            alt="{{ $intDetails->sp_title_five }}"></p>
                     <span class="clearboth"></span>
                     <div>5</div>
                     <h5>{{ $intDetails->sp_title_five }}</h5>

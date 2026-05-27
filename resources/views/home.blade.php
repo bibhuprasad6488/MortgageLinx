@@ -14,7 +14,7 @@
 
                     <!-- LEFT -->
                     <div class="col-lg-6 text-white">
-                        <p><img src="{{ $homePage->banner_logo_image }}"></p>
+                        <p><img src="{{ $homePage->banner_logo_image }}" alt="" alt="{{ $setting->site_title }}"></p>
                         {!! $homePage->banner_title !!}
                         <p class="banner-text">
                             {{ $homePage->banner_desc }}
@@ -69,7 +69,7 @@
             <div class="row g-4">
                 <div class="col-md-3 br1">
                     <div class="text-center">
-                        <img src="{{ $homePage->f_icon_one }}" class="">
+                        <img src="{{ $homePage->f_icon_one }}" alt="Icon1" class="">
                         <div>
                             <h5 class="service-title">
                                 {{ $homePage->f_title_one }}
@@ -80,7 +80,7 @@
                 </div>
                 <div class="col-md-3 br1">
                     <div class="text-center">
-                        <img src="{{ $homePage->f_icon_two }}" class="">
+                        <img src="{{ $homePage->f_icon_two }}" alt="Icon2" class="">
                         <div>
                             <h5 class="service-title">
                                 {{ $homePage->f_title_two }}
@@ -91,7 +91,7 @@
                 </div>
                 <div class="col-md-3 br1">
                     <div class="text-center">
-                        <img src="{{ $homePage->f_icon_three }}">
+                        <img src="{{ $homePage->f_icon_three }}" alt="Icon3">
 
                         <div>
                             <h5 class="service-title">
@@ -103,7 +103,7 @@
                 </div>
                 <div class="col-md-3 br1 bn">
                     <div class="text-center">
-                        <img src="{{ $homePage->f_icon_four }}">
+                        <img src="{{ $homePage->f_icon_four }}" alt="Icon4">
 
                         <div>
                             <h5 class="service-title">
@@ -130,7 +130,7 @@
                             <div class="col-md-6 ">
                                 <div class="text-center service">
                                     <a href="{{ route('service', $cat->slug) }}" class="text-dark text-decoration-none">
-                                        <img src="{{ $cat->cat_image }}" class="w-100">
+                                        <img src="{{ $cat->cat_image }}" alt="{{ $cat->title }}" class="w-100">
                                     </a>
                                     <div class="service-text">
                                         <a href="{{ route('service', $cat->slug) }}"
@@ -152,7 +152,7 @@
                     <div class="home-form p-4">
 
                         <h4 class="text-white mb-4">Get a Free Consultation</h4>
-                        <p><img src="images/struggling.png"></p>
+                        <p><img src="images/struggling.png" alt="Struggling"></p>
                         <h6>{{ $setting->cta_title }}</h6>
                         <h6>{{ $setting->cta_sub_title }}</h6>
                         <a href="{{ route('contact') }}">

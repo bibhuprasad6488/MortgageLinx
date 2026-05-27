@@ -53,7 +53,8 @@
 
                     <div class="col-md-3">
                         <div class="step_counter">
-                            <p class="img_container"><img src="{{ $protection->sp_icon_one }}"></p>
+                            <p class="img_container"><img src="{{ $protection->sp_icon_one }}"
+                                    alt="{{ $protection->sp_title_one }}"></p>
                             <p class="step_heading">{{ $protection->sp_title_one }}</p>
                             <span>1</span>
                             <p>{{ $protection->sp_subtitle_one }}</p>
@@ -61,7 +62,8 @@
                     </div>
                     <div class="col-md-3">
                         <div class="step_counter">
-                            <p class="img_container"><img src="{{ $protection->sp_icon_two }}"></p>
+                            <p class="img_container"><img src="{{ $protection->sp_icon_two }}"
+                                    alt="{{ $protection->sp_title_two }}"></p>
                             <p class="step_heading">{{ $protection->sp_title_two }}</p>
                             <span>2</span>
                             <p>{{ $protection->sp_subtitle_two }}</p>
@@ -69,7 +71,8 @@
                     </div>
                     <div class="col-md-3">
                         <div class="step_counter">
-                            <p class="img_container"><img src="{{ $protection->sp_icon_three }}"></p>
+                            <p class="img_container"><img src="{{ $protection->sp_icon_three }}"
+                                    alt="{{ $protection->sp_title_thre }}"></p>
                             <p class="step_heading">{{ $protection->sp_title_three }}</p>
                             <span>3</span>
                             <p>{{ $protection->sp_subtitle_three }}</p>
@@ -77,7 +80,8 @@
                     </div>
                     <div class="col-md-3">
                         <div class="step_counter bn">
-                            <p class="img_container"><img src="{{ $protection->sp_icon_four }}"></p>
+                            <p class="img_container"><img src="{{ $protection->sp_icon_four }}"
+                                    alt="{{ $protection->sp_title_four }}"></p>
                             <p class="step_heading">{{ $protection->sp_title_four }}</p>
                             <span>4</span>
                             <p>{{ $protection->sp_subtitle_four }}</p>

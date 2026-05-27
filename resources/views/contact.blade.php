@@ -22,7 +22,8 @@
                         </p>
 
                         <p class="callback">
-                            <a href="tel:{{ $setting->contact_phone }}"><img src="{{ asset('images/callback.png') }}">
+                            <a href="tel:{{ $setting->contact_phone }}"><img src="{{ asset('images/callback.png') }}"
+                                    alt="callback">
                                 Request a call
                                 back</a>
                         </p>
@@ -161,35 +162,35 @@
                             <h4 class="ptb20">Get in Touch</h4>
                             <div class="why_partner">
                                 <p class="why_partner_partner_icon">
-                                    <img src="{{ asset('images/chat.png') }}">
+                                    <img src="{{ asset('images/chat.png') }}" alt="Chat">
                                 </p>
                                 <h5>Call Us</h5>
                                 <p>{{ $setting->contact_phone }} <br>Mon - Fri: 9:00 am - 5:30 pm</p>
                             </div>
                             <div class="why_partner">
                                 <p class="why_partner_partner_icon">
-                                    <img src="{{ asset('images/chat.png') }}">
+                                    <img src="{{ asset('images/chat.png') }}" alt="Chat1">
                                 </p>
                                 <h5>Email Us</h5>
                                 <p>{{ $setting->contact_email }} <br>We aim to respond within 1 day</p>
                             </div>
                             <div class="why_partner">
                                 <p class="why_partner_partner_icon">
-                                    <img src="{{ asset('images/chat.png') }}">
+                                    <img src="{{ asset('images/chat.png') }}" alt="Caht2">
                                 </p>
                                 <h5>Visit Us</h5>
                                 <p>{!! $setting->address !!}</p>
                             </div>
                             <div class="why_partner">
                                 <p class="why_partner_partner_icon">
-                                    <img src="{{ asset('images/chat.png') }}">
+                                    <img src="{{ asset('images/chat.png') }}" alt="Caht3">
                                 </p>
                                 <h5>Live Chat</h5>
                                 <p>Chat with a member of our team <br> during business hours.</p>
                             </div>
                             <div class="why_partner bg-dark p-4 text-white rounded intp">
                                 <p class="why_partner_partner_icon">
-                                    <img src="{{ asset('images/icon28.png') }}">
+                                    <img src="{{ asset('images/icon28.png') }}" alt="Partnership">
                                 </p>
                                 <h5>Introducer Partnership</h5>
                                 <p>Are you a professional looking <br> partner with us? <br> <a
@@ -211,35 +212,35 @@
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4">
                 <div class="col br1 ">
                     <div class="text-center mortgage_col">
-                        <p class="icon"><img src="{{ asset('images/icon24.png') }}"></p>
+                        <p class="icon"><img src="{{ asset('images/icon24.png') }}" alt="icon24"></p>
                         <p class="title">Exper Advice</p>
                         <p class="description">Whole of market advice from experienced mortgage specialists.</p>
                     </div>
                 </div>
                 <div class="col br1 ">
                     <div class="text-center mortgage_col">
-                        <p class="icon"><img src="{{ asset('images/icon26.png') }}"></p>
+                        <p class="icon"><img src="{{ asset('images/icon26.png') }}" alt="icon26"></p>
                         <p class="title">Professional Service</p>
                         <p class="description">Tailored solutions to meet your unique needs.</p>
                     </div>
                 </div>
                 <div class="col br1 ">
                     <div class="text-center mortgage_col">
-                        <p class="icon"><img src="{{ asset('images/icon29.png') }}"></p>
+                        <p class="icon"><img src="{{ asset('images/icon29.png') }}" alt="icon29"></p>
                         <p class="title">Quick Response</p>
                         <p class="description">We work efficiently to keep you plans on track.</p>
                     </div>
                 </div>
                 <div class="col br1 ">
                     <div class="text-center mortgage_col">
-                        <p class="icon"><img src="{{ asset('images/icon24.png') }}"></p>
+                        <p class="icon"><img src="{{ asset('images/icon24.png') }}" alt="icon24"></p>
                         <p class="title">Trusted by Clients</p>
                         <p class="description">Built in trust, transparency and results.</p>
                     </div>
                 </div>
                 <div class="col br1 ">
                     <div class="text-center mortgage_col">
-                        <p class="icon"><img src="{{ asset('images/icon21.png') }}"></p>
+                        <p class="icon"><img src="{{ asset('images/icon21.png') }}" alt="icon21"></p>
                         <p class="title">No Obligation</p>
                         <p class="description">Speak to us with no pressure and no obligation.</p>
                     </div>

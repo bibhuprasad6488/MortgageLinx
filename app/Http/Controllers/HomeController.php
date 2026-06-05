@@ -382,7 +382,7 @@ class HomeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function termsPage(string $id)
+    public function termsPage()
     {
         $terms = TermsCondition::find(1);
         return view('terms', compact('terms'));

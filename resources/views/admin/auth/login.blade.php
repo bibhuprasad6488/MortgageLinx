@@ -288,12 +288,12 @@
             </div>
 
 
-            <div class="mb-1 input-group">
+            {{-- <div class="mb-1 input-group">
                 <div class="g-recaptcha" data-sitekey="{{ config('app.recaptcha_site_key') }}"></div>
             </div>
             <small id="captcha-error" class="error-message">
                 Please verify that you are not a robot.
-            </small>
+            </small> --}}
 
             <!-- Options -->
             <div class="form-options">

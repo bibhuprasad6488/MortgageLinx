@@ -42,7 +42,7 @@
                                         <td>{{ \Carbon\Carbon::parse($cat->created_at)->format('d-m-Y') }}</td>
                                         <td>
                                             <a href="{{ route('admin.service-categories.edit', $cat->id) }}"
-                                                class="btn btn-sm btn-primary @if (strtolower($cat->title) === 'protection') d-none @endif">Edit</a>
+                                                class="btn btn-sm btn-primary">Edit</a>
                                             <form action="{{ route('admin.service-categories.destroy', $cat->id) }}"
                                                 method="POST" style="display: inline-block;">
                                                 @csrf

@@ -249,11 +249,6 @@
         </div>
     </section>
 
-    <section class="map_section">
-        <div class="container-fluid map_view">
-            {!! $setting->site_map_key !!}
-        </div>
-    </section>
 
     @include('footer_upsection')
 @endsection

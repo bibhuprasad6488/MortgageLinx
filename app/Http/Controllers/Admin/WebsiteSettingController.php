@@ -88,6 +88,8 @@ class WebsiteSettingController extends Controller
             $setting->footer_text_two = $request->footer_text_two;
             $setting->cta_title = $request->cta_title;
             $setting->cta_sub_title = $request->cta_sub_title;
+            $setting->og_site_name = $request->og_site_name;
+            $setting->og_description = $request->og_description;
 
 
             // /** Upload Path */

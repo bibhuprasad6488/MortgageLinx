@@ -23,7 +23,7 @@
 
                     @foreach ($serviceCats as $sc)
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="javascript:;" role="button"
+                            <a class="nav-link dropdown-toggle" href="{{route ('service', $sc->slug)}}" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 {{ $sc->title }}
                             </a>

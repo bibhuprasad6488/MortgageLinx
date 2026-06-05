@@ -18,6 +18,7 @@ class ServiceCategoryController extends Controller
     {
         $categories = ServiceCategory::orderByDesc('id')->get()->map(function ($c) {
             $c->cat_image = $c->cat_image ? asset('storage/images/service_category/' . $c->cat_image) : '';
+            $c->footer_icon = $c->footer_icon ? asset('storage/images/service_category/' . $c->footer_icon) : '';
             return $c;
         });
         return view('admin.servicecategories.list', compact('categories'));
@@ -48,6 +49,9 @@ class ServiceCategoryController extends Controller
             $category->slug = Str::slug(trim($request->title));
             $category->short_desc = $request->short_desc;
             $category->show_on_home = $request->show_on_home ? 1 : 0;
+            $category->meta_title = $request->meta_title;
+            $category->meta_desc = $request->meta_desc;
+            $category->meta_keywords = $request->meta_keywords;
 
             // /** Upload Path */
             $destinationPath = public_path('storage/images/service_category/');
@@ -62,6 +66,15 @@ class ServiceCategoryController extends Controller
 
                 $file->move($destinationPath, $catImage);
                 $category->cat_image = $catImage;
+            }
+
+            // Footer Icon
+            if ($request->hasFile('footer_icon')) {
+                $file = $request->file('footer_icon');
+                $catfIcon = 'catfIcon_' . time() . '_' . $file->getClientOriginalName();
+
+                $file->move($destinationPath, $catfIcon);
+                $category->footer_icon = $catfIcon;
             }
 
             $category->save();
@@ -89,6 +102,8 @@ class ServiceCategoryController extends Controller
     {
         $category = ServiceCategory::find($id);
         $category->cat_image = $category->cat_image ? asset('storage/images/service_category/' . $category->cat_image) : '';
+        $category->footer_icon = $category->footer_icon ? asset('storage/images/service_category/' . $category->footer_icon) : '';
+
         return view('admin.servicecategories.edit', compact('category'));
     }
 
@@ -109,6 +124,9 @@ class ServiceCategoryController extends Controller
             $category->slug = Str::slug(trim($request->title));
             $category->short_desc = $request->short_desc;
             $category->show_on_home = $request->show_on_home ? 1 : 0;
+            $category->meta_title = $request->meta_title;
+            $category->meta_desc = $request->meta_desc;
+            $category->meta_keywords = $request->meta_keywords;
 
             // /** Upload Path */
             $destinationPath = public_path('storage/images/service_category/');
@@ -130,6 +148,21 @@ class ServiceCategoryController extends Controller
 
                 $file->move($destinationPath, $catImage);
                 $category->cat_image = $catImage;
+            }
+
+            if ($request->hasFile('footer_icon')) {
+                $file = $request->file('footer_icon');
+                $catfIcon = 'catfIcon_' . time() . '_' . $file->getClientOriginalName();
+
+                if (!empty($category->footer_icon)) {
+                    $oldFilePath = $destinationPath . $category->footer_icon;
+                    if (file_exists($oldFilePath)) {
+                        unlink($oldFilePath);
+                    }
+                }
+
+                $file->move($destinationPath, $catfIcon);
+                $category->footer_icon = $catfIcon;
             }
 
             $category->save();
@@ -167,6 +200,13 @@ class ServiceCategoryController extends Controller
 
             if (!empty($category->cat_image)) {
                 $oldFilePath = $destinationPath . $category->cat_image;
+                if (file_exists($oldFilePath)) {
+                    unlink($oldFilePath);
+                }
+            }
+
+            if (!empty($category->footer_icon)) {
+                $oldFilePath = $destinationPath . $category->footer_icon;
                 if (file_exists($oldFilePath)) {
                     unlink($oldFilePath);
                 }

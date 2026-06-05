@@ -15,6 +15,8 @@
     <meta name="title" content="@yield('meta_title', '')">
     <meta name="keywords" content="@yield('meta_keywords', '')">
     <meta name="description" content="@yield('meta_description', '')">
+    <meta property="og:site_name" content="{{ $setting->og_site_name }}">
+    <meta property="twitter:title" content="{{ $setting->og_site_name }}">
     <link rel="canonical" href="{{ url()->current() }}" />
 
     <!-- Favicon -->
@@ -76,6 +78,16 @@
         };
     </script>
     @stack('scripts')
+    <div class="floating-contact">
+        <a href="https://api.whatsapp.com/send?phone={{ $setting->contact_phone }}&text={{ $setting->wp_message }}"
+            target="_blank">
+            <img src="{{ asset('storage/images/whatsapp.png') }}" width="40" height="40" alt="WhatsApp">
+        </a>
+
+        <a href="tel:{{ $setting->contact_phone }}">
+            <img src="{{ asset('storage/images/phone.png') }}" width="40" height="40" alt="Phone">
+        </a>
+    </div>
 </body>
 
 </html>

@@ -30,7 +30,7 @@
                         <p>
                             <a href="{{ route('contact') }}">
                                 <button class="btn bannerbtn1 custom-btn">
-                                    Speak to a Specialist
+                                    Request Consultation
                                 </button>
                             </a>
                         </p>
@@ -124,10 +124,10 @@
     <section class="section brand_coloring pb-5">
         <div class="container">
             <div class="row g-4">
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <div class="row">
                         @foreach ($serviceCats as $cat)
-                            <div class="col-md-6 ">
+                            <div class="col-md-4 ">
                                 <div class="text-center service">
                                     <a href="{{ route('service', $cat->slug) }}" class="text-dark text-decoration-none">
                                         <img src="{{ $cat->cat_image }}" alt="{{ $cat->title }}" class="w-100">
@@ -146,20 +146,6 @@
                             <p class="tac py-4"><a href="{{ route('all-services') }}" class="site_branding fs-4">View All
                                     Services ></a></p>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="home-form p-4">
-
-                        <h4 class="text-white mb-4">Get a Free Consultation</h4>
-                        <p><img src="images/struggling.png" alt="Struggling"></p>
-                        <h6>{{ $setting->cta_title }}</h6>
-                        <h6>{{ $setting->cta_sub_title }}</h6>
-                        <a href="{{ route('contact') }}">
-                            <button type="submit" class="btn btn1 w-100 custom-btn">
-                                Request Consultation
-                            </button>
-                        </a>
                     </div>
                 </div>
             </div>

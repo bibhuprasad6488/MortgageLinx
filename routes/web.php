@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\AboutUsController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\CmsHomePageController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\IntroducerController;
+use App\Http\Controllers\Admin\OurProcessController;
 use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\PrivacyPolicyController;
 use App\Http\Controllers\Admin\ProtectionPageController;
@@ -12,6 +15,7 @@ use App\Http\Controllers\Admin\TermsAndConditionController;
 use App\Http\Controllers\Admin\WebsiteSettingController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -35,19 +39,30 @@ Route::get('/service/{slug}', [HomeController::class, 'serviceSinglePage'])->nam
 Route::get('/service-details/{slug}', [HomeController::class, 'serviceDetails'])->name('service-details');
 Route::get('/privacy-policy', [HomeController::class, 'privacyPage'])->name('privacy-policy');
 Route::get('/terms-of-business', [HomeController::class, 'termsPage'])->name('terms-of-business');
+Route::get('/about-us', [HomeController::class, 'about'])->name('about-us');
+Route::get('/our-process', [Homecontroller::class, 'process'])->name('process');
 
 
 // Admin Routes
 Route::prefix('admin')->name('admin.')->group(function () {
+
+    Route::get('/optimize', function () {
+        Artisan::call('cache:clear');
+        Artisan::call('view:clear');
+        Artisan::call('route:clear');
+        Artisan::call('config:cache');
+        return 'Command executed successfully!';
+        // return what you want
+    });
+
+
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
     Route::middleware(['auth'])->group(function () {
-        Route::get('/dashboard', function () {
-            return view('admin.dashboard');
-        })->name('dashboard');
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -56,6 +71,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('/homepage', CmsHomePageController::class)->names('homepage');
         Route::resource('/website-setting', WebsiteSettingController::class)->names('website-setting');
         Route::resource('/privacy-policy', PrivacyPolicyController::class)->names('privacy-policy');
+        Route::resource('/aboutus', AboutUsController::class)->names('aboutus');
+        Route::resource('/ourprocess', OurProcessController::class)->names('ourprocess');
         Route::resource('/terms-and-condition', TermsAndConditionController::class)->names('terms-and-condition');
         Route::resource('/service-categories', ServiceCategoryController::class)->names('service-categories');
         Route::resource('/services', ServiceController::class)->names('services');

@@ -6,7 +6,7 @@
                 <p class="tac"><img
                         src="{{ $setting->footer_logo ? asset('storage/images/settings/' . $setting->footer_logo) : '' }}"
                         class="w-100"></p>
-                <p class="tac">Expert mortgage and protection solutions tailored to your needs. Honest advice.
+                <p class="tac m-tac">Expert mortgage and protection solutions tailored to your needs. Honest advice.
                     Clearg guidance. Better outcomes.</p>
                 <hr class="hr1">
                 <div class="footer_column1_card">
@@ -58,25 +58,16 @@
             <div class="col-md-3 col-xs-12 mb-4 mb-md-0 third_column">
                 <p class="footer-title">COMPANY</p>
                 <ul class="footer-links">
-                    {{-- <li>
-                        <img src="{{ asset('images/right_arrow.png') }}" alt="Arrow"> About Us
-                    </li> --}}
                     <li>
-                        <a href="{{ route('contact') }}">
-                            <img src="{{ asset('images/right_arrow.png') }}" alt="Arrow"> Request Consultation
+                        <a href="{{ route('about-us') }}">
+                            <img src="{{ asset('images/right_arrow.png') }}" alt="Arrow">About Us
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('contact') }}">
-                            <img src="{{ asset('images/right_arrow.png') }}" alt="Arrow"> Speak to a Specialist
+                        <a href="{{ route('process') }}">
+                            <img src="{{ asset('images/right_arrow.png') }}" alt="Arrow"> Our Process
                         </a>
                     </li>
-                    {{-- <li>
-                           <img src="{{ asset('images/right_arrow.png') }}" alt="Arrow"> Our Process (Protection)
-                       </li>
-                       <li>
-                           <img src="{{ asset('images/right_arrow.png') }}" alt="Arrow"> Our Process (Mortgage)
-                       </li> --}}
                     <li>
                         <a href="{{ route('contact') }}">
                             <img src="{{ asset('images/right_arrow.png') }}" alt="Arrow"> Contact </a>

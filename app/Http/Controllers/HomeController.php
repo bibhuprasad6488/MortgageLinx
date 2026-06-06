@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AboutUs;
 use App\Models\BecomeAnIntroducer;
 use App\Models\BecomeAnIntroducerForm;
 use App\Models\CmsHomePage;
 use App\Models\ContactForm;
 use App\Models\Introducer;
 use App\Models\IntroducerType;
+use App\Models\OurProcess;
 use App\Models\Partner;
 use App\Models\PrivacyPolicy;
 use App\Models\Protection;
@@ -386,5 +388,28 @@ class HomeController extends Controller
     {
         $terms = TermsCondition::find(1);
         return view('terms', compact('terms'));
+    }
+
+    public function about()
+    {
+        $setting = SiteSetting::find(1);
+        $aboutUs = AboutUs::find(1);
+        if ($aboutUs) {
+            $aboutUs->banner_image = $aboutUs->banner_image ? asset('storage/images/cmspage/' . $aboutUs->banner_image) : '';
+            $aboutUs->story_right_image = $aboutUs->story_right_image ? asset('storage/images/cmspage/' . $aboutUs->story_right_image) : '';
+        }
+        return view('about', compact('setting', 'aboutUs'));
+    }
+
+    public function process()
+    {
+        $process = OurProcess::find(1);
+        if ($process) {
+            $process->banner_image = $process->banner_image ? asset('storage/images/cmspage/' . $process->banner_image) : '';
+            $process->wccu_image = $process->wccu_image ? asset('storage/images/cmspage/' . $process->wccu_image) : '';
+            $process->wccu_content = $process->wccu_content ? explode('/', trim($process->wccu_content)) : [];
+        }
+        // dd($process->wccu_content);
+        return view('process', compact('process'));
     }
 }

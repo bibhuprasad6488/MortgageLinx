@@ -48,9 +48,11 @@
 
     <link href="{{ asset('admin/assets/summernote/summernote.min.css') }}" rel="stylesheet">
     {{-- If using Laravel Vite (optional, remove if not needed) --}}
+
     @if (config('database.connections.mysql.username') === 'root')
-        @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     @endif
+
     <style>
         .fade-notify {
             opacity: 1;
@@ -118,6 +120,7 @@
     <script src="{{ asset('admin/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
     <script src="{{ asset('admin/js/plugin/chart.js/chart.min.js') }}"></script>
     {{-- <script src="{{ asset('admin/js/plugin/datatables/datatables.min.js') }}"></script> --}}
+    <script src="{{ asset('admin/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
     <script src="{{ asset('admin/js/plugin/sweetalert/sweetalert.min.js') }}"></script>
 
     <!-- Datatables -->
@@ -303,7 +306,7 @@
 
                 // Size validation
                 if (file.size > maxSize) {
-                    alert("Maximum allowed size is 2MB.");
+                    alert("Maximum allowed size is 3MB.");
                     return;
                 }
 

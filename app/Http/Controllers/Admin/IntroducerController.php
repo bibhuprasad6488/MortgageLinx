@@ -543,4 +543,9 @@ class IntroducerController extends Controller
             return back()->with('error', 'Error: ' . $th->getMessage());
         }
     }
+
+    public function introducersList()
+    {
+        //
+    }
 }

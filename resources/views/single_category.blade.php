@@ -6,7 +6,7 @@
 @section('content')
 
     <div id="mortgage" class="carousel slide" data-bs-ride="carousel"
-        style="background-image: url('{{ $serviceCat->cat_image }}')">
+         style="background-image: url('{{ $serviceCat->cat_image }}')"> 
 
         <!-- CONTENT OVERLAY (same as your current content) -->
         <div class="mask">
@@ -51,8 +51,7 @@
                 @foreach ($services as $s)
                     <div class="col br1 ">
                         <div class="text-center mortgage_col">
-                            <p class="icon"><img src="{{ $s->thumb_image ?? asset('images/icon24.png') }}"
-                                    alt="{{ $s->thumb_title ?? $s->title }}"></p>
+                            <p class="icon"><img src="{{ $s->thumb_image ?? asset('images/icon24.png') }}" alt="{{ $s->thumb_title ?? $s->title }}"></p>
                             <p class="title">{{ $s->thumb_title ?? $s->title }}</p>
                             <p class="description">{{ $s->thumb_short_desc ?? $s->short_desc }}</p>
                             <p><a href="{{ route('service-details', $s->slug) }}">Learn More &gt;</a></p>

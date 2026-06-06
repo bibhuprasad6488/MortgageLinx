@@ -92,7 +92,7 @@
                                     <label>Business Name</label>
                                     <input type="text" name="business_name"
                                         class="mb-1 form-control border-secondary rounded-0" required>
-                                    <label>Trading Name (if different)</label>
+                                    <label>FCA Number (if applicable)</label>
                                     <input type="text" name="trading_name"
                                         class="mb-1 form-control border-secondary rounded-0">
                                     <label>Your Role</label>

@@ -23,10 +23,16 @@
 
                     @foreach ($serviceCats as $sc)
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="{{route ('service', $sc->slug)}}" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+
+                            <a class="nav-link"
+                                href="@if ($sc->slug == 'protection') {{ route('protection') }}@else{{ route('service', $sc->slug) }} @endif">
                                 {{ $sc->title }}
                             </a>
+
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                            </a>
+
                             <ul class="dropdown-menu rounded-0">
                                 @foreach ($sc->services as $service)
                                     <li>

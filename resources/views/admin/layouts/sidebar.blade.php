@@ -41,12 +41,22 @@
                         <p>Cms Pages</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse {{ request()->routeIs(['admin.homepage.*', 'admin.privacy-policy.*', 'admin.terms-and-condition.*', 'admin.become-introducer.*', 'admin.protection-page.*', 'admin.introducer-details-page']) ? 'show' : '' }}"
+                    <div class="collapse {{ request()->routeIs(['admin.homepage.*', 'admin.privacy-policy.*', 'admin.terms-and-condition.*', 'admin.become-introducer.*', 'admin.protection-page.*', 'admin.introducer-details-page', 'admin.aboutus.index', 'admin.ourprocess.index']) ? 'show' : '' }}"
                         id="base">
                         <ul class="nav nav-collapse">
                             <li class="{{ request()->routeIs(['admin.homepage.index']) ? 'active' : '' }}">
                                 <a href="{{ route('admin.homepage.index') }}">
                                     <span class="sub-item">Home Page</span>
+                                </a>
+                            </li>
+                            <li class="{{ request()->routeIs(['admin.aboutus.index']) ? 'active' : '' }}">
+                                <a href="{{ route('admin.aboutus.index') }}">
+                                    <span class="sub-item">About Us</span>
+                                </a>
+                            </li>
+                            <li class="{{ request()->routeIs(['admin.ourprocess.index']) ? 'active' : '' }}">
+                                <a href="{{ route('admin.ourprocess.index') }}">
+                                    <span class="sub-item">Our Process</span>
                                 </a>
                             </li>
                             <li class="{{ request()->routeIs(['admin.become-introducer.index']) ? 'active' : '' }}">
@@ -95,12 +105,12 @@
                         <p>Partners</p>
                     </a>
                 </li>
-                <li class="nav-item {{ request()->routeIs(['admin.introducers-list']) ? 'active' : '' }} ">
+                {{-- <li class="nav-item {{ request()->routeIs(['admin.introducers-list']) ? 'active' : '' }} ">
                     <a href="{{ route('admin.introducers-list') }}">
                         <i class="fas fa-user-friends"></i>
                         <p>Introducers</p>
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item {{ request()->routeIs(['admin.website-setting.index']) ? 'active' : '' }} ">
                     <a href="{{ route('admin.website-setting.index') }}">
                         <i class="fas fa-cogs"></i>

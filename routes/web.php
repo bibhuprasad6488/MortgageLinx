@@ -38,7 +38,7 @@ Route::get('/services', [HomeController::class, 'allServices'])->name('all-servi
 Route::get('/service/{slug}', [HomeController::class, 'serviceSinglePage'])->name('service');
 Route::get('/service-details/{slug}', [HomeController::class, 'serviceDetails'])->name('service-details');
 Route::get('/privacy-policy', [HomeController::class, 'privacyPage'])->name('privacy-policy');
-Route::get('/terms-of-business', [HomeController::class, 'termsPage'])->name('terms-of-business');
+Route::get('/terms-and-conditions', [HomeController::class, 'termsPage'])->name('terms-of-business');
 Route::get('/about-us', [HomeController::class, 'about'])->name('about-us');
 Route::get('/our-process', [Homecontroller::class, 'process'])->name('process');
 

@@ -14,7 +14,7 @@
 
                     <!-- LEFT -->
                     <div class="col-lg-6 text-white">
-                        <p><img src="{{ $homePage->banner_logo_image }}" alt="" alt="{{ $setting->site_title }}"></p>
+                        {{-- <p><img src="{{ $homePage->banner_logo_image }}" alt="" alt="{{ $setting->site_title }}"></p> --}}
                         {!! $homePage->banner_title !!}
                         <p class="banner-text">
                             {{ $homePage->banner_desc }}
@@ -130,7 +130,7 @@
                             <div class="col-md-4 ">
                                 <div class="text-center service">
                                     <a href="{{ route('service', $cat->slug) }}" class="text-dark text-decoration-none">
-                                        <img src="{{ $cat->cat_image }}" alt="{{ $cat->title }}" class="w-100">
+                                        <img src="{{ $cat->cat_image }}" alt="{{ $cat->title }}" class="w-100" height="237">
                                     </a>
                                     <div class="service-text">
                                         <a href="{{ route('service', $cat->slug) }}"

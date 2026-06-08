@@ -6,8 +6,7 @@
                 <p class="tac"><img
                         src="{{ $setting->footer_logo ? asset('storage/images/settings/' . $setting->footer_logo) : '' }}"
                         class="w-100"></p>
-                <p class="tac m-tac">Expert mortgage and protection solutions tailored to your needs. Honest advice.
-                    Clearg guidance. Better outcomes.</p>
+                <p class="tac m-tac">{{ optional($setting)->footer_text_two }}</p>
                 <hr class="hr1">
                 <div class="footer_column1_card">
                     <div class="icon_text_contaiiner">
@@ -73,6 +72,11 @@
                             <img src="{{ asset('images/right_arrow.png') }}" alt="Arrow"> Contact </a>
                     </li>
                     <li>
+                        <a href="{{ route('introducer') }}">
+                            <img src="{{ asset('images/right_arrow.png') }}" alt="Arrow"> Introducer Partnership
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{ route('become-an-introducer') }}">
                             <img src="{{ asset('images/right_arrow.png') }}" alt="Arrow"> Become an Introducer
                         </a>
@@ -100,8 +104,7 @@
                         </a>
                     </li>
                     <li>
-                        <img src="{{ asset('images/cloud_icon.png') }}" alt="Cloud"> Mon-Fri: 9.00 AM - 6.00 PM
-                        Sat-Sun: Closed
+                        <img src="{{ asset('images/clock.png') }}" alt="Cloud"> Mon-Sat | 9.00am - 6.00pm
                     </li>
                 </ul>
             </div>

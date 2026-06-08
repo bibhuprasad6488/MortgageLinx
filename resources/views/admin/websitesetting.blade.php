@@ -251,15 +251,15 @@
                                 <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Site
                                     Footer Text</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <textarea name="footer_text_one" id="footer_text_one" class="form-control " rows="3">{{ optional($setting)->footer_text_one }}</textarea>
+                                    <textarea name="footer_text_one" id="footer_text_one" class="form-control " rows="5">{{ optional($setting)->footer_text_one }}</textarea>
                                 </div>
                             </div>
 
-                            <div class="form-group row d-none mb-2">
-                                <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Site
-                                    Footer Text Two</label>
+                            <div class="form-group row mb-2">
+                                <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">
+                                    Footer Logo Text </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <textarea name="footer_text_two" id="cont" class="form-control " rows="3">{{ optional($setting)->footer_text_two }}</textarea>
+                                    <textarea name="footer_text_two" id="footer_text_two" class="form-control " rows="5">{{ optional($setting)->footer_text_two }}</textarea>
                                 </div>
                             </div>
 

@@ -20,6 +20,10 @@
                         <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}"
                             href="{{ route('home') }}">Home</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('about-us') ? 'active' : '' }}"
+                            href="{{ route('about-us') }}">About Us</a>
+                    </li>
 
                     @foreach ($serviceCats as $sc)
                         <li class="nav-item dropdown">

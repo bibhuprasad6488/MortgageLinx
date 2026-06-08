@@ -39,7 +39,7 @@
                     {!! $introducer->wpwu_content !!}
                 </div>
                 <div class="col-sm-12 col-md-6 tac">
-                    <img src="{{ $introducer->wpwu_image }}" alt="Img">
+                    <img src="{{ $introducer->wpwu_image }}" alt="Img" class="w-100">
                 </div>
             </div>
         </div>

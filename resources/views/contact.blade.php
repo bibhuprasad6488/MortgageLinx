@@ -4,21 +4,20 @@
 @section('meta_description', '')
 @section('content')
 
-    <div id="introducer" class="carousel slide" data-bs-ride="carousel"
-        style="background-image: url('{{ asset('images/001.jpg') }}');">
-
+    <div id="contact_banner" class="carousel slide" data-bs-ride="carousel">
+        <img src="{{ asset('images/con_banner.png') }}" alt="Conatct Banner" class="w-100">
         <!-- CONTENT OVERLAY (same as your current content) -->
         <div class="mask">
             <div class="container h-100">
-                <div class="row h-100 align-items-center">
+                {{-- <div class="row h-100 align-items-center">
 
-                    <!-- LEFT -->
                     <div class="col-lg-6 text-white">
-                        <h4 class="mb-3 page-banner-title">Contact Us</h4>
-                        <h5 class="page-banner-subtitle">We're Here to Help</h5>
+                        <h6 class="cnt-badge">CONTACT US</h6>
                         <hr class="hr2">
+                        <h1 class="page-banner-title">We're Here to</h1>
+                        <h5 class="page-banner-subtitle">Help You</h5>
                         <p class="page_banner-text">Have a question or need expert mortgage advice? <br> Get in touch with
-                            our team today.
+                            our friendly team today and <br> we'll help you find the right solution for your needs.
                         </p>
 
                         <p class="callback">
@@ -28,7 +27,7 @@
                                 back</a>
                         </p>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
 
@@ -162,28 +161,28 @@
                             <h4 class="ptb20">Get in Touch</h4>
                             <div class="why_partner">
                                 <p class="why_partner_partner_icon">
-                                    <img src="{{ asset('images/chat.png') }}" alt="Chat">
+                                    <img src="{{ asset('images/contact_call.png') }}" alt="Call" width="40">
                                 </p>
                                 <h5>Call Us</h5>
                                 <p>{{ $setting->contact_phone }} <br>Mon - Fri: 9:00 am - 5:30 pm</p>
                             </div>
                             <div class="why_partner">
                                 <p class="why_partner_partner_icon">
-                                    <img src="{{ asset('images/chat.png') }}" alt="Chat1">
+                                    <img src="{{ asset('images/contact_email.png') }}" alt="Email" width="40">
                                 </p>
                                 <h5>Email Us</h5>
                                 <p>{{ $setting->contact_email }} <br>We aim to respond within 1 day</p>
                             </div>
                             <div class="why_partner">
                                 <p class="why_partner_partner_icon">
-                                    <img src="{{ asset('images/chat.png') }}" alt="Caht2">
+                                    <img src="{{ asset('images/contact_location.png') }}" alt="Location" width="40">
                                 </p>
-                                <h5>Visit Us</h5>
+                                <h5>Address</h5>
                                 <p>{!! $setting->address !!}</p>
                             </div>
                             <div class="why_partner">
                                 <p class="why_partner_partner_icon">
-                                    <img src="{{ asset('images/chat.png') }}" alt="Caht3">
+                                    <img src="{{ asset('images/chat.png') }}" alt="Chat" width="40">
                                 </p>
                                 <h5>Live Chat</h5>
                                 <p>Chat with a member of our team <br> during business hours.</p>

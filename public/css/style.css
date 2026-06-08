@@ -16,9 +16,25 @@ background: light key: F2F2F2 , •	Hex: #777777
 2
 \
 */
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('fonts/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('fonts/Inter-VariableFont_opsz_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
 
 
 body {
+    font-family: 'Inter' !important;
     color: #1a1a1a;
     background: #fcf7fc !important;
 }
@@ -95,7 +111,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Playfair Display';
 }
 
 .navbar-brand {
@@ -755,7 +771,7 @@ h6 {
 }
 
 .tbb2 .nav-item {
-    padding: 0px 8PX;
+    padding: 0px 2PX;
 }
 
 .navbar-brand img {
@@ -847,7 +863,7 @@ h6 {
 }
 
 .my_menu li {
-    font-size: 18px;
+    font-size: 15px;
 }
 
 .hero {
@@ -877,7 +893,7 @@ h6 {
 }
 
 .banner-title {
-    font-size: 58px;
+    font-size: 44px;
 }
 
 .inner-page-title {
@@ -918,6 +934,31 @@ h6 {
     background-position: center;
     background-repeat: no-repeat;
     padding: 80px 0;
+}
+
+#contact_banner {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    /* background: url("../images/introducer.jpg"); */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* padding: 80px 0; */
+}
+
+#contact_banner .cnt-badge {
+    color: #C59108;
+}
+
+#contact_banner img {
+    width: 100%;
+}
+
+#contact_banner .page-banner-title,
+.page-banner-subtitle {
+    font-weight: 600;
 }
 
 #about_us {

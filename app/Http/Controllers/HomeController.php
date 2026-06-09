@@ -7,6 +7,7 @@ use App\Models\BecomeAnIntroducer;
 use App\Models\BecomeAnIntroducerForm;
 use App\Models\CmsHomePage;
 use App\Models\ContactForm;
+use App\Models\ContactUsPage;
 use App\Models\Introducer;
 use App\Models\IntroducerType;
 use App\Models\OurProcess;
@@ -70,7 +71,16 @@ class HomeController extends Controller
     public function contactPage()
     {
         $setting = SiteSetting::find(1);
-        return view('contact', compact('setting'));
+        $contactPage = ContactUsPage::find(1);
+        if ($contactPage) {
+            $contactPage->banner_image = $contactPage->banner_image ? asset('storage/images/cmspage/' . $contactPage->banner_image) : '';
+            $contactPage->wccml_icon_one = $contactPage->wccml_icon_one ? asset('storage/images/cmspage/' . $contactPage->wccml_icon_one) : '';
+            $contactPage->wccml_icon_two = $contactPage->wccml_icon_two ? asset('storage/images/cmspage/' . $contactPage->wccml_icon_two) : '';
+            $contactPage->wccml_icon_three = $contactPage->wccml_icon_three ? asset('storage/images/cmspage/' . $contactPage->wccml_icon_three) : '';
+            $contactPage->wccml_icon_four = $contactPage->wccml_icon_four ? asset('storage/images/cmspage/' . $contactPage->wccml_icon_four) : '';
+            $contactPage->wccml_icon_five = $contactPage->wccml_icon_five ? asset('storage/images/cmspage/' . $contactPage->wccml_icon_five) : '';
+        }
+        return view('contact', compact('setting', 'contactPage'));
     }
 
     public function contactFormStore(Request $request)

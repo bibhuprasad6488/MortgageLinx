@@ -41,7 +41,7 @@
                         <p>Cms Pages</p>
                         <span class="caret"></span>
                     </a>
-                    <div class="collapse {{ request()->routeIs(['admin.homepage.*', 'admin.privacy-policy.*', 'admin.terms-and-condition.*', 'admin.become-introducer.*', 'admin.protection-page.*', 'admin.introducer-details-page', 'admin.aboutus.index', 'admin.ourprocess.index']) ? 'show' : '' }}"
+                    <div class="collapse {{ request()->routeIs(['admin.homepage.*', 'admin.privacy-policy.*', 'admin.terms-and-condition.*', 'admin.become-introducer.*', 'admin.protection-page.*', 'admin.introducer-details-page', 'admin.aboutus.index', 'admin.ourprocess.index', 'admin.contactus.*']) ? 'show' : '' }}"
                         id="base">
                         <ul class="nav nav-collapse">
                             <li class="{{ request()->routeIs(['admin.homepage.index']) ? 'active' : '' }}">
@@ -52,6 +52,11 @@
                             <li class="{{ request()->routeIs(['admin.aboutus.index']) ? 'active' : '' }}">
                                 <a href="{{ route('admin.aboutus.index') }}">
                                     <span class="sub-item">About Us</span>
+                                </a>
+                            </li>
+                            <li class="{{ request()->routeIs(['admin.contactus.index']) ? 'active' : '' }}">
+                                <a href="{{ route('admin.contactus.index') }}">
+                                    <span class="sub-item">Contact Us</span>
                                 </a>
                             </li>
                             <li class="{{ request()->routeIs(['admin.ourprocess.index']) ? 'active' : '' }}">

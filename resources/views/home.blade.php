@@ -20,9 +20,9 @@
                             {{ $homePage->banner_desc }}
                         </p>
 
-                        <a class="btn btn-outline-light btn-lg m-2 rounded-0" href="{{ route('contact') }}">
+                        {{-- <a class="btn btn-outline-light btn-lg m-2 rounded-0" href="{{ route('contact') }}">
                             {{ $homePage->banner_btn_text }}
-                        </a>
+                        </a> --}}
                     </div>
 
                     <!-- RIGHT -->

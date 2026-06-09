@@ -37,7 +37,7 @@
                     </div>
                 </li>
             @endforeach
-            <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact Us</a></li>
+            {{-- <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact Us</a></li> --}}
 
             {{-- <li class="nav-item">
                 <a class="nav-link align-items-center" data-bs-toggle="collapse" href="#btlSubMenu" role="button"
@@ -120,7 +120,7 @@
         </ul>
         <div class="ms-lg-3 text-center">
             <a href="{{ route('contact') }}" class="btn cta px-4 py-2">
-                Speak to a Specialist
+                Get Mortgage Advice
             </a>
         </div>
     </div>

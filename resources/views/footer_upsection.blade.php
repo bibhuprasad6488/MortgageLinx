@@ -78,7 +78,7 @@
                     <img src="{{ asset('images/icon31.png') }}" class="fl">
                     <div>
                         <h4>Prefer to speak now?</h4>
-                        <p>Call our team on {{ $setting->contact_phone }} <br> Mon - Fri 9:00am - 5:30pm</p>
+                        <p>Call our team on {{ $setting->contact_phone }} <br> Mon - Sat 9:00am - 6:00pm</p>
                     </div>
                 </div>
                 <div class="col-xs-12 col-md-6 text-center right_container">

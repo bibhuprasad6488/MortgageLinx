@@ -771,7 +771,7 @@ h6 {
 }
 
 .tbb2 .nav-item {
-    padding: 0px 2PX;
+    padding: 0px 5px;
 }
 
 .navbar-brand img {
@@ -943,18 +943,18 @@ h6 {
     flex-direction: column;
     /* background: url("../images/introducer.jpg"); */
     background-size: cover;
-    background-position: center;
+    background-position: top center;
     background-repeat: no-repeat;
-    /* padding: 80px 0; */
+    padding: 100px 0 150px;
 }
 
 #contact_banner .cnt-badge {
-    color: #C59108;
+    color: #FFC143;
 }
 
-#contact_banner img {
+/* #contact_banner img {
     width: 100%;
-}
+} */
 
 #contact_banner .page-banner-title,
 .page-banner-subtitle {
@@ -1754,6 +1754,10 @@ select {
     }
 }
 
+.offcanvas.show {
+    z-index: 9999;
+}
+
 @media (min-width: 350px) and (max-width: 449px) {
     .navbar-brand img {
         max-width: 250px;
@@ -1761,6 +1765,10 @@ select {
 
     .mortgage_process::before {
         border-top: none;
+    }
+
+    .fl {
+        width: 90px;
     }
 
     .site-footer img {
@@ -1812,6 +1820,11 @@ select {
 
     #about_us .page-banner-title {
         font-size: 33px;
+    }
+
+    #contact_banner {
+        background-position: center;
+        padding: 20px 0 50px;
     }
 
     .page-banner-subtitle {
@@ -1911,8 +1924,16 @@ select {
         width: 190px !important;
     }
 
+    .footer-links li img {
+        width: 35px !important;
+    }
+
     .site-footer .certified-img {
         width: 100px !important;
+    }
+
+    .footer_row_middle .pl30 {
+        padding-left: 13px;
     }
 
     .banner-title {
@@ -1965,6 +1986,10 @@ select {
         width: 190px !important;
     }
 
+    .footer-links li img {
+        width: 35px !important;
+    }
+
     .site-footer .certified-img {
         width: 90px !important;
     }
@@ -2000,6 +2025,10 @@ select {
 
     .site-footer img {
         width: 190px !important;
+    }
+
+    .footer-links li img {
+        width: 35px !important;
     }
 
     .site-footer .certified-img {

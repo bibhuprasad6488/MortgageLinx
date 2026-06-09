@@ -50,10 +50,10 @@
                         </li>
                     @endforeach
 
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}"
                             href="{{ route('contact') }}">Contact Us</a>
-                    </li>
+                    </li> --}}
                     {{-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -97,7 +97,7 @@
                 </ul>
                 <div class="ms-lg-3">
                     <a href="{{ route('contact') }}" class="btn cta px-4 py-2">
-                        Speak to a Specialist
+                        Get Mortgage Advice
                     </a>
                 </div>
             </div>

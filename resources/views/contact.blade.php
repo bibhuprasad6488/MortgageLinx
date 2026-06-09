@@ -1,33 +1,34 @@
 @extends('layouts.app')
 @section('title', 'Contact Us')
-@section('meta_title', '')
-@section('meta_description', '')
+@section('meta_title', optional($contactPage)->meta_title)
+@section('meta_description', optional($contactPage)->meta_desc)
+@section('meta_keywords', optional($contactPage)->meta_keywords)
 @section('content')
 
-    <div id="contact_banner" class="carousel slide" data-bs-ride="carousel">
-        <img src="{{ asset('images/con_banner.png') }}" alt="Conatct Banner" class="w-100">
+    <div id="contact_banner" class="carousel slide" data-bs-ride="carousel"
+        style="background-image: url('{{ optional($contactPage)->banner_image }}')">
+        {{-- <img src="{{ asset('images/con_banner.png') }}" alt="Conatct Banner" class="w-100"> --}}
         <!-- CONTENT OVERLAY (same as your current content) -->
         <div class="mask">
             <div class="container h-100">
-                {{-- <div class="row h-100 align-items-center">
+                <div class="row h-100 align-items-center">
 
                     <div class="col-lg-6 text-white">
-                        <h6 class="cnt-badge">CONTACT US</h6>
+                        <h6 class="cnt-badge">{{ optional($contactPage)->page_title }}</h6>
                         <hr class="hr2">
-                        <h1 class="page-banner-title">We're Here to</h1>
-                        <h5 class="page-banner-subtitle">Help You</h5>
-                        <p class="page_banner-text">Have a question or need expert mortgage advice? <br> Get in touch with
-                            our friendly team today and <br> we'll help you find the right solution for your needs.
+                        <h1 class="page-banner-title">{{ optional($contactPage)->banner_title }}</h1>
+                        <h5 class="page-banner-subtitle">{{ optional($contactPage)->banner_sub_title }}</h5>
+                        <p class="page_banner-text">{!! optional($contactPage)->banner_desc !!}
                         </p>
 
-                        <p class="callback">
+                        {{-- <p class="callback">
                             <a href="tel:{{ $setting->contact_phone }}"><img src="{{ asset('images/callback.png') }}"
                                     alt="callback">
                                 Request a call
                                 back</a>
-                        </p>
+                        </p> --}}
                     </div>
-                </div> --}}
+                </div>
             </div>
         </div>
 
@@ -164,7 +165,7 @@
                                     <img src="{{ asset('images/contact_call.png') }}" alt="Call" width="40">
                                 </p>
                                 <h5>Call Us</h5>
-                                <p>{{ $setting->contact_phone }} <br>Mon - Fri: 9:00 am - 5:30 pm</p>
+                                <p>{{ $setting->contact_phone }} <br>Mon - Sat: 9.00 am - 6.00 pm</p>
                             </div>
                             <div class="why_partner">
                                 <p class="why_partner_partner_icon">
@@ -211,37 +212,42 @@
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4">
                 <div class="col br1 ">
                     <div class="text-center mortgage_col">
-                        <p class="icon"><img src="{{ asset('images/icon24.png') }}" alt="icon24"></p>
-                        <p class="title">Exper Advice</p>
-                        <p class="description">Whole of market advice from experienced mortgage specialists.</p>
+                        <p class="icon"><img src="{{ optional($contactPage)->wccml_icon_one }}" width="45"
+                                alt="icon24"></p>
+                        <p class="title">{{ optional($contactPage)->wccml_title_one }}</p>
+                        <p class="description">{{ optional($contactPage)->wccml_subtitle_one }}</p>
                     </div>
                 </div>
                 <div class="col br1 ">
                     <div class="text-center mortgage_col">
-                        <p class="icon"><img src="{{ asset('images/icon26.png') }}" alt="icon26"></p>
-                        <p class="title">Professional Service</p>
-                        <p class="description">Tailored solutions to meet your unique needs.</p>
+                        <p class="icon"><img src="{{ optional($contactPage)->wccml_icon_two }}" width="45"
+                                alt="icon24"></p>
+                        <p class="title">{{ optional($contactPage)->wccml_title_two }}</p>
+                        <p class="description">{{ optional($contactPage)->wccml_subtitle_two }}</p>
                     </div>
                 </div>
                 <div class="col br1 ">
                     <div class="text-center mortgage_col">
-                        <p class="icon"><img src="{{ asset('images/icon29.png') }}" alt="icon29"></p>
-                        <p class="title">Quick Response</p>
-                        <p class="description">We work efficiently to keep you plans on track.</p>
+                        <p class="icon"><img src="{{ optional($contactPage)->wccml_icon_three }}" width="45"
+                                alt="icon24"></p>
+                        <p class="title">{{ optional($contactPage)->wccml_title_three }}</p>
+                        <p class="description">{{ optional($contactPage)->wccml_subtitle_three }}</p>
                     </div>
                 </div>
                 <div class="col br1 ">
                     <div class="text-center mortgage_col">
-                        <p class="icon"><img src="{{ asset('images/icon24.png') }}" alt="icon24"></p>
-                        <p class="title">Trusted by Clients</p>
-                        <p class="description">Built in trust, transparency and results.</p>
+                        <p class="icon"><img src="{{ optional($contactPage)->wccml_icon_four }}" width="45"
+                                alt="icon24"></p>
+                        <p class="title">{{ optional($contactPage)->wccml_title_four }}</p>
+                        <p class="description">{{ optional($contactPage)->wccml_subtitle_four }}</p>
                     </div>
                 </div>
                 <div class="col br1 ">
                     <div class="text-center mortgage_col">
-                        <p class="icon"><img src="{{ asset('images/icon21.png') }}" alt="icon21"></p>
-                        <p class="title">No Obligation</p>
-                        <p class="description">Speak to us with no pressure and no obligation.</p>
+                        <p class="icon"><img src="{{ optional($contactPage)->wccml_icon_five }}" width="45"
+                                alt="icon24"></p>
+                        <p class="title">{{ optional($contactPage)->wccml_title_five }}</p>
+                        <p class="description">{{ optional($contactPage)->wccml_subtitle_five }}</p>
                     </div>
                 </div>
             </div>

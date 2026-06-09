@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AboutUsController;
 use App\Http\Controllers\Admin\Auth\LoginController;
+use App\Http\Controllers\Admin\CmsContactPageController;
 use App\Http\Controllers\Admin\CmsHomePageController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\IntroducerController;
@@ -69,6 +70,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/change-password/{id}', [ProfileController::class, 'chnagePassword'])->name('chnage.password');
         // CMS Pages
         Route::resource('/homepage', CmsHomePageController::class)->names('homepage');
+        Route::resource('/contactus', CmsContactPageController::class)->names('contactus');
         Route::resource('/website-setting', WebsiteSettingController::class)->names('website-setting');
         Route::resource('/privacy-policy', PrivacyPolicyController::class)->names('privacy-policy');
         Route::resource('/aboutus', AboutUsController::class)->names('aboutus');

@@ -330,13 +330,13 @@
             </form>
         </div>
         <div class="col-md-6">
-            <form action="{{ route('admin.store-int-type') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Introducer Type Details</h4>
-                    </div>
-                    <div class="card-body">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Introducer Type Details</h4>
+                </div>
+                <div class="card-body">
+                    <form action="{{ route('admin.store-int-type') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
                         <div class="form-group row  mb-2">
                             <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">
                                 Title
@@ -374,54 +374,54 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row my-2">
-                            <div class="col-md-12">
+                    </form>
+                    <div class="row my-2">
+                        <div class="col-md-12">
 
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table id="dataTable"
-                                                class="display table table-striped table-hover table-bordered">
-                                                <thead>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table id="dataTable"
+                                            class="display table table-striped table-hover table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Sl,No</th>
+                                                    <th>Title</th>
+                                                    <th>Icon</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($intTypes as $int)
                                                     <tr>
-                                                        <th>Sl,No</th>
-                                                        <th>Title</th>
-                                                        <th>Icon</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @foreach ($intTypes as $int)
-                                                        <tr>
-                                                            <td>{{ $loop->iteration }}</td>
-                                                            <td>{{ $int->title }}</td>
-                                                            <td>
-                                                                <img @if ($int && $int->icon) src="{{ $int->icon }}"@else
+                                                        <td>{{ $loop->iteration }}</td>
+                                                        <td>{{ $int->title }}</td>
+                                                        <td>
+                                                            <img @if ($int && $int->icon) src="{{ $int->icon }}"@else
                                                             src="{{ asset('admin/img/no-img.png') }}" @endif
-                                                                    alt="Partner" width="30" class="rounded">
-                                                            </td>
-                                                            <td>
-                                                                <form
-                                                                    action="{{ route('admin.become-introducer.destroy', $int->id) }}"
-                                                                    method="POST" style="display: inline-block;">
-                                                                    @csrf
-                                                                    @method('DELETE')
-                                                                    <button type="submit" class="btn btn-sm btn-danger"
-                                                                        onclick="return confirm('Are you sure you want to delete this?');">Delete</button>
-                                                                </form>
-                                                            </td>
-                                                        </tr>
-                                                    @endforeach
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                                                alt="Partner" width="30" class="rounded">
+                                                        </td>
+                                                        <td>
+                                                            <form
+                                                                action="{{ route('admin.become-introducer.destroy', $int->id) }}"
+                                                                method="POST" style="display: inline-block;">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" class="btn btn-sm btn-danger"
+                                                                    onclick="return confirm('Are you sure you want to delete this?');">Delete</button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 @endsection

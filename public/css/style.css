@@ -1027,11 +1027,15 @@ h6 {
 }
 
 .footer_top .right_container .btn1 {
-    border: 1px solid #000;
+    /* border: 1px solid #fff; */
+    background: #000 !important;
     margin-top: 20px;
+    color: #fff;
 }
 
-
+.footer_top .right_container .btn1:hover{
+    background: #333131 !important;
+}
 .services {
     position: relative;
     overflow: hidden;
@@ -1502,9 +1506,13 @@ marquee .partner-card img {
 
 .site-footer .cta {
     padding: 10px;
-    color: #fff;
+    color: #000;
     width: 100%;
     border-radius: 10px;
+}
+
+.site-footer .cta:hover {
+    color: #ccc;
 }
 
 .social-box img {

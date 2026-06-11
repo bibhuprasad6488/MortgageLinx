@@ -18,7 +18,7 @@
                     </div>
                     <a class="cta btn" href="{{ route('contact') }}">Request Consultation</a>
                 </div>
-                <p class="tac">FOLLOW US</p>
+                <p class="tac mt-4">FOLLOW US</p>
                 <div class="footer-socials">
                     <div class="social-box">
                         <img src="{{ asset('images/fb.png') }}" alt="Facebook">

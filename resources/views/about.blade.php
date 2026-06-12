@@ -38,6 +38,15 @@
                         <hr class="hr2">
                         {!! optional($aboutUs)->our_story_desc !!}
                     </div>
+                </div>
+                <div class="col-md-7">
+                    <p class="story_img_sec">
+                        <img src="{{ optional($aboutUs)->story_right_image }}" alt="About Us" class="w-100">
+                    </p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-5 order-2 order-md-1">
                     @if ($aboutUs->consultation_show)
                         <div class="home-form p-4">
 
@@ -53,10 +62,8 @@
                         </div>
                     @endif
                 </div>
-                <div class="col-md-7 pl30">
-                    <p class="story_img_sec">
-                        <img src="{{ optional($aboutUs)->story_right_image }}" alt="About Us" class="w-100">
-                    </p>
+                <div class="col-md-7 order-1 order-md-2">
+
                     {!! optional($aboutUs)->story_right_desc !!}
                 </div>
             </div>

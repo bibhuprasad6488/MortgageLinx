@@ -18,23 +18,40 @@
 
             @foreach ($serviceCats as $sc)
                 <li class="nav-item">
-                    <a class="nav-link align-items-center" data-bs-toggle="collapse"
-                        href="#aboutSubMenu{{ $loop->iteration }}" role="button" aria-expanded="false"
-                        aria-controls="aboutSubMenu{{ $loop->iteration }}">
-                        {{ $sc->title }}
-                        <span class="ms-2">+</span>
-                    </a>
+                    <div class="d-flex justify-content-between align-items-center">
+                        {{-- Clickable Category Link --}}
+                        <a class="nav-link "
+                            href="@if ($sc->slug == 'protection') {{ route('protection') }}
+                    @else
+                        {{ route('service', $sc->slug) }} @endif">
+                            {{ $sc->title }}
+                        </a>
 
-                    <div class="collapse" id="aboutSubMenu{{ $loop->iteration }}">
-                        <ul class="navbar-nav ps-3 mt-2">
-                            @foreach ($sc->services as $service)
-                                <li class="nav-item">
-                                    <a class="nav-link fs-5"
-                                        href="{{ route('service-details', $service->slug) }}">{{ $service->title }}</a>
-                                </li>
-                            @endforeach
-                        </ul>
+                        {{-- Collapse Toggle --}}
+                        @if ($sc->services->count())
+                            <a class="nav-link px-2" data-bs-toggle="collapse"
+                                href="#serviceSubMenu{{ $loop->iteration }}" role="button" aria-expanded="false"
+                                aria-controls="serviceSubMenu{{ $loop->iteration }}">
+                                +
+                            </a>
+                        @endif
+
                     </div>
+
+                    @if ($sc->services->count())
+                        <div class="collapse" id="serviceSubMenu{{ $loop->iteration }}">
+                            <ul class="navbar-nav ps-3">
+                                @foreach ($sc->services as $service)
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('service-details', $service->slug) }}">
+                                            {{ $service->title }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                 </li>
             @endforeach
             {{-- <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact Us</a></li> --}}

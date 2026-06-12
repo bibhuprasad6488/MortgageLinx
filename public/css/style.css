@@ -62,7 +62,7 @@ body {
 }
 
 main {
-    margin-top: 80px;
+    margin-top: 60px;
 }
 
 .floating-contact {
@@ -81,6 +81,7 @@ main {
     gap: 10px;
 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border: 2px solid #E6AD03;
 }
 
 /* Track */
@@ -155,10 +156,8 @@ h6 {
     padding-bottom: 20px;
 }
 
-
-
 .site_branding {
-    color: #9A5D1A;
+    color: #F2B711;
     text-decoration: none;
 }
 
@@ -274,6 +273,8 @@ h6 {
 
 .fl {
     float: left;
+    border: 3px solid #000;
+    border-radius: 50%;
 }
 
 .clearboth {
@@ -332,9 +333,13 @@ h6 {
 
 .single_col {
     text-align: center;
-    padding: 20px 15px;
+    padding: 5px 5px;
     background: #fff;
     border: 1px solid #dedede;
+}
+
+.single_col .icon img {
+    height: auto;
 }
 
 .single_col a {
@@ -531,6 +536,11 @@ h6 {
 /* --- Top Block: Features Section styling --- */
 .info-top-section {
     margin-bottom: 80px;
+}
+
+.features .br1 img {
+    width: 45px;
+    height: auto;
 }
 
 .features-card {
@@ -1019,7 +1029,7 @@ h6 {
 }
 
 .footer_top .left_container {
-    color: #fff;
+    color: #000;
 }
 
 .footer_top .left_container div {
@@ -1033,9 +1043,10 @@ h6 {
     color: #fff;
 }
 
-.footer_top .right_container .btn1:hover{
+.footer_top .right_container .btn1:hover {
     background: #333131 !important;
 }
+
 .services {
     position: relative;
     overflow: hidden;
@@ -1333,6 +1344,10 @@ marquee .partner-card img {
     margin-right: 15px;
 }
 
+.fourth_column li img {
+    height: 60px;
+}
+
 .footer-links li:hover {
     opacity: 1;
     color: #fff;
@@ -1502,6 +1517,7 @@ marquee .partner-card img {
     border: 1px solid #F2B711;
     border-radius: 10px;
     padding: 15px;
+    text-align: center;
 }
 
 .site-footer .cta {
@@ -1766,6 +1782,198 @@ select {
     z-index: 9999;
 }
 
+.brand_coloring .service img {
+    height: auto;
+}
+
+.nav-item .nav-link[data-bs-toggle="collapse"] {
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+#backToTop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    background: #f2b711;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    display: none;
+    z-index: 9999;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+#backToTop:hover {
+    transform: translateY(-3px);
+}
+
+@media (min-width: 250px) and (max-width: 349px) {
+    .navbar-brand img {
+        max-width: 200px;
+    }
+
+    #intro-example {
+        padding: 10px 0;
+    }
+
+    .bannerbtn1 {
+        font-size: 16px !important;
+    }
+
+    .banner-title {
+        font-size: 21px;
+    }
+
+    .banner-subtitle {
+        font-size: 20px;
+    }
+
+    .banner-text {
+        font-size: 15px;
+    }
+
+    #contact_banner {
+        padding: 25px 0 20px;
+    }
+
+    .footer_row_middle .pl30 {
+        padding-left: 13px;
+        font-size: 13px;
+    }
+
+    .page-banner-title {
+        font-size: 28px;
+        margin-bottom: 0 !important;
+    }
+
+    .page-banner-subtitle {
+        font-size: 25px;
+    }
+
+    .floating-contact {
+        right: 10px;
+        bottom: 15px;
+        top: unset;
+    }
+
+    .floating-contact img {
+        width: 30px;
+        height: auto;
+    }
+
+    .brand_coloring .service img {
+        height: auto;
+    }
+
+    #protection {
+        padding: 25px 0;
+    }
+
+    .mortgage_process::before {
+        border-top: none;
+    }
+
+    #introducer {
+        padding: 25px 0;
+    }
+
+    #mortgage {
+        padding: 25px 0;
+    }
+
+    .banner-txt-container {
+        float: none;
+        margin-top: 10px;
+        max-width: 100%;
+    }
+
+    .banner-txt-container ul li {
+        margin-bottom: 10px;
+    }
+
+    .banner-txt-container li img {
+        float: left;
+        width: 24px;
+        height: auto;
+    }
+
+    .banner-txt-container li div p:first-child {
+        margin-bottom: 0;
+        font-weight: 600;
+        font-size: 15px;
+    }
+
+    .banner-txt-container li div p:last-child {
+        font-size: 14px;
+        display: none;
+    }
+
+    .banner-txt-container li div {
+        padding-left: 40px;
+    }
+
+    .our_introducer {
+        padding-bottom: 10px;
+    }
+
+    #about_us {
+        padding: 25px 0;
+    }
+
+    .copyright a {
+        color: #F2B711;
+        text-decoration: none;
+        padding: 2px 0px;
+        border-left: none;
+        display: block;
+        text-align: center;
+    }
+
+    .site-footer img {
+        width: 150px !important;
+    }
+
+    .footer-links li img {
+        width: 22px !important;
+        height: 22px;
+    }
+
+    .third_column li img {
+        width: 22px !important;
+    }
+
+    .third_column .footer-links li {
+        padding: 10px 0;
+    }
+
+    .site-footer .certified-img {
+        width: 100px !important;
+    }
+
+    .copyright a:first-child {
+        margin-left: 0;
+    }
+
+    .mask p {
+        text-align: left;
+    }
+
+    #backToTop {
+        position: fixed;
+        bottom: 20px;
+        right: 16px;
+        width: 40px;
+        height: 40px;
+    }
+}
+
 @media (min-width: 350px) and (max-width: 449px) {
     .navbar-brand img {
         max-width: 250px;
@@ -1795,16 +2003,51 @@ select {
         width: 30px;
     }
 
+    #intro-example {
+        padding: 30px 0;
+    }
+
     .banner-title {
-        font-size: 37px;
+        font-size: 25px;
+    }
+
+    .floating-contact {
+        right: 10px;
+        bottom: 15px;
+        top: unset;
+    }
+
+    .floating-contact img {
+        width: 30px;
+        height: auto;
+    }
+
+    .banner-txt-container li div p:last-child {
+        font-size: 14px;
+        display: none;
+    }
+
+    .banner-txt-container ul li {
+        margin-bottom: 10px;
+    }
+
+    .banner-txt-container li img {
+        float: left;
+        width: 24px;
+        height: auto;
+    }
+
+    .bannerbtn1 {
+        font-size: 17px !important;
     }
 
     .banner-subtitle {
-        font-size: 30px;
+        font-size: 21px;
     }
 
     .mask p {
         text-align: left;
+        font-size: 16px;
     }
 
     .mask a.m-2 {
@@ -1818,8 +2061,16 @@ select {
         max-width: 100%;
     }
 
+    #protection {
+        padding: 25px 0;
+    }
+
     .page-banner-title {
-        font-size: 38px;
+        font-size: 27px;
+    }
+
+    .page-banner-subtitle {
+        font-size: 25px;
     }
 
     #introducer .page-banner-title {
@@ -1827,16 +2078,20 @@ select {
     }
 
     #about_us .page-banner-title {
-        font-size: 33px;
+        font-size: 25px;
     }
+
 
     #contact_banner {
         background-position: center;
         padding: 20px 0 50px;
     }
 
-    .page-banner-subtitle {
+    /* .page-banner-subtitle {
         font-size: 36px;
+    } */
+    #mortgage {
+        padding: 25px 0;
     }
 
     .page-ulli-container h3 {
@@ -1899,6 +2154,7 @@ select {
 
     .footer_row_middle .pl30 {
         padding-left: 13px;
+        font-size: 13px;
     }
 
     .third_column .footer-links li {
@@ -1909,6 +2165,10 @@ select {
         margin-left: 0;
     }
 
+    #about_us {
+        padding: 25px 0;
+    }
+
     .copyright a {
         color: #F2B711;
         text-decoration: none;
@@ -1916,6 +2176,14 @@ select {
         border-left: none;
         display: block;
         text-align: center;
+    }
+
+    #backToTop {
+        position: fixed;
+        bottom: 20px;
+        right: 16px;
+        width: 40px;
+        height: 40px;
     }
 }
 
@@ -1960,6 +2228,11 @@ select {
         margin: 5px 0px !important;
     }
 
+    .floating-contact {
+        right: 10px;
+        bottom: 15px;
+        top: unset;
+    }
 
     .banner-txt-container {
         float: none;
@@ -1977,6 +2250,14 @@ select {
 
     .why_partner_with_us .tac img {
         width: 100%;
+    }
+
+    #backToTop {
+        position: fixed;
+        bottom: 20px;
+        right: 16px;
+        width: 40px;
+        height: 40px;
     }
 
 }
@@ -2020,6 +2301,19 @@ select {
         font-size: 12px;
     }
 
+    .floating-contact {
+        right: 10px;
+        bottom: 15px;
+        top: unset;
+    }
+
+    #backToTop {
+        position: fixed;
+        bottom: 20px;
+        right: 16px;
+        width: 40px;
+        height: 40px;
+    }
 }
 
 @media (min-width: 650px) and (max-width: 767px) {
@@ -2071,6 +2365,19 @@ select {
         font-size: 15px;
     }
 
+    .floating-contact {
+        right: 10px;
+        bottom: 15px;
+        top: unset;
+    }
+
+    #backToTop {
+        position: fixed;
+        bottom: 20px;
+        right: 16px;
+        width: 40px;
+        height: 40px;
+    }
 
 }
 

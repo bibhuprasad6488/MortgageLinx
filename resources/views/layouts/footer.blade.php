@@ -64,21 +64,21 @@
                     </li>
                     <li>
                         <a href="{{ route('process') }}">
-                            <img src="{{ asset('images/right_arrow.png') }}" alt="Arrow"> Our Process
+                            <img src="{{ asset('images/right_arrow.png') }}" alt="Arrow">Our Process
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('contact') }}">
-                            <img src="{{ asset('images/right_arrow.png') }}" alt="Arrow"> Contact </a>
+                            <img src="{{ asset('images/right_arrow.png') }}" alt="Arrow">Contact </a>
                     </li>
                     <li>
                         <a href="{{ route('introducer') }}">
-                            <img src="{{ asset('images/right_arrow.png') }}" alt="Arrow"> Introducer Partnership
+                            <img src="{{ asset('images/right_arrow.png') }}" alt="Arrow">Introducer Partnership
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('become-an-introducer') }}">
-                            <img src="{{ asset('images/right_arrow.png') }}" alt="Arrow"> Become an Introducer
+                            <img src="{{ asset('images/right_arrow.png') }}" alt="Arrow">Become an Introducer
                         </a>
                     </li>
                 </ul>

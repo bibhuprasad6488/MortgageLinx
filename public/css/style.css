@@ -829,17 +829,74 @@ h6 {
     color: #fff;
 }
 
+.home-form h4 {
+    font-size: 30px;
+    margin: 0 auto 20px;
+}
+
+.home-form .btn1 {
+    padding: 12px;
+    font-weight: 600;
+}
+
+/*
 .home-form h4,
 .home-form h6 {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
+} */
 
-.home-form h6 {
-    margin-bottom: 30px;
-}
+/* .home-form h6 {
+    margin-bottom: 10px;
+} */
 
-.home-form p img {
+/* .home-form p img {
     padding: 0 10px;
+} */
+
+.home-form .hr2 {
+    margin: 0 auto 30px;
+}
+
+.home-form .icon-container {
+    width: 90px;
+    height: 90px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    margin: 0 auto 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.home-form .icon-container svg {
+    width: 70px;
+    height: 70px;
+}
+
+/* Feature List */
+.home-form .feature-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: fit-content;
+    margin: 0 auto 15px;
+    gap: 12px;
+}
+
+.home-form .feature-item {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    /* font-weight: 600; */
+    letter-spacing: 0.3px;
+}
+
+.home-form .checkmark-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    flex-shrink: 0;
 }
 
 .cw {
@@ -1972,6 +2029,24 @@ select {
         width: 40px;
         height: 40px;
     }
+
+    .home-form {
+        padding: 10px !important;
+    }
+
+    .home-form h4 {
+        font-size: 22px;
+    }
+
+    .home-form .feature-item {
+        font-size: 13px;
+    }
+
+    .home-form .checkmark-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 7px;
+    }
 }
 
 @media (min-width: 350px) and (max-width: 449px) {
@@ -2184,6 +2259,24 @@ select {
         right: 16px;
         width: 40px;
         height: 40px;
+    }
+
+    .home-form {
+        padding: 10px !important;
+    }
+
+    .home-form h4 {
+        font-size: 25px;
+    }
+
+    .home-form .feature-item {
+        font-size: 14px;
+    }
+
+    .home-form .checkmark-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 7px;
     }
 }
 

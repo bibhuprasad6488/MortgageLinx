@@ -49,14 +49,50 @@
                 <div class="col-md-5 order-2 order-md-1">
                     @if ($aboutUs->consultation_show)
                         <div class="home-form p-4">
-
-                            <h4 class="text-white mb-4">Get a Free Consultation</h4>
-                            <p><img src="{{ asset('images/struggling.png') }}" alt="Struggling"></p>
-                            <h6>{{ $setting->cta_title }}</h6>
-                            <h6>{{ $setting->cta_sub_title }}</h6>
+                            <!-- Top Central Icon Element -->
+                            <div class="icon-container">
+                                <!-- Minimalist document & pen vector illustration matching the theme -->
+                                <svg viewBox="0 0 64 64" fill="none" xmlns="http://w3.org">
+                                    <path d="M14 8H38L50 20V56H14V8Z" stroke="#0B111C" stroke-width="3"
+                                        stroke-linejoin="round" />
+                                    <path d="M38 8V20H50" stroke="#0B111C" stroke-width="3" stroke-linejoin="round" />
+                                    <circle cx="24" cy="20" r="4" fill="#0B111C" />
+                                    <path d="M18 30H34" stroke="#0B111C" stroke-width="3" stroke-linecap="round" />
+                                    <path d="M18 38H46" stroke="#0B111C" stroke-width="3" stroke-linecap="round" />
+                                    <path d="M18 46H42" stroke="#0B111C" stroke-width="3" stroke-linecap="round" />
+                                    <!-- Badge with checkmark -->
+                                    <circle cx="46" cy="46" r="11" fill="#f5a623" stroke="#0B111C"
+                                        stroke-width="3" />
+                                    <path d="M41 46L44 49L51 42" stroke="#0B111C" stroke-width="3" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            {{-- <p><img src="{{ asset('images/struggling.png') }}" alt="Struggling"></p> --}}
+                            <h4 class="text-white">Get a Free Consultation</h4>
+                            <hr class="hr2">
+                            <div class="feature-list">
+                                <div class="feature-item">
+                                    <svg class="checkmark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://w3.org">
+                                        <circle cx="12" cy="12" r="10" stroke="#f5a623" stroke-width="2" />
+                                        <path d="M8 12L11 15L16 9" stroke="#f5a623" stroke-width="2.5"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    {{ $setting->cta_title }}
+                                </div>
+                                <div class="feature-item">
+                                    <svg class="checkmark-icon" viewBox="0 0 24 24" fill="none" xmlns="http://w3.org">
+                                        <circle cx="12" cy="12" r="10" stroke="#f5a623" stroke-width="2" />
+                                        <path d="M8 12L11 15L16 9" stroke="#f5a623" stroke-width="2.5"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    {{ $setting->cta_sub_title }}
+                                </div>
+                            </div>
+                            <h6></h6>
+                            <h6></h6>
                             <a href="{{ route('contact') }}">
                                 <button type="submit" class="btn btn1 w-100 custom-btn">
-                                    Request Consultation
+                                    Request Consultation ->
                                 </button>
                             </a>
                         </div>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\BecomeAnIntroducerForm;
 use App\Models\ContactForm;
+use App\Models\Partner;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -16,54 +18,14 @@ class DashboardController extends Controller
     {
         $contactForms = ContactForm::all();
         $introducerForms = BecomeAnIntroducerForm::all();
-        return view('admin.dashboard', compact('contactForms', 'introducerForms'));
+        $partners = Partner::all();
+        $services = Service::all();
+        return view('admin.dashboard', compact('contactForms', 'introducerForms', 'partners', 'services'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function contactFormList()
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $contactForms = ContactForm::all();
+        return view('admin.contact_form', compact('contactForms'));
     }
 }

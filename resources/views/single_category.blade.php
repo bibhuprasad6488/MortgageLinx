@@ -6,7 +6,7 @@
 @section('content')
 
     <div id="mortgage" class="carousel slide" data-bs-ride="carousel"
-         style="background-image: url('{{ $serviceCat->cat_image }}')"> 
+        style="background-image: url('{{ $serviceCat->cat_image }}')">
 
         <!-- CONTENT OVERLAY (same as your current content) -->
         <div class="mask">
@@ -51,7 +51,8 @@
                 @foreach ($services as $s)
                     <div class="col br1 ">
                         <div class="text-center mortgage_col">
-                            <p class="icon"><img src="{{ $s->thumb_image ?? asset('images/icon24.png') }}" alt="{{ $s->thumb_title ?? $s->title }}"></p>
+                            <p class="icon"><img src="{{ $s->thumb_image ?? asset('images/icon24.png') }}"
+                                    alt="{{ $s->thumb_title ?? $s->title }}"></p>
                             <p class="title">{{ $s->thumb_title ?? $s->title }}</p>
                             <p class="description">{{ $s->thumb_short_desc ?? $s->short_desc }}</p>
                             <p><a href="{{ route('service-details', $s->slug) }}">Learn More &gt;</a></p>
@@ -67,18 +68,22 @@
             <div class="row">
                 <div class="row row-cols-1 row-cols-sm-2">
                     <div class="col">
-                        <img src="{{ asset('images/mortgage.png') }}" alt="Coverage" class="w-100 coverage">
+                        <img src="{{ $setting->wcml_image }}" alt="Coverage" class="w-100 coverage">
                     </div>
                     <div class="col">
                         <div class="page-ulli-container2">
                             <h3>Why Choose Mortage Lynx?</h3>
                             <ul>
-                                <li><img src="{{ asset('images/tickfill.png') }}" alt="tickfill1">
-                                    <div>
-                                        <p>Access to 1000s of mortgage deals</p>
-                                    </div>
-                                </li>
-                                <li><img src="{{ asset('images/tickfill.png') }}" alt="tickfill2">
+                                @foreach ($setting->wcml_content as $wContent)
+                                    <li>
+                                        <img src="{{ asset('images/tickfill.png') }}"
+                                            alt="tickfill{{ $loop->iteration }}">
+                                        <div>
+                                            <p>{{ $wContent }}</p>
+                                        </div>
+                                    </li>
+                                @endforeach
+                                {{-- <li><img src="{{ asset('images/tickfill.png') }}" alt="tickfill2">
                                     <div>
                                         <p>Whole of market advice</p>
                                     </div>
@@ -97,7 +102,7 @@
                                     <div>
                                         <p>No obligation consultations</p>
                                     </div>
-                                </li>
+                                </li> --}}
 
                             </ul>
                         </div>

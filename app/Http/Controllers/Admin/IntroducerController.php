@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\BecomeAnIntroducer;
+use App\Models\BecomeAnIntroducerForm;
 use App\Models\Introducer;
 use App\Models\IntroducerType;
 use Illuminate\Http\Request;
@@ -546,6 +547,7 @@ class IntroducerController extends Controller
 
     public function introducersList()
     {
-        //
+        $introducerForms = BecomeAnIntroducerForm::all();
+        return view('admin.introducer_list', compact('introducerForms'));
     }
 }

@@ -17,6 +17,10 @@ class WebsiteSettingController extends Controller
         $setting = SiteSetting::find(1);
 
         if ($setting) {
+            $setting->wcml_image = $setting->wcml_image
+                ? asset('storage/images/settings/' . $setting->wcml_image)
+                : '';
+
             $setting->site_logo = $setting->site_logo
                 ? asset('storage/images/settings/' . $setting->site_logo)
                 : '';
@@ -36,6 +40,7 @@ class WebsiteSettingController extends Controller
             $setting->favicon = $setting->favicon
                 ? asset('storage/images/settings/' . $setting->favicon)
                 : '';
+            $setting->wcml_content = $setting->wcml_content ? explode(',', $setting->wcml_content) : [];
         }
 
         return view('admin.websitesetting', compact('setting'));
@@ -90,6 +95,7 @@ class WebsiteSettingController extends Controller
             $setting->cta_sub_title = $request->cta_sub_title;
             $setting->og_site_name = $request->og_site_name;
             $setting->og_description = $request->og_description;
+            $setting->wcml_content = $request->wcml_content ? implode(',', $request->wcml_content) : '';
 
 
             // /** Upload Path */
@@ -114,6 +120,23 @@ class WebsiteSettingController extends Controller
                 $file->move($destinationPath, $siteLogo);
 
                 $setting->site_logo = $siteLogo;
+            }
+
+            if ($request->hasFile('wcml_image')) {
+                $file = $request->file('wcml_image');
+                $siteLogo = 'wcml_' . time() . '_' . $file->getClientOriginalName();
+
+
+                if (!empty($setting->wcml_image)) {
+                    $oldFilePath = $destinationPath . $setting->wcml_image;
+                    if (file_exists($oldFilePath)) {
+                        unlink($oldFilePath);
+                    }
+                }
+
+                $file->move($destinationPath, $siteLogo);
+
+                $setting->wcml_image = $siteLogo;
             }
 
             if ($request->hasFile('footer_logo')) {

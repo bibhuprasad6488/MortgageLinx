@@ -71,6 +71,76 @@
 
                                 </div>
                             </div>
+
+                            <div class="card">
+                                <div class="card-header text-center fs-3">
+                                    Why Choose Mortgage Lynx
+                                </div>
+                                <div class="card-body">
+
+                                    <div class="form-group row  mb-2">
+                                        <label for="Img"
+                                            class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">
+                                            Image (Drag & Drop)</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                            <div class="drop-area" data-input="wcml_image" data-preview="wcmlImagePreview"
+                                                data-default="{{ $setting->wcml_image ?? asset('admin/img/no-img.png') }}">
+                                                <p>Drag & Drop Image Here or Click to Select</p>
+                                                <input type="file" id="wcml_image" name="wcml_image" hidden
+                                                    accept=".jpg,.jpeg,.png,.webp">
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6 col-xs-12">
+                                            <img src="" id="wcmlImagePreview" width="150">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row  mb-2">
+                                        <label for=""
+                                            class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Content
+                                        </label>
+                                        <div class="col-md-9 col-sm-6 col-xs-12">
+                                            <table class="table">
+                                                <tbody id="wcmlCont">
+                                                    @if (count(optional($setting)->wcml_content) > 0)
+                                                        @foreach (optional($setting)->wcml_content as $wcml)
+                                                            <tr>
+                                                                <td>
+                                                                    <input type="text" name="wcml_content[]"
+                                                                        id="wcml_content" class="form-control"
+                                                                        value="{{ $wcml }}">
+                                                                </td>
+                                                                <td>
+                                                                    @if ($loop->iteration == 1)
+                                                                        <button type="button"
+                                                                            class="btn btn-primary add-btn">+</button>
+                                                                    @else
+                                                                        <button type="button"
+                                                                            class="btn btn-danger remove-btn">-</button>
+                                                                    @endif
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
+                                                    @else
+                                                        <tr>
+                                                            <td>
+                                                                <input type="text" name="wcml_content[]"
+                                                                    id="wcml_content" class="form-control " value="">
+                                                            </td>
+                                                            <td>
+                                                                <button type="button"
+                                                                    class="btn btn-primary add-btn">+</button>
+                                                            </td>
+                                                        </tr>
+                                                    @endif
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
                             <div class="form-group d-none row mb-2">
                                 <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Site
                                     Desctiption</label>
@@ -78,198 +148,236 @@
                                     <textarea name="site_desc" id="site_desc" class="form-control " rows="3">{{ optional($setting)->site_desc }}</textarea>
                                 </div>
                             </div>
-
-                            <div class="form-group row  mb-2">
-                                <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Contact
-                                    No
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="contact_phone" id="contact_phone" class="form-control "
-                                        value="{{ optional($setting)->contact_phone }}" required>
+                            <div class="card">
+                                <div class="card-header text-center fs-3">
+                                    General Setting
                                 </div>
-                            </div>
-                            <div class="form-group row  mb-2">
-                                <label for="firstname" class="d-flex justify-content-end col-md-3 col-sm-3 col-xs-12">
-                                    Email ID </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="email" name="contact_email" id="contact_email" class="form-control "
-                                        value="{{ optional($setting)->contact_email }}">
-                                </div>
-                            </div>
-                            <div class="form-group row d-none  mb-2">
-                                <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Alt.
-                                    Contact No
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="alt_phone" id="alt_phone" class="form-control "
-                                        value="{{ optional($setting)->alt_phone }}">
-                                </div>
-                            </div>
-                            <div class="form-group row d-none  mb-2">
-                                <label for=""
-                                    class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Call/Whatsapp No
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="call_wp_number" id="call_wp_number" class="form-control "
-                                        value="{{ optional($setting)->call_wp_number }}">
-                                </div>
-                            </div>
-                            <div class="form-group row mb-2">
-                                <label for=""
-                                    class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Whatsapp Message
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <textarea name="wp_message" id="wp_message" class="form-control " rows="3">{{ optional($setting)->wp_message }}</textarea>
-                                </div>
-                            </div>
-                            <div class="form-group row d-none  mb-2">
-                                <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Alt.
-                                    Email</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="email" name="alt_email" id="alt_email" class="form-control "
-                                        value="{{ optional($setting)->alt_email }}">
-                                </div>
-                            </div>
-                            <div class="form-group row  mb-2">
-                                <label for="Img" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">
-                                    Logo (Drag & Drop)</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-
-                                    <div class="drop-area" data-input="site_logo" data-preview="siteLogoPreview"
-                                        data-default="{{ $setting->site_logo ?? asset('admin/img/no-img.png') }}">
-                                        <p>Drag & Drop Image Here or Click to Select</p>
-                                        <input type="file" id="site_logo" name="site_logo" hidden
-                                            accept=".jpg,.jpeg,.png,.webp">
-
+                                <div class="card-body">
+                                    <div class="form-group row  mb-2">
+                                        <label for=""
+                                            class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Contact
+                                            No
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" name="contact_phone" id="contact_phone"
+                                                class="form-control " value="{{ optional($setting)->contact_phone }}"
+                                                required>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3 col-sm-6 col-xs-12">
-                                    <img src="" id="siteLogoPreview" width="150">
-                                </div>
-                            </div>
-                            <div class="form-group row  mb-2">
-                                <label for="Img" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">
-                                    Footer Logo (Drag & Drop)</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-
-                                    <div class="drop-area" data-input="footer_logo" data-preview="footerLogoPreview"
-                                        data-default="{{ $setting->footer_logo ?? asset('admin/img/no-img.png') }}">
-                                        <p>Drag & Drop Image Here or Click to Select</p>
-                                        <input type="file" id="footer_logo" name="footer_logo" hidden
-                                            accept=".jpg,.jpeg,.png,.webp">
-
+                                    <div class="form-group row  mb-2">
+                                        <label for="firstname"
+                                            class="d-flex justify-content-end col-md-3 col-sm-3 col-xs-12">
+                                            Email ID </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="email" name="contact_email" id="contact_email"
+                                                class="form-control " value="{{ optional($setting)->contact_email }}">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3 col-sm-6 col-xs-12">
-                                    <img src="" id="footerLogoPreview" width="100" class="bg-dark p-2">
-                                </div>
-                            </div>
-
-                            <div class="form-group row   mb-2">
-                                <label for="Img" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">
-                                    Footer Logo One (Drag & Drop)</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-
-                                    <div class="drop-area" data-input="footer_logo_one"
-                                        data-preview="footerLogoOnePreview"
-                                        data-default="{{ $setting->footer_logo_one ?? asset('admin/img/no-img.png') }}">
-                                        <p>Drag & Drop Image Here or Click to Select</p>
-                                        <input type="file" id="footer_logo_one" name="footer_logo_one" hidden
-                                            accept=".jpg,.jpeg,.png,.webp">
-
+                                    <div class="form-group row d-none  mb-2">
+                                        <label for=""
+                                            class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Alt.
+                                            Contact No
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" name="alt_phone" id="alt_phone" class="form-control "
+                                                value="{{ optional($setting)->alt_phone }}">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-3 col-sm-6 col-xs-12">
-                                    <img src="" id="footerLogoOnePreview" width="100">
-                                </div>
-                            </div>
-                            <div class="form-group row d-none  mb-2">
-                                <label for=""
-                                    class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Footer
-                                    Logo Two</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="file" name="footer_logo_two" id="footer_logo_two"
-                                        class="form-control ">
-                                    <img @if ($setting && $setting->footer_logo_two) src="{{ $setting->footer_logo_two }}"
+                                    <div class="form-group row d-none  mb-2">
+                                        <label for=""
+                                            class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Call/Whatsapp No
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" name="call_wp_number" id="call_wp_number"
+                                                class="form-control " value="{{ optional($setting)->call_wp_number }}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row mb-2">
+                                        <label for=""
+                                            class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Whatsapp Message
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <textarea name="wp_message" id="wp_message" class="form-control " rows="3">{{ optional($setting)->wp_message }}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row d-none  mb-2">
+                                        <label for=""
+                                            class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Alt.
+                                            Email</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="email" name="alt_email" id="alt_email" class="form-control "
+                                                value="{{ optional($setting)->alt_email }}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row  mb-2">
+                                        <label for="Img"
+                                            class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">
+                                            Logo (Drag & Drop)</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                            <div class="drop-area" data-input="site_logo" data-preview="siteLogoPreview"
+                                                data-default="{{ $setting->site_logo ?? asset('admin/img/no-img.png') }}">
+                                                <p>Drag & Drop Image Here or Click to Select</p>
+                                                <input type="file" id="site_logo" name="site_logo" hidden
+                                                    accept=".jpg,.jpeg,.png,.webp">
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6 col-xs-12">
+                                            <img src="" id="siteLogoPreview" width="150">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row  mb-2">
+                                        <label for="Img"
+                                            class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">
+                                            Footer Logo (Drag & Drop)</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                            <div class="drop-area" data-input="footer_logo"
+                                                data-preview="footerLogoPreview"
+                                                data-default="{{ $setting->footer_logo ?? asset('admin/img/no-img.png') }}">
+                                                <p>Drag & Drop Image Here or Click to Select</p>
+                                                <input type="file" id="footer_logo" name="footer_logo" hidden
+                                                    accept=".jpg,.jpeg,.png,.webp">
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6 col-xs-12">
+                                            <img src="" id="footerLogoPreview" width="100"
+                                                class="bg-dark p-2">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row   mb-2">
+                                        <label for="Img"
+                                            class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">
+                                            Footer Logo One (Drag & Drop)</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                            <div class="drop-area" data-input="footer_logo_one"
+                                                data-preview="footerLogoOnePreview"
+                                                data-default="{{ $setting->footer_logo_one ?? asset('admin/img/no-img.png') }}">
+                                                <p>Drag & Drop Image Here or Click to Select</p>
+                                                <input type="file" id="footer_logo_one" name="footer_logo_one" hidden
+                                                    accept=".jpg,.jpeg,.png,.webp">
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6 col-xs-12">
+                                            <img src="" id="footerLogoOnePreview" width="100">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row d-none  mb-2">
+                                        <label for=""
+                                            class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Footer
+                                            Logo Two</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="file" name="footer_logo_two" id="footer_logo_two"
+                                                class="form-control ">
+                                            <img @if ($setting && $setting->footer_logo_two) src="{{ $setting->footer_logo_two }}"
                                     @else style="display: none;" @endif
-                                        alt="Site Logo" width="100">
-                                </div>
-                            </div>
+                                                alt="Site Logo" width="100">
+                                        </div>
+                                    </div>
 
-                            <div class="form-group row  mb-2">
-                                <label for="Img" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">
-                                    Favicon (Drag & Drop)</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group row  mb-2">
+                                        <label for="Img"
+                                            class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">
+                                            Favicon (Drag & Drop)</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
 
-                                    <div class="drop-area" data-input="favicon" data-preview="faviconPreview"
-                                        data-default="{{ $setting->favicon ?? asset('admin/img/no-img.png') }}">
-                                        <p>Drag & Drop Image Here or Click to Select</p>
-                                        <input type="file" id="favicon" name="favicon" hidden
-                                            accept=".jpg,.jpeg,.png,.webp">
+                                            <div class="drop-area" data-input="favicon" data-preview="faviconPreview"
+                                                data-default="{{ $setting->favicon ?? asset('admin/img/no-img.png') }}">
+                                                <p>Drag & Drop Image Here or Click to Select</p>
+                                                <input type="file" id="favicon" name="favicon" hidden
+                                                    accept=".jpg,.jpeg,.png,.webp">
 
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6 col-xs-12">
+                                            <img src="" id="faviconPreview" width="50">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row  mb-2">
+                                        <label for=""
+                                            class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">
+                                            Address
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <textarea name="address" id="address" class="form-control " rows="3">{{ optional($setting)->address }}</textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group  row d-none mb-2">
+                                        <label for=""
+                                            class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">
+                                            Location
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <textarea name="site_map_key" id="site_map_key" class="form-control " rows="7" placeholder="Iframe link">{{ optional($setting)->site_map_key }}</textarea>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-3 col-sm-6 col-xs-12">
-                                    <img src="" id="faviconPreview" width="50">
+                            </div>
+                            <div class="card">
+                                <div class="card-header text-center fs-3">
+                                    About Us Page
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group row mb-2">
+                                        <label for=""
+                                            class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">
+                                            CTA Title </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" name="cta_title" id="cta_title" class="form-control "
+                                                value="{{ optional($setting)->cta_title }}" placeholder="CTA Title">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row mb-2">
+                                        <label for=""
+                                            class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">
+                                            CTA Sub Title</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" name="cta_sub_title" id="cta_sub_title"
+                                                class="form-control " value="{{ optional($setting)->cta_sub_title }}"
+                                                placeholder="CTA Sub Title">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="card">
+                                <div class="card-header text-center fs-3">
+                                    Footer Area
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group row  mb-2">
+                                        <label for=""
+                                            class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Site
+                                            Footer Text</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <textarea name="footer_text_one" id="footer_text_one" class="form-control " rows="5">{{ optional($setting)->footer_text_one }}</textarea>
+                                        </div>
+                                    </div>
 
-                            <div class="form-group row  mb-2">
-                                <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">
-                                    Address
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <textarea name="address" id="address" class="form-control " rows="3">{{ optional($setting)->address }}</textarea>
-                                </div>
-                            </div>
+                                    <div class="form-group row mb-2">
+                                        <label for=""
+                                            class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">
+                                            Footer Logo Text </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <textarea name="footer_text_two" id="footer_text_two" class="form-control " rows="5">{{ optional($setting)->footer_text_two }}</textarea>
+                                        </div>
+                                    </div>
 
-                            <div class="form-group  row  mb-2">
-                                <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">
-                                    Location
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <textarea name="site_map_key" id="site_map_key" class="form-control " rows="7" placeholder="Iframe link">{{ optional($setting)->site_map_key }}</textarea>
-                                </div>
-                            </div>
-                            <div class="form-group row mb-2">
-                                <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">
-                                    CTA Title </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="cta_title" id="cta_title" class="form-control "
-                                        value="{{ optional($setting)->cta_title }}" placeholder="CTA Title">
-                                </div>
-                            </div>
-                            <div class="form-group row mb-2">
-                                <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">
-                                    CTA Sub Title</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="cta_sub_title" id="cta_sub_title" class="form-control "
-                                        value="{{ optional($setting)->cta_sub_title }}" placeholder="CTA Sub Title">
-                                </div>
-                            </div>
-                            <div class="form-group row  mb-2">
-                                <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Site
-                                    Footer Text</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <textarea name="footer_text_one" id="footer_text_one" class="form-control " rows="5">{{ optional($setting)->footer_text_one }}</textarea>
-                                </div>
-                            </div>
-
-                            <div class="form-group row mb-2">
-                                <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">
-                                    Footer Logo Text </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <textarea name="footer_text_two" id="footer_text_two" class="form-control " rows="5">{{ optional($setting)->footer_text_two }}</textarea>
-                                </div>
-                            </div>
-
-                            <div class="form-group row  mb-2">
-                                <label for=""
-                                    class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Copyrights
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="copyright" id="copyright" class="form-control "
-                                        value="{{ optional($setting)->copyright }}" required>
+                                    <div class="form-group row  mb-2">
+                                        <label for=""
+                                            class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Copyrights
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" name="copyright" id="copyright" class="form-control "
+                                                value="{{ optional($setting)->copyright }}" required>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group d-none row  mb-2">
@@ -401,6 +509,23 @@
                     background: '#ffffff',
                     foreground: '#000000',
                 }
+            });
+
+            $('.add-btn').on('click', function() {
+                $('#wcmlCont').append(`
+                        <tr>
+                            <td>
+                                <input type="text" name="wcml_content[]" class="form-control" value="">
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-danger remove-btn">-</button>
+                            </td>
+                        </tr>
+                    `);
+            });
+
+            $(document).on('click', '.remove-btn', function() {
+                $(this).closest('tr').remove();
             });
         });
     </script>

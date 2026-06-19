@@ -85,6 +85,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/introducer-details-page', [IntroducerController::class, 'introducerDetails'])->name('introducer-details-page');
         Route::post('/introducer-details-store', [IntroducerController::class, 'introducerDetailsStore'])->name('introducer-details-store');
         Route::get('/introducers', [IntroducerController::class, 'introducersList'])->name('introducers-list');
+        Route::get('/contact-forms', [DashboardController::class, 'contactFormList'])->name('contact-form-list');
     });
 });
 

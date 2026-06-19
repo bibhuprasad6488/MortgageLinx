@@ -40,6 +40,16 @@
                     {!! $service->content !!}
                 </div>
             </div>
+            <div class="row row-cols-12">
+                <div class="col">
+                    <div class="bg-light border rounded-4 p-5 text-center">
+                        <h3 class="mb-3"> Ready To Buy Your First Home? </h3>
+                        <p class="mb-4"> Speak with our experienced advisers today to explore tailored first-time buyer
+                            mortgage solutions. </p> <a href="{{ route('contact') }}" class="btn btn-warning px-5 py-3">
+                            Request A Consultation </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 

@@ -319,7 +319,14 @@ class HomeController extends Controller
             return $p;
         });
 
-        return view('single_category', compact('serviceCat', 'services', 'partners'));
+        $setting = SiteSetting::find(1);
+        if ($setting) {
+            $setting->wcml_image = $setting->wcml_image
+                ? asset('storage/images/settings/' . $setting->wcml_image)
+                : '';
+            $setting->wcml_content = $setting->wcml_content ? explode(',', $setting->wcml_content) : [];
+        }
+        return view('single_category', compact('serviceCat', 'services', 'partners', 'setting'));
     }
 
     public function serviceDetails($slug)

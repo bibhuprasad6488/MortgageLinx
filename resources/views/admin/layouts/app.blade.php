@@ -46,7 +46,9 @@
 
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 
-    <link href="{{ asset('admin/assets/summernote/summernote.min.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('admin/assets/summernote/summernote.min.css') }}" rel="stylesheet"> --}}
+
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-bs5.min.css" rel="stylesheet">
     {{-- If using Laravel Vite (optional, remove if not needed) --}}
 
     @if (config('database.connections.mysql.username') === 'root')
@@ -86,6 +88,10 @@
         .note-editor.note-frame {
             border: 1px solid #6c757d !important;
             border-radius: 4px;
+        }
+
+        .note-editor .note-toolbar .note-btn {
+            color: #000 !important;
         }
     </style>
 </head>
@@ -128,7 +134,9 @@
     <!-- Main JS -->
     <script src="{{ asset('admin/js/kaiadmin.min.js') }}"></script>
 
-    <script src="{{ asset('admin/assets/summernote/summernote.min.js') }}"></script>
+    {{-- <script src="{{ asset('admin/assets/summernote/summernote.min.js') }}"></script> --}}
+
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-bs5.min.js"></script>
     <!-- Bootstrap Notify -->
     <script src="{{ asset('admin/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
     <!-- Feather Icons (for navbar icons) -->

@@ -172,7 +172,7 @@
                                     <img src="{{ asset('images/contact_email.png') }}" alt="Email" width="40">
                                 </p>
                                 <h5>Email Us</h5>
-                                <p>{{ $setting->contact_email }} <br>We aim to respond within 1 day</p>
+                                <p>Please us the contact form and we'll get back to you as soon as possible.</p>
                             </div>
                             <div class="why_partner">
                                 <p class="why_partner_partner_icon">

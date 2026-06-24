@@ -19,6 +19,13 @@
     <meta property="twitter:title" content="{{ $setting->og_site_name }}">
     <link rel="canonical" href="{{ url()->current() }}" />
 
+    <!-- Og Data -->
+    <meta property="og:title" content="@yield('meta_title', '')" />
+    <meta property="og:description" content="@yield('meta_description', '')" />
+    <meta property="og:image" content="{{ asset('images/ogimage.jpg') }}" />
+    <meta property="og:url" content="{{ url()->current() }}" />
+    <meta property="og:type" content="website" />
+
     <!-- Favicon -->
     <link rel="icon"
         href="@if ($setting) {{ asset('storage/images/settings/' . $setting->favicon) }} @else {{ asset('admin/img/favicon.png') }} @endif"

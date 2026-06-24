@@ -29,7 +29,7 @@
                         <li class="nav-item dropdown">
 
                             <a class="nav-link"
-                                href="@if ($sc->slug == 'protection') {{ route('protection') }}@else{{ route('service', $sc->slug) }} @endif">
+                                href="@if ($sc->slug == 'protection') {{ route('protection') }}@else{{ route('service', $sc->slug) }}@endif">
                                 {{ $sc->title }}
                             </a>
 

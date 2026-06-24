@@ -342,6 +342,10 @@ h6 {
     height: auto;
 }
 
+.single_col .icon .cat_image {
+    height: 220px;
+}
+
 .single_col a {
     text-decoration: none;
     color: #C59108;
@@ -1512,6 +1516,9 @@ marquee .partner-card img {
     color: #fff;
 }
 
+.site-footer .tac img {
+    width: 75% !important;
+}
 .site-footer img {
     filter: none !important;
     display: inline;
@@ -1993,6 +2000,9 @@ select {
         text-align: center;
     }
 
+    .site-footer .tac img {
+        width: 150px !important;
+    }
     .site-footer img {
         width: 150px !important;
     }
@@ -2047,6 +2057,10 @@ select {
         height: 20px;
         margin-right: 7px;
     }
+
+    .single_col .icon .cat_image {
+        height: 170px;
+    }
 }
 
 @media (min-width: 350px) and (max-width: 449px) {
@@ -2062,6 +2076,9 @@ select {
         width: 90px;
     }
 
+    .site-footer .tac img {
+        width: 180px !important;
+    }
     .site-footer img {
         width: 180px !important;
     }
@@ -2278,6 +2295,10 @@ select {
         height: 20px;
         margin-right: 7px;
     }
+
+    .single_col .icon .cat_image {
+        height: 190px;
+    }
 }
 
 @media (min-width: 450px) and (max-width: 549px) {
@@ -2289,6 +2310,9 @@ select {
         border-top: none;
     }
 
+    .site-footer .tac img {
+        width: 190px !important;
+    }
     .site-footer img {
         width: 190px !important;
     }
@@ -2353,6 +2377,10 @@ select {
         height: 40px;
     }
 
+    .single_col .icon .cat_image {
+        height: 210px;
+    }
+
 }
 
 @media (min-width: 550px) and (max-width: 649px) {
@@ -2364,6 +2392,9 @@ select {
         border-top: none;
     }
 
+    .site-footer .tac img {
+        width: 190px !important;
+    }
     .site-footer img {
         width: 190px !important;
     }
@@ -2407,6 +2438,10 @@ select {
         width: 40px;
         height: 40px;
     }
+
+    .single_col .icon .cat_image {
+        height: 190px;
+    }
 }
 
 @media (min-width: 650px) and (max-width: 767px) {
@@ -2418,6 +2453,9 @@ select {
         border-top: none;
     }
 
+    .site-footer .tac img {
+        width: 190px !important;
+    }
     .site-footer img {
         width: 190px !important;
     }
@@ -2470,6 +2508,10 @@ select {
         right: 16px;
         width: 40px;
         height: 40px;
+    }
+
+    .single_col .icon .cat_image {
+        height: 180px;
     }
 
 }
@@ -2583,6 +2625,10 @@ select {
 
     .footer_top .left_container p {
         font-size: 14px;
+    }
+
+    .single_col .icon .cat_image {
+        height: 140px;
     }
 
 }

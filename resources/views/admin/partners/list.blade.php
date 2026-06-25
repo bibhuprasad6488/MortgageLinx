@@ -24,7 +24,8 @@
                                     <th>Sl.No</th>
                                     <th>Partner</th>
                                     <th>Website URL</th>
-                                    <th>Created Date</th>
+                                    <th>Status</th>
+                                    <th>Created At</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -41,7 +42,18 @@
                                         <td>
                                             {{ $p->website_url ?? '#' }}
                                         </td>
-                                        <td>{{ \Carbon\Carbon::parse($p->created_at)->format('d-m-Y') }}</td>
+                                        <td>
+                                            @if ($p->status == 1)
+                                                <a href="javascript:;" class="badge bg-danger text-light"
+                                                    title="Click to Unpublish"
+                                                    onclick="accessUpdate('{{ route('admin.partner-status-update', $p->id) }}', '0')">Unpublish</a>
+                                            @else
+                                                <a href="javascript:;" class="badge bg-primary text-light"
+                                                    title="Click to Publish"
+                                                    onclick="accessUpdate('{{ route('admin.partner-status-update', $p->id) }}', '1')">Publish</a>
+                                            @endif
+                                        </td>
+                                        <td>{{ \Carbon\Carbon::parse($p->created_at)->format('d-m-Y, H:i') }}</td>
                                         <td>
                                             <a href="{{ route('admin.partners.edit', $p->id) }}"
                                                 class="btn btn-sm btn-primary">Edit</a>

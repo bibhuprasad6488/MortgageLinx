@@ -2,7 +2,13 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 @php
     $setting = \App\Models\SiteSetting::find(1);
-    $serviceCats = \App\Models\ServiceCategory::with('services')->orderBy('id')->get();
+    $serviceCats = \App\Models\ServiceCategory::with([
+        'services' => function ($q) {
+            $q->where('status', 1);
+        },
+    ])
+        ->orderBy('id')
+        ->get();
 @endphp
 
 <head>

@@ -167,10 +167,19 @@
                                     <div class="form-group row  mb-2">
                                         <label for="firstname"
                                             class="d-flex justify-content-end col-md-3 col-sm-3 col-xs-12">
-                                            Email ID </label>
+                                            Admin Email </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <input type="email" name="contact_email" id="contact_email"
                                                 class="form-control " value="{{ optional($setting)->contact_email }}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row  mb-2">
+                                        <label for=""
+                                            class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Contact
+                                            Email</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="email" name="alt_email" id="alt_email" class="form-control "
+                                                value="{{ optional($setting)->alt_email }}">
                                         </div>
                                     </div>
                                     <div class="form-group row d-none  mb-2">
@@ -198,15 +207,6 @@
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <textarea name="wp_message" id="wp_message" class="form-control " rows="3">{{ optional($setting)->wp_message }}</textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row d-none  mb-2">
-                                        <label for=""
-                                            class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">Alt.
-                                            Email</label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="email" name="alt_email" id="alt_email" class="form-control "
-                                                value="{{ optional($setting)->alt_email }}">
                                         </div>
                                     </div>
                                     <div class="form-group row  mb-2">

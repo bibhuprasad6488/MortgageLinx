@@ -56,6 +56,7 @@ class ServiceController extends Controller
             $service->meta_title = $request->meta_title;
             $service->meta_desc = $request->meta_desc;
             $service->meta_keywords = $request->meta_keywords;
+            $service->status = $request->status;
 
             // /** Upload Path */
             $destinationPath = public_path('storage/images/services/');
@@ -134,6 +135,7 @@ class ServiceController extends Controller
             $service->meta_title = $request->meta_title;
             $service->meta_desc = $request->meta_desc;
             $service->meta_keywords = $request->meta_keywords;
+            $service->status = $request->status;
 
             // /** Upload Path */
             $destinationPath = public_path('storage/images/services/');
@@ -184,6 +186,21 @@ class ServiceController extends Controller
         }
     }
 
+
+    public function updateServiceStatus(Request $request, $id)
+    {
+        try {
+            $s = Service::find($id);
+            $s->status = $request->status;
+            $s->save();
+            DB::commit();
+
+            return response()->json(['status' => true, 'message' => 'Service status updated successfully']);
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return response()->json(['status' => false, 'message' => 'Error: ' . $th->getMessage()]);
+        }
+    }
     /**
      * Remove the specified resource from storage.
      */

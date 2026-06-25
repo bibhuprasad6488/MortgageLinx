@@ -20,12 +20,21 @@ use App\Models\SiteSetting;
 use App\Models\TermsCondition;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
+    private $partners;
+    private $setting;
+
+    public function __construct()
+    {
+        $this->partners = Partner::orderBy('id')->where('status', 1)->get();
+        $this->setting = SiteSetting::find(1);
+    }
+
     public function index()
     {
         $homePage = CmsHomePage::find(1);
@@ -55,12 +64,16 @@ class HomeController extends Controller
                 ? asset('storage/images/cmspage/' . $homePage->f_icon_four)
                 : '';
         }
-        $setting = SiteSetting::find(1);
-        $serviceCats = ServiceCategory::with('services')->orderBy('id')->where('show_on_home', 1)->get()->map(function ($c) {
+        $setting = $this->setting;
+        $serviceCats = ServiceCategory::with([
+            'services' => function ($q) {
+                $q->where('status', 1);
+            },
+        ])->orderBy('id')->where('show_on_home', 1)->get()->map(function ($c) {
             $c->cat_image = $c->cat_image ? asset('storage/images/service_category/' . $c->cat_image) : asset('admin/img/no-img.png');
             return $c;
         });
-        $partners = Partner::orderBy('id')->where('status', 1)->get()->map(function ($p) {
+        $partners = $this->partners->map(function ($p) {
             $p->partner_image = $p->partner_image ? asset('storage/images/partners/' . $p->partner_image) : asset('admin/img/no-img.png');
             return $p;
         });
@@ -70,7 +83,7 @@ class HomeController extends Controller
 
     public function contactPage()
     {
-        $setting = SiteSetting::find(1);
+        $setting = $this->setting;
         $contactPage = ContactUsPage::find(1);
         if ($contactPage) {
             $contactPage->banner_image = $contactPage->banner_image ? asset('storage/images/cmspage/' . $contactPage->banner_image) : '';
@@ -85,29 +98,66 @@ class HomeController extends Controller
 
     public function contactFormStore(Request $request)
     {
+        $siteSetting = $this->setting;
+
         DB::beginTransaction();
+
         try {
-            $cForm = new ContactForm();
-            $cForm->full_name = $request->full_name;
-            $cForm->email_address = $request->email_address;
-            $cForm->phone_number = $request->phone_number;
-            $cForm->enquiry_type = $request->enquiry_type;
-            $cForm->your_subject = $request->your_subject;
-            $cForm->your_messsage = $request->your_messsage;
-            $cForm->terms_conditions = $request->terms_conditions;
-            $cForm->save();
+
+            $cForm = ContactForm::create([
+                'full_name' => $request->full_name,
+                'email_address' => $request->email_address,
+                'phone_number' => $request->phone_number,
+                'enquiry_type' => $request->enquiry_type,
+                'your_subject' => $request->your_subject,
+                'your_messsage' => $request->your_messsage,
+                'terms_conditions' => $request->terms_conditions,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
+
             DB::commit();
+
+
+            // Send email after successful save
+            $htmlBody = "
+                <h3>Hi Admin,</h3>
+                <p>A new contact form has been submitted on the website.</p>
+
+                <p><strong>Name:</strong> " . e(ucfirst($cForm->full_name)) . "</p>
+                <p><strong>Email:</strong> {$cForm->email_address}</p>
+                <p><strong>Phone Number:</strong> {$cForm->phone_number}</p>
+                <p><strong>Enquiry Type:</strong> {$cForm->enquiry_type}</p>
+                <p><strong>Subject:</strong> {$cForm->your_subject}</p>
+                <p><strong>Message:</strong> {$cForm->your_messsage}</p>
+            ";
+
+            try {
+
+                Mail::html($htmlBody, function ($message) use ($siteSetting) {
+                    $message->to(trim($siteSetting->alt_email))
+                        ->subject('New Contact Form Request');
+                });
+            } catch (\Throwable $e) {
+
+                Log::error('Contact form email failed: ' . $e->getMessage());
+            }
+
 
             return redirect()->back()->with('success', 'Your message has been submitted successfully');
         } catch (\Throwable $th) {
+
             DB::rollBack();
-            return redirect()->back()->with('error', 'Error: ' . $th->getMessage());
+
+            Log::error('Contact form failed: ' . $th->getMessage());
+
+            return redirect()->back()->with('error', 'Something went wrong. Please try again.');
         }
     }
 
     public function introducerPage()
     {
-        $partners = Partner::orderBy('id')->where('status', 1)->get()->map(function ($p) {
+        $partners = $this->partners->map(function ($p) {
             $p->partner_image = $p->partner_image ? asset('storage/images/partners/' . $p->partner_image) : '';
             return $p;
         });
@@ -148,7 +198,7 @@ class HomeController extends Controller
 
     public function becomeAnIntroducer()
     {
-        $partners = Partner::orderBy('id')->where('status', 1)->get()->map(function ($p) {
+        $partners = $this->partners->map(function ($p) {
             $p->partner_image = $p->partner_image ? asset('storage/images/partners/' . $p->partner_image) : '';
             return $p;
         });
@@ -206,31 +256,78 @@ class HomeController extends Controller
             return $int;
         });
 
-        $setting = SiteSetting::find(1);
+        $setting = $this->setting;
 
         return view('introducer_details', compact('partners', 'intDetails', 'intTypes', 'setting'));
     }
 
     public function becomeAnIntroducerStore(Request $request)
     {
-        DB::beginTransaction();
-        try {
-            $bcai = new BecomeAnIntroducerForm();
-            $bcai->business_name = $request->business_name;
-            $bcai->trading_name = $request->trading_name;
-            $bcai->role = $request->role;
-            $bcai->range = $request->range ? implode(', ', $request->range) : '';
-            $bcai->contact_name = $request->contact_name;
-            $bcai->contact_email = $request->contact_email;
-            $bcai->contact_phone = $request->contact_phone;
-            $bcai->contact_method = $request->contact_method;
+        $siteSetting = $this->setting;
 
-            $bcai->save();
+        DB::beginTransaction();
+
+        try {
+
+            $bcai = BecomeAnIntroducerForm::create([
+                'business_name' => $request->business_name,
+                'trading_name' => $request->trading_name,
+                'role' => $request->role,
+                'range' => $request->range ? implode(', ', $request->range) : '',
+                'contact_name' => $request->contact_name,
+                'contact_email' => $request->contact_email,
+                'contact_phone' => $request->contact_phone,
+                'contact_method' => $request->contact_method,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
+
             DB::commit();
-            return redirect()->route('become-an-introducer')->with('success', 'Your form has been submitted successfully');
+
+
+            // Send email after successful save
+            $htmlBody = "
+                <h3>Hi Admin,</h3>
+                <p>A new introducer form has been submitted on the website.</p>
+
+                <p><strong>Contact Name:</strong> " . e(ucfirst($bcai->contact_name)) . "</p>
+                <p><strong>Email:</strong> {$bcai->contact_email}</p>
+                <p><strong>Phone Number:</strong> {$bcai->contact_phone}</p>
+                <p><strong>Preferred Contact Method:</strong> {$bcai->contact_method}</p>
+
+                <p><strong>Business Name:</strong> " . e($bcai->business_name) . "</p>
+                <p><strong>Trading Name:</strong> " . e($bcai->trading_name ?? 'N/A') . "</p>
+                <p><strong>Role:</strong> " . e($bcai->role) . "</p>
+                <p><strong>Range:</strong> " . e($bcai->range) . "</p>
+
+            ";
+
+
+            try {
+
+                Mail::html($htmlBody, function ($message) use ($siteSetting) {
+
+                    $message->to(trim($siteSetting->alt_email))
+                        ->subject('New Introducer Form Submitted');
+                });
+            } catch (\Throwable $e) {
+
+                Log::error('Introducer form email failed: ' . $e->getMessage());
+            }
+
+
+            return redirect()
+                ->route('become-an-introducer')
+                ->with('success', 'Your form has been submitted successfully');
         } catch (\Throwable $th) {
+
             DB::rollBack();
-            return redirect()->route('become-an-introducer')->with('error', 'Error: ' . $th->getMessage());
+
+            Log::error('Introducer form failed: ' . $th->getMessage());
+
+            return redirect()
+                ->route('become-an-introducer')
+                ->with('error', 'Something went wrong. Please try again.');
         }
     }
 
@@ -280,12 +377,12 @@ class HomeController extends Controller
                 : '';
         }
         $pCategory = ServiceCategory::where('slug', 'protection')->first();
-        $protectionServices = Service::where('category_id', $pCategory->id)->limit(5)->get()->map(function ($s) {
+        $protectionServices = Service::where('category_id', $pCategory->id)->where('status', 1)->limit(5)->get()->map(function ($s) {
             $s->service_image = $s->service_image ? asset('storage/images/services/' . $s->service_image) : '';
             $s->thumb_image = $s->thumb_image ? asset('storage/images/services/' . $s->thumb_image) : asset('images/icon24.png');
             return $s;
         });
-        $partners = Partner::orderBy('id')->where('status', 1)->get()->map(function ($p) {
+        $partners = $this->partners->map(function ($p) {
             $p->partner_image = $p->partner_image ? asset('storage/images/partners/' . $p->partner_image) : asset('admin/img/no-img.png');
             return $p;
         });
@@ -298,7 +395,7 @@ class HomeController extends Controller
             $c->cat_image = $c->cat_image ? asset('storage/images/service_category/' . $c->cat_image) : asset('admin/img/no-img.png');
             return $c;
         });
-        $partners = Partner::orderBy('id')->where('status', 1)->get()->map(function ($p) {
+        $partners = $this->partners->map(function ($p) {
             $p->partner_image = $p->partner_image ? asset('storage/images/partners/' . $p->partner_image) : asset('admin/img/no-img.png');
             return $p;
         });
@@ -309,17 +406,17 @@ class HomeController extends Controller
     {
         $serviceCat = ServiceCategory::where('slug', $slug)->first();
         $serviceCat->cat_image = $serviceCat->cat_image ? asset('storage/images/service_category/' . $serviceCat->cat_image) : '';
-        $services = Service::where('category_id', $serviceCat->id)->get()->map(function ($s) {
+        $services = Service::where('category_id', $serviceCat->id)->where('status', 1)->get()->map(function ($s) {
             $s->service_image = $s->service_image ? asset('storage/images/services/' . $s->service_image) : asset('admin/img/no-img.png');
             $s->thumb_image = $s->thumb_image ? asset('storage/images/services/' . $s->thumb_image) : asset('images/icon24.png');
             return $s;
         });
-        $partners = Partner::orderBy('id')->where('status', 1)->get()->map(function ($p) {
+        $partners = $this->partners->map(function ($p) {
             $p->partner_image = $p->partner_image ? asset('storage/images/partners/' . $p->partner_image) : asset('admin/img/no-img.png');
             return $p;
         });
 
-        $setting = SiteSetting::find(1);
+        $setting = $this->setting;
         if ($setting) {
             $setting->wcml_image = $setting->wcml_image
                 ? asset('storage/images/settings/' . $setting->wcml_image)
@@ -336,7 +433,7 @@ class HomeController extends Controller
         $service->service_image = $service->service_image ? asset('storage/images/services/' . $service->service_image) : '';
         $service->thumb_image = $service->thumb_image ? asset('storage/images/services/' . $service->thumb_image) : '';
 
-        $partners = Partner::orderBy('id')->where('status', 1)->get()->map(function ($p) {
+        $partners = $this->partners->map(function ($p) {
             $p->partner_image = $p->partner_image ? asset('storage/images/partners/' . $p->partner_image) : asset('admin/img/no-img.png');
             return $p;
         });
@@ -409,7 +506,7 @@ class HomeController extends Controller
 
     public function about()
     {
-        $setting = SiteSetting::find(1);
+        $setting = $this->setting;
         $aboutUs = AboutUs::find(1);
         if ($aboutUs) {
             $aboutUs->banner_image = $aboutUs->banner_image ? asset('storage/images/cmspage/' . $aboutUs->banner_image) : '';

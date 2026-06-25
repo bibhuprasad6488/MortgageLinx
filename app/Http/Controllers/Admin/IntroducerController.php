@@ -547,7 +547,7 @@ class IntroducerController extends Controller
 
     public function introducersList()
     {
-        $introducerForms = BecomeAnIntroducerForm::all();
+        $introducerForms = BecomeAnIntroducerForm::orderBy('created_at', 'desc')->get();
         return view('admin.introducer_list', compact('introducerForms'));
     }
 }

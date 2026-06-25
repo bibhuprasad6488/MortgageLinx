@@ -78,7 +78,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('/terms-and-condition', TermsAndConditionController::class)->names('terms-and-condition');
         Route::resource('/service-categories', ServiceCategoryController::class)->names('service-categories');
         Route::resource('/services', ServiceController::class)->names('services');
+        Route::post('/service-status-update/{id}', [ServiceController::class, 'updateServiceStatus'])->name('service-status-update');
         Route::resource('/partners', PartnerController::class)->names('partners');
+        Route::post('/partner-status-update/{id}', [PartnerController::class, 'updatePartnerStatus'])->name('partner-status-update');
         Route::resource('/become-introducer', IntroducerController::class)->names('become-introducer');
         Route::resource('/protection-page', ProtectionPageController::class)->names('protection-page');
         Route::any('/store-int-type', [IntroducerController::class, 'storeIntTypes'])->name('store-int-type');

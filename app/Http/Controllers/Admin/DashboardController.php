@@ -25,7 +25,7 @@ class DashboardController extends Controller
 
     public function contactFormList()
     {
-        $contactForms = ContactForm::all();
+        $contactForms = ContactForm::orderBy('created_at', 'desc')->get();
         return view('admin.contact_form', compact('contactForms'));
     }
 }

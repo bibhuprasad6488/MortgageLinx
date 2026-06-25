@@ -39,7 +39,7 @@
                                                 alt="{{ $cat->title }}" width="80" class="rounded">
                                         </td>
                                         <td>{{ $cat->title }}</td>
-                                        <td>{{ \Carbon\Carbon::parse($cat->created_at)->format('d-m-Y') }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($cat->created_at)->format('d-m-Y, H:i') }}</td>
                                         <td>
                                             <a href="{{ route('admin.service-categories.edit', $cat->id) }}"
                                                 class="btn btn-sm btn-primary">Edit</a>

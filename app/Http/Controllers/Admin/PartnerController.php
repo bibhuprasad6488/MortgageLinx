@@ -50,6 +50,7 @@ class PartnerController extends Controller
             $partner = new Partner();
             $partner->partner_name = $request->partner_name;
             $partner->website_url = $request->website_url;
+            $partner->status = $request->status;
 
             // /** Upload Path */
             if (!file_exists($this->storagePath)) {
@@ -88,7 +89,7 @@ class PartnerController extends Controller
      */
     public function edit(string $id)
     {
-        $partner = Partner::fine($id);
+        $partner = Partner::find($id);
         if ($partner) {
             $partner->partner_image = $partner->partner_image ? asset('storage/images/partners/' . $partner->partner_image) : '';
         }
@@ -111,6 +112,7 @@ class PartnerController extends Controller
             $partner = Partner::find($id);
             $partner->partner_name = $request->partner_name;
             $partner->website_url = $request->website_url;
+            $partner->status = $request->status;
 
             // /** Upload Path */
             if (!file_exists($this->storagePath)) {
@@ -143,6 +145,20 @@ class PartnerController extends Controller
         }
     }
 
+    public function updatePartnerStatus(Request $request, $id)
+    {
+        try {
+            $partner = Partner::find($id);
+            $partner->status = $request->status;
+            $partner->save();
+            DB::commit();
+
+            return response()->json(['status' => true, 'message' => 'Partner status updated successfully']);
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return response()->json(['status' => false, 'message' => 'Error: ' . $th->getMessage()]);
+        }
+    }
     /**
      * Remove the specified resource from storage.
      */

@@ -68,7 +68,7 @@ return [
     |
     */
 
-    'timezone' => env('APP_TIMEZONE', 'UTC'),
+    'timezone' => 'Europe/London', //env('APP_TIMEZONE', 'UTC'),
 
     /*
     |--------------------------------------------------------------------------

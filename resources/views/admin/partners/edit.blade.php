@@ -40,6 +40,17 @@
                             </div>
                         </div>
 
+                        <div class="form-group row  mb-2">
+                            <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">
+                                Status
+                            </label>
+                            <div class="col-md-8 col-sm-6 col-xs-12">
+                                <select name="status" id="status" class="form-control">
+                                    <option value="1" {{ $partner->status == 1 ? 'selected' : '' }}>Publish</option>
+                                    <option value="0" {{ $partner->status == 0 ? 'selected' : '' }}>Unpublish</option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="row">
                             <label class=" col-form-label"></label>
                             <div class="d-flex justify-content-center">

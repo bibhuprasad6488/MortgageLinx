@@ -145,6 +145,20 @@
 
                                     </div>
                                 </div>
+
+                                <div class="form-group row  mb-2">
+                                    <label for="" class="col-md-12">
+                                        Status
+                                    </label>
+                                    <div class="col-md-12">
+                                        <select name="status" id="status" class="form-control">
+                                            <option value="1" {{ $service->status == 1 ? 'selected' : '' }}>Publish
+                                            </option>
+                                            <option value="0" {{ $service->status == 0 ? 'selected' : '' }}>Unpublish
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 

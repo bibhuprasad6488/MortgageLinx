@@ -11,7 +11,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-10 mx-auto">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Services</h4>
@@ -25,6 +25,7 @@
                                     <th>Image</th>
                                     <th>Title</th>
                                     <th>Category</th>
+                                    <th>Status</th>
                                     <th>Created Date</th>
                                     <th>Action</th>
                                 </tr>
@@ -41,7 +42,18 @@
                                         </td>
                                         <td>{{ $s->title }}</td>
                                         <td>{{ $s->category->title }}</td>
-                                        <td>{{ \Carbon\Carbon::parse($s->created_at)->format('d-m-Y') }}</td>
+                                        <td>
+                                            @if ($s->status == 1)
+                                                <a href="javascript:;" class="badge bg-danger text-light"
+                                                    title="Click to Unpublish"
+                                                    onclick="accessUpdate('{{ route('admin.service-status-update', $s->id) }}', '0')">Unpublish</a>
+                                            @else
+                                                <a href="javascript:;" class="badge bg-primary text-light"
+                                                    title="Click to Publish"
+                                                    onclick="accessUpdate('{{ route('admin.service-status-update', $s->id) }}', '1')">Publish</a>
+                                            @endif
+                                        </td>
+                                        <td>{{ \Carbon\Carbon::parse($s->created_at)->format('d-m-Y, H:i') }}</td>
                                         <td>
                                             <a href="{{ route('admin.services.edit', $s->id) }}"
                                                 class="btn btn-sm btn-primary">Edit</a>

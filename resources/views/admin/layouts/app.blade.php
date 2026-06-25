@@ -93,6 +93,25 @@
         .note-editor .note-toolbar .note-btn {
             color: #000 !important;
         }
+
+        #dataTable th {
+            white-space: nowrap;
+            max-width: 250px;
+        }
+
+        #dataTable td {
+            white-space: nowrap;
+            /* max-width: 300px; */
+        }
+
+        #dataTable td {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        #dataTable td[title] {
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -341,6 +360,40 @@
                 }, 3000);
             }
         };
+    </script>
+    <script>
+        function accessUpdate(act, status) {
+            if (confirm('Are you sure you want to change this?')) {
+                $.ajax({
+                    url: act,
+                    method: "POST",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                            'content') // CSRF token for security
+                    },
+                    data: {
+                        status: status, // Send the Status to the server
+                    },
+                    success: function(resp) {
+                        // console.log(resp);
+                        if (resp.status) {
+                            alert(resp.message);
+                            window.location.reload();
+                        } else {
+                            session.error(resp.message, '');
+                        }
+
+                    },
+                    error: function(e) {
+                        toastr.error('Something went wrong. Please try again later!!',
+                            ''); // Handle AJAX error
+                    }
+                });
+            }
+            console.log('not Ok');
+            return false;
+
+        }
     </script>
     @stack('scripts')
 </body>

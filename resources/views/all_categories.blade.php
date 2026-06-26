@@ -1,5 +1,8 @@
 @extends('layouts.app')
-@section('title', 'All Services')
+@section('title', optional($allService)->meta_title ?? 'All Services')
+@section('meta_title', optional($allService)->meta_title)
+@section('meta_description', optional($allService)->meta_desc)
+@section('meta_keywords', optional($allService)->meta_keywords)
 @section('content')
 
     <div id="all_services" class="carousel slide" data-bs-ride="carousel"

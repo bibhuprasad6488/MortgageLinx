@@ -79,6 +79,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('/service-categories', ServiceCategoryController::class)->names('service-categories');
         Route::resource('/services', ServiceController::class)->names('services');
         Route::post('/service-status-update/{id}', [ServiceController::class, 'updateServiceStatus'])->name('service-status-update');
+        Route::any('/cms-all-services', [ServiceController::class, 'cmsAllServicesPage'])->name('cms-all-services');
         Route::resource('/partners', PartnerController::class)->names('partners');
         Route::post('/partner-status-update/{id}', [PartnerController::class, 'updatePartnerStatus'])->name('partner-status-update');
         Route::resource('/become-introducer', IntroducerController::class)->names('become-introducer');

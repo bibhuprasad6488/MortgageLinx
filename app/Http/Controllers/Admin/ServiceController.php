@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\AllServices;
 use App\Models\Service;
 use App\Models\ServiceCategory;
 use Illuminate\Http\Request;
@@ -199,6 +200,30 @@ class ServiceController extends Controller
         } catch (\Throwable $th) {
             DB::rollBack();
             return response()->json(['status' => false, 'message' => 'Error: ' . $th->getMessage()]);
+        }
+    }
+
+    public function cmsAllServicesPage(Request $request)
+    {
+        if ($request->isMethod('post')) {
+            DB::beginTransaction();
+            try {
+                $allServices = AllServices::find(1) ?? new AllServices();
+                $allServices->meta_title = $request->meta_title;
+                $allServices->meta_desc = $request->meta_desc;
+                $allServices->meta_keywords = $request->meta_keywords;
+                $allServices->save();
+
+                DB::commit();
+                return redirect()->back()->with('success', 'All service page updated successfully.');
+            } catch (\Throwable $th) {
+                DB::rollBack();
+                return redirect()->back()->with('error', 'Error: ' . $th->getMessage());
+            }
+        } else {
+            $allServicePage = AllServices::find(1);
+
+            return view('admin.cmspages.all-services', compact('allServicePage'));
         }
     }
     /**

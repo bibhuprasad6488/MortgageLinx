@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AboutUs;
+use App\Models\AllServices;
 use App\Models\BecomeAnIntroducer;
 use App\Models\BecomeAnIntroducerForm;
 use App\Models\CmsHomePage;
@@ -399,7 +400,9 @@ class HomeController extends Controller
             $p->partner_image = $p->partner_image ? asset('storage/images/partners/' . $p->partner_image) : asset('admin/img/no-img.png');
             return $p;
         });
-        return view('all_categories', compact('serviceCats', 'partners'));
+
+        $allService = AllServices::find(1);
+        return view('all_categories', compact('serviceCats', 'partners', 'allService'));
     }
 
     public function serviceSinglePage($slug)

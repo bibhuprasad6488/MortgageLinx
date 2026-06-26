@@ -67,6 +67,7 @@
             <h3 class="text-center">Protection Solutions Tailored To You</h3>
             <hr class="hr1">
             @php
+                $count = 5;
                 if (count($protectionServices) > 0) {
                     if (count($protectionServices) > 6) {
                         $count = 5;

@@ -39,6 +39,7 @@
                     solutions from across the whole market.</p>
             </div>
             @php
+                $count = 5;
                 if (count($services) > 0) {
                     if (count($services) > 6) {
                         $count = 5;

@@ -135,7 +135,7 @@
                 </div>
                 <div class="col-lg-2 tar">
                     <img src="{{ $setting->footer_logo_one ? asset('storage/images/settings/' . $setting->footer_logo_one) : '' }}"
-                        alt="Certified Logo" width="125" class="certified-img">
+                        alt="Certified Logo" width="63" class="certified-img">
                 </div>
             </div>
         </div>

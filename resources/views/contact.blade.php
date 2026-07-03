@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Contact Us')
+@section('title', optional($contactPage)->meta_title ?? 'Contact Us')
 @section('meta_title', optional($contactPage)->meta_title)
 @section('meta_description', optional($contactPage)->meta_desc)
 @section('meta_keywords', optional($contactPage)->meta_keywords)

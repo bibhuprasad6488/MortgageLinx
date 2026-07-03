@@ -40,6 +40,19 @@
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
     <!-- Scripts -->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P3Z806BEQ8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-P3Z806BEQ8');
+    </script>
+    <meta name="google-site-verification" content="Nv4DSQFvsf4Op_MEXvsoKTaO6DiBM16VpqNY0LqLE0E" />
     @if (config('database.connections.mysql.username') === 'root')
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     @endif

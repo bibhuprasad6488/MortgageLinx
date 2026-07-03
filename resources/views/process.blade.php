@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Our Process')
+@section('title', optional($process)->meta_title ?? 'Our Process')
 @section('meta_title', optional($process)->meta_title)
 @section('meta_description', optional($process)->meta_desc)
 @section('meta_keywords', optional($process)->meta_keywords)

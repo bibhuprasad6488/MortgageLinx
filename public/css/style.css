@@ -1518,8 +1518,9 @@ marquee .partner-card img {
 }
 
 .site-footer .tac img {
-    width: 75% !important;
+    width: 50% !important;
 }
+
 .site-footer img {
     filter: none !important;
     display: inline;
@@ -2004,6 +2005,7 @@ select {
     .site-footer .tac img {
         width: 150px !important;
     }
+
     .site-footer img {
         width: 150px !important;
     }
@@ -2080,6 +2082,7 @@ select {
     .site-footer .tac img {
         width: 180px !important;
     }
+
     .site-footer img {
         width: 180px !important;
     }
@@ -2314,6 +2317,7 @@ select {
     .site-footer .tac img {
         width: 190px !important;
     }
+
     .site-footer img {
         width: 190px !important;
     }
@@ -2396,6 +2400,7 @@ select {
     .site-footer .tac img {
         width: 190px !important;
     }
+
     .site-footer img {
         width: 190px !important;
     }
@@ -2457,6 +2462,7 @@ select {
     .site-footer .tac img {
         width: 190px !important;
     }
+
     .site-footer img {
         width: 190px !important;
     }

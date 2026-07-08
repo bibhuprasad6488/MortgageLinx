@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\SiteSetting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 
 class WebsiteSettingController extends Controller
@@ -208,7 +209,15 @@ class WebsiteSettingController extends Controller
                 $setting->favicon = $favicon;
             }
 
+            // $this->updateEnv('MAIL_HOST', $request->smtp_host);
+            // $this->updateEnv('MAIL_PORT', $request->smtp_port);
+            // $this->updateEnv('MAIL_USERNAME', $request->smtp_username);
+            // $this->updateEnv('MAIL_PASSWORD', $request->smtp_password);
+            // $this->updateEnv('MAIL_FROM_ADDRESS', $request->smtp_from_email);
+            // $this->updateEnv('MAIL_FROM_NAME', $request->smtp_from_name);
 
+            // Artisan::call('config:clear');
+            // Artisan::call('cache:clear');
 
             $setting->save();
             DB::commit();
@@ -219,6 +228,26 @@ class WebsiteSettingController extends Controller
         }
     }
 
+    private function updateEnv($key, $value)
+    {
+        $path = base_path('.env');
+
+        if (file_exists($path)) {
+            $content = file_get_contents($path);
+
+            if (strpos($content, "{$key}=") !== false) {
+                $content = preg_replace(
+                    "/^{$key}=.*/m",
+                    "{$key}=\"" . addslashes($value) . "\"",
+                    $content
+                );
+            } else {
+                $content .= PHP_EOL . "{$key}=\"" . addslashes($value) . "\"";
+            }
+
+            file_put_contents($path, $content);
+        }
+    }
     /**
      * Display the specified resource.
      */

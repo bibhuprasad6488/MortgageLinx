@@ -407,13 +407,13 @@
                                         value="{{ optional($setting)->smtp_username }}">
                                 </div>
                             </div>
-                            <div class="form-group d-none row  mb-2">
+                            <div class="form-group  row  mb-2">
                                 <label for="" class="col-md-3 d-flex justify-content-end col-sm-3 col-xs-12">SMTP
                                     Password
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" name="smtp_password" id="smtp_password" class="form-control "
-                                        value="{{ optional($setting)->smt_password }}">
+                                        value="{{ optional($setting)->smtp_password }}">
                                 </div>
                             </div>
                             <div class="form-group d-none row  mb-2">

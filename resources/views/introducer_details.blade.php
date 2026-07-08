@@ -120,23 +120,28 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-6 mb-3">
                                 <div class="single_column">
                                     <p>C. Referral Information</p>
-                                    <label>Estimated Referrals Per Month</label>
+                                    <label>Estimated Referrals</label>
                                     <label>
-                                        <input type="checkbox" name="range[]" value="1-6">
-                                        0 - 1
+                                        <input type="radio" name="range[]" value="1-2">
+                                        1 - 2 per month
                                     </label>
 
                                     <label>
-                                        <input type="checkbox" name="range[]" value="2-5">
-                                        2 - 5
+                                        <input type="radio" name="range[]" value="3-5">
+                                        3 - 5 per month
                                     </label>
 
                                     <label>
-                                        <input type="checkbox" name="range[]" value="5+">
-                                        5+
+                                        <input type="radio" name="range[]" value="6-10">
+                                        6 - 10 per month
+                                    </label>
+
+                                    <label>
+                                        <input type="radio" name="range[]" value="10+">
+                                        10+
                                     </label>
                                 </div>
                             </div>

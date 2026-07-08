@@ -38,7 +38,7 @@
 
                                         <td>{{ $i->contact_phone }}</td>
                                         <td>{{ $i->contact_method }}</td>
-                                        <td>{{ $i->range }}</td>
+                                        <td>{{ $i->range }} per month</td>
 
                                         <td>
                                             {{ \Carbon\Carbon::parse($i->created_at)->format('d-m-Y, H:i') }}

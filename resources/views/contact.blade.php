@@ -95,9 +95,12 @@
                                             <select name="enquiry_type" id="enquiry_type"
                                                 class="mb-1 form-control border-muted rounded-0" required>
                                                 <option value="" selected disabled>Select Enquiry Type</option>
+                                                <option value="residential mortgage">Residential Mortgage</option>
+                                                <option value="buy-to-let">Buy-to-let</option>
+                                                <option value="commercial finance">Commercial Finance</option>
+                                                <option value="protection insurance">Protection Insurance</option>
                                                 <option value="general">General Inquiry</option>
-                                                <option value="support">Support Request</option>
-                                                <option value="feedback">Feedback</option>
+                                                <option value="other">Other</option>
                                             </select>
                                         </div>
                                     </div>

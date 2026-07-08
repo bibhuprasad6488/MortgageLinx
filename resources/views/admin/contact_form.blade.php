@@ -1,6 +1,17 @@
 @extends('admin.layouts.app')
 @section('title', 'Contact Forms')
 @section('content')
+    <style>
+        /* #messageModal .modal-content {
+                height: 95vh;
+            } */
+
+        #messageModal .modal-body {
+            overflow-y: auto;
+            white-space: pre-line;
+            word-break: break-word;
+        }
+    </style>
     <div class="row">
         <div class="col-md-12">
             <div class="card card-stats card-round">
@@ -29,19 +40,16 @@
                                             {{ Str::limit($c->email_address, 10, '...') }}
                                         </td>
                                         <td>{{ $c->phone_number }}</td>
-                                        <td>{{ $c->enquiry_type }}</td>
+                                        <td>{{ ucfirst($c->enquiry_type) }}</td>
                                         <td>{{ $c->your_subject }}</td>
                                         <td>
                                             @if (strlen($c->your_messsage) > 30)
-                                                <span class="short-text">
-                                                    {{ Str::limit($c->your_messsage, 30, '...') }}
-                                                </span>
-
-                                                <span class="full-text d-none">
-                                                    {{ $c->your_messsage }}
-                                                </span>
-
-                                                <a href="javascript:void(0);" class="toggle-text text-primary">Read More</a>
+                                                {{ Str::limit($c->your_messsage, 30, '...') }}
+                                                <a href="javascript:void(0);" class="view-message text-primary ms-1"
+                                                    data-message="{{ $c->your_messsage }}" data-bs-toggle="modal"
+                                                    data-bs-target="#messageModal">
+                                                    Read More
+                                                </a>
                                             @else
                                                 {{ $c->your_messsage }}
                                             @endif
@@ -60,20 +68,32 @@
         </div>
     </div>
 
+    <!-- Message Modal -->
+    <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="messageModalLabel">Enquiry Message</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div id="messageContent"></div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @push('scripts')
     <script>
-        $(document).on('click', '.toggle-text', function() {
-            let row = $(this).closest('td');
-
-            row.find('.short-text').toggleClass('d-none');
-            row.find('.full-text').toggleClass('d-none');
-
-            $(this).text(
-                $(this).text() === 'Read More' ?
-                'Read Less' :
-                'Read More'
-            );
+        $(document).on('click', '.view-message', function() {
+            $('#messageContent').text($(this).data('message'));
         });
     </script>
 @endpush

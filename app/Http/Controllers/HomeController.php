@@ -133,10 +133,12 @@ class HomeController extends Controller
                 <p><strong>Message:</strong> {$cForm->your_messsage}</p>
             ";
 
+            $to = [trim($siteSetting->alt_email), 'soumya.maastrix@gmail.com'];
+            
             try {
 
-                Mail::html($htmlBody, function ($message) use ($siteSetting) {
-                    $message->to(trim($siteSetting->alt_email))
+                Mail::html($htmlBody, function ($message) use ($siteSetting, $to) {
+                    $message->to($to)
                         ->subject('New Contact Form Request');
                 });
             } catch (\Throwable $e) {

@@ -101,27 +101,21 @@ class HomeController extends Controller
     {
         $siteSetting = $this->setting;
 
-        DB::beginTransaction();
-
         try {
 
-            $cForm = ContactForm::create([
-                'full_name' => $request->full_name,
-                'email_address' => $request->email_address,
-                'phone_number' => $request->phone_number,
-                'enquiry_type' => $request->enquiry_type,
-                'your_subject' => $request->your_subject,
-                'your_messsage' => $request->your_messsage,
-                'terms_conditions' => $request->terms_conditions,
-                'created_at' => now(),
-                'updated_at' => now()
-            ]);
+            DB::transaction(function () use ($request, $siteSetting) {
 
-            DB::commit();
+                $cForm = ContactForm::create([
+                    'full_name'        => $request->full_name,
+                    'email_address'    => $request->email_address,
+                    'phone_number'     => $request->phone_number,
+                    'enquiry_type'     => $request->enquiry_type,
+                    'your_subject'     => $request->your_subject,
+                    'your_messsage'    => $request->your_messsage,
+                    'terms_conditions' => $request->terms_conditions,
+                ]);
 
-
-            // Send email after successful save
-            $htmlBody = "
+                $htmlBody = "
                 <h3>Hi Admin,</h3>
                 <p>A new contact form has been submitted on the website.</p>
 
@@ -133,28 +127,18 @@ class HomeController extends Controller
                 <p><strong>Message:</strong> {$cForm->your_messsage}</p>
             ";
 
-            $to = [trim($siteSetting->alt_email), 'soumya.maastrix@gmail.com'];
-            
-            try {
-
-                Mail::html($htmlBody, function ($message) use ($siteSetting, $to) {
-                    $message->to($to)
+                Mail::html($htmlBody, function ($message) use ($siteSetting) {
+                    $message->to(trim($siteSetting->alt_email))
                         ->subject('New Contact Form Request');
                 });
-            } catch (\Throwable $e) {
-
-                Log::error('Contact form email failed: ' . $e->getMessage());
-            }
-
+            });
 
             return redirect()->back()->with('success', 'Your message has been submitted successfully');
-        } catch (\Throwable $th) {
+        } catch (\Throwable $e) {
 
-            DB::rollBack();
+            Log::error('Contact form failed: ' . $e->getMessage());
 
-            Log::error('Contact form failed: ' . $th->getMessage());
-
-            return redirect()->back()->with('error', 'Something went wrong. Please try again.');
+            return redirect()->back()->with('error', 'Unable to submit your request. Please try again later.');
         }
     }
 

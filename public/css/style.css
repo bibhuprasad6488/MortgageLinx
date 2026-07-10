@@ -1420,6 +1420,7 @@ marquee .partner-card img {
 .footer-links li img {
     width: 60px;
     margin-right: 15px;
+    height: auto;
 }
 
 .footer_row_middle {
@@ -2024,7 +2025,7 @@ select {
     }
 
     .site-footer .certified-img {
-        width: 100px !important;
+        width: 50px !important;
     }
 
     .copyright a:first-child {
@@ -2088,7 +2089,7 @@ select {
     }
 
     .site-footer .certified-img {
-        width: 100px !important;
+        width: 50px !important;
     }
 
     .mask p img {
@@ -2327,7 +2328,7 @@ select {
     }
 
     .site-footer .certified-img {
-        width: 100px !important;
+        width: 55px !important;
     }
 
     .footer_row_middle .pl30 {
@@ -2410,7 +2411,7 @@ select {
     }
 
     .site-footer .certified-img {
-        width: 90px !important;
+        width: 60px !important;
     }
 
     .banner-txt-container {
@@ -2448,6 +2449,10 @@ select {
     .single_col .icon .cat_image {
         height: 190px;
     }
+
+    .footer_row_middle .pl30 {
+        padding-left: 13px;
+    }
 }
 
 @media (min-width: 650px) and (max-width: 767px) {
@@ -2472,7 +2477,7 @@ select {
     }
 
     .site-footer .certified-img {
-        width: 85px !important;
+        width: 65px !important;
     }
 
     .page-banner-title {
@@ -2519,6 +2524,10 @@ select {
 
     .single_col .icon .cat_image {
         height: 180px;
+    }
+
+    .footer_row_middle .pl30 {
+        padding-left: 13px;
     }
 
 }
